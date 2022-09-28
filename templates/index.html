@@ -2,16 +2,98 @@
 <html>
 
 <head>
-    <title>Roteirizador BEEP!</title>
+    <title>Workstation BEEP!</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style> 
-        body {
-            background-color: #00AFAA;
+        .container{
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin: 0px;
+            padding: 0px;
+            height: 100vh;
+            width: 100%;
         }
+        .espaço{
+            margin: 5px;
+            padding: 5px;
+        }
+        .filtros{
+            background-color: #00AFAA;
+            width: 20%;
+            height: 100%;
+            box-shadow:  5px 10px #004745;
+            margin: 5px;
+            padding: 5px;
+        }
+        .dashboard{
+            background-color: white;
+            width: 80%;
+            height: 100%;
+            margin: 5px;
+            padding: 5px;
+        }
+        .dashboard2{
+            display: flex;
+            flex-direction: column;
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+            justify-content: space-around;
+        }
+        .dashboardcards{
+            display: flex;
+            flex-direction: row;
+            margin: 0px;
+            padding: 0px;
+            height: 10%;
+            width: 100%;
+            justify-content: space-around;
+            align-items: flex-start;    
+        }
+        .cards{
+            background-color: #00AFAA;
+            width: 15%;
+            height: 100%;
+            box-shadow:  5px 10px #004745;
+            margin: 5px;
+            padding: 5px;
+        }
+        .tabelaprioridade{
+            background-color: #00AFAA;
+            position: relative;
+            width: 90%;
+            height: 30%;
+            box-shadow:  5px 10px #004745;
+            margin: 5px;
+            padding: 5px;
+            left: 5%;
+        }
+        .tabelacapacidade{
+            background-color: #00AFAA;
+            position: relative;
+            width: 90%;
+            height: 20%;
+            box-shadow:  5px 10px #004745;
+            margin: 5px;
+            padding: 5px;
+            left: 5%;
+        }  
+        .tabelaescala{
+            background-color: #00AFAA;
+            position: relative;
+            width: 90%;
+            height: 25%;
+            box-shadow:  5px 10px #004745;
+            margin: 5px;
+            padding: 5px;
+            left: 5%;
+        }      
         p{
             color: white;
         }
@@ -20,9 +102,6 @@
         }
         label {
             color: white;
-        }
-        .container {
-            width: 700px;
         }
         .botão {
             margin-top: 10px;
@@ -48,48 +127,71 @@
 </head>
 
 <body>
-    <form class="container" action="/roteirizar">
-        <h2>Roteirizador BEEP!🚀</h2>
-        <div class="form-group">
-            <label for="data">Data:</label>
-            <input type="date" class="form-control" id="data" name="data">
+    <div class="container">
+        <div class="filtros">
+            <div class="espaço">  
+                <h2>Workstation Planejamento</h2>
+                <div class="form-group">
+                    <label for="data">Data:</label>
+                    <input type="date" class="form-control" id="data" name="data">
+                </div>
+                <div>
+                    <label for="hub">Hub:</label>
+                    <select class="form-control" name="hub">
+                        <option>Alphaville</option>
+                        <option>Barra</option>
+                        <option>Brasília</option>
+                        <option>Cabo Frio</option>
+                        <option>Campinas</option>
+                        <option>Curitiba</option>
+                        <option>Recife</option>
+                        <option>São Bernardo do Campo</option>
+                        <option>São Cristóvão</option>
+                        <option>Tatuapé</option>
+                        <option>Vila Olímpia</option>
+                        <option>Vitória</option>
+                    </select>
+                </div>
+                </p>
+                <div>
+                    <label for="produto">Produto:</label>
+                    <select class="form-control" name="produto">
+                        <option>VAC</option>
+                        <option>LAB</option>
+                    </select>
+                </div>
+                </p>
+            </div>    
         </div>
-        <div>
-            <label for="hub">Hub:</label>
-            <select class="form-control" name="hub">
-                <option>Alphaville</option>
-                <option>Barra</option>
-                <option>Brasília</option>
-                <option>Cabo Frio</option>
-                <option>Campinas</option>
-                <option>Curitiba</option>
-                <option>Recife</option>
-                <option>São Bernardo do Campo</option>
-                <option>São Cristóvão</option>
-                <option>Tatuapé</option>
-                <option>Vila Olímpia</option>
-                <option>Vitória</option>
-            </select>
+
+        <div class="dashboard">
+            <div class="dashboard2"> 
+                <div class="dashboardcards">
+                    <div class="cards">
+                    Valor 1
+                    </div>
+                    <div class="cards">
+                        Valor 2
+                    </div>
+                    <div class="cards">
+                        Valor 3
+                    </div>
+                    <div class="cards">
+                        Valor 4
+                    </div>
+                </div>
+                <div class="tabelaprioridade">
+                    código aqui
+                </div>
+                <div class="tabelacapacidade">
+                    código aqui
+                </div>
+                <div class="tabelaescala">
+                    código aqui
+                </div>
+            </div>
         </div>
-        </p>
-        <div>
-            <label for="produto">Produto:</label>
-            <select class="form-control" name="produto">
-                <option>VAC</option>
-                <option>LAB</option>
-            </select>
-        </div>
-        </p>
-        <div>
-            <label for="range">Tempo de atendimento:</label>
-            <input type="number" class="form-control" id="numero" placeholder="Digite o range de atendimento de um cliente para o outro ( em minutos )." name="tempo">
-        </div>
-        <button type="submit" class="botão">INICIAR ROTEIRIZAÇÃO</button>
-        <p>
-            {{error}}
-        </p>
-    </form>
-    
+
 </body>
 
 </html>
