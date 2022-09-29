@@ -133,31 +133,23 @@
                 <h2>Workstation Planejamento</h2>
                 <div class="form-group">
                     <label for="data">Data:</label>
-                    <input type="date" class="form-control" id="data" name="data">
+                    <input type="date" class="form-control" id="no-spin" onkeypress="return false" name="date" min="">
                 </div>
                 <div>
-                    <label for="hub">Hub:</label>
+                    <label for="região">Região:</label>
                     <select class="form-control" name="hub">
-                        <option>Alphaville</option>
-                        <option>Barra</option>
-                        <option>Brasília</option>
-                        <option>Cabo Frio</option>
-                        <option>Campinas</option>
-                        <option>Curitiba</option>
-                        <option>Recife</option>
-                        <option>São Bernardo do Campo</option>
-                        <option>São Cristóvão</option>
-                        <option>Tatuapé</option>
-                        <option>Vila Olímpia</option>
-                        <option>Vitória</option>
+                        {% for row in regiões %}
+                        <option value="{{row}}">{{row}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 </p>
                 <div>
                     <label for="produto">Produto:</label>
                     <select class="form-control" name="produto">
-                        <option>VAC</option>
-                        <option>LAB</option>
+                        {% for row in bus %}
+                        <option value="{{row}}">{{row}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 </p>
@@ -192,6 +184,13 @@
             </div>
         </div>
 
+        <script>   
+            // script para colocar o filtro p/ selecionar apenas as datas a partir de hoje
+            var today = new Date();
+            today.setDate(today.getDate() + 1); 
+            today = today.toISOString().split('T')[0];
+            document.getElementsByName("date")[0].setAttribute('min', today);
+        </script>
 </body>
 
 </html>
