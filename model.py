@@ -23,7 +23,7 @@ class Agenda():
 
 class Dashboard():    
     def __init__(self):
-        
+    
     def tratarcards():
         print("Tratando os cards")
     
@@ -35,7 +35,7 @@ class Dashboard():
     
     def tratarescala(self):
         consulta = f"""
-        select macro_região as região, hub, escala, data, id_colaborador, colaborador, id_cargo, data_inicio_previsto, data_fim_previsto, ausente_lancamento,
+        select macro_região as região, hub, escala, data::date, id_colaborador, colaborador, id_cargo, data_inicio_previsto, data_fim_previsto, ausente_lancamento,
         (case when escala LIKE '%VAC%' then 'vaccines' when escala LIKE '%LAB%' then 'laboratories' else 'híbrida' end) as bu
         from jornadas_escala.escala_operacional
         left join dim_parceiros
@@ -44,9 +44,12 @@ class Dashboard():
         and previsto = 'Trabalho'
         and (lancamento = 'Licença médica' or lancamento = 'Folga' or lancamento = 'Folga extra' or lancamento = 'Folga hora' or lancamento is null)
         and data > current_date
-        order by data
+        group by  macro_região, hub, escala, data, id_colaborador, colaborador, id_cargo, data_inicio_previsto, data_fim_previsto, ausente_lancamento
+        order by data, hub, colaborador
         """
-        escalatratada = pd.read_sql_query(consulta, con=self.conexão)
+        self.escalatratada = pd.read_sql_query(consulta, con=self.conexão)
+        return self.escalatratada
+
     def filtrarcards():
         print("filtrando cards")
     
@@ -56,14 +59,12 @@ class Dashboard():
     def filtrarcapacidade():
         print("Filtrando tabela com capacidade, alocado e saldo.")
     
-    def filtrarescala(self):
-        consulta = f"""
-        select * from jornadas_escala.escala_operacional
-        """
-        road = pd.read_sql_query(consulta, con=self.conexão)
-        print(road)
+    def filtrarescala(self, data, região, bu): 
+        self.escalatratada['data'] = pd.to_datetime(self.escalatratada['data'], format='%Y-%m-%d')
+        filtrarescala = self.escalatratada[(self.escalatratada['data'] == f'{data}') & (self.escalatratada['região'] == f'{região}') & (self.escalatratada['bu'] == f'{bu}')] 
+        return filtrarescala
 
-    def fltrar(self):
+    def receberopçãodefiltro(self):
         print('filtrando tudo')
     
     def opçãodefiltroregião(self):
