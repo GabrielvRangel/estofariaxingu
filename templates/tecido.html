@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Estofaria Xingú</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.png')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/mainpage.css') }}">
+</head>
+
+<body>
+    <div class="popup-wrapper">
+        <div class="popup">
+            <div class="carregamento">
+                <h3 id="textocarregamento"></h3>
+            </div>
+            <div class="popup-content">
+                <h3 class="popupcolors"><strong>UPDATE</strong></h3>
+                <form class="form" id="tecidoupdate" action="/tecidoupdate">
+                    <div class="inputs">
+                        Artigo: <input type="text" name="novoartigo" id="novoartigo" class="poppupforminputtext">
+                        Preço Compra: <input type="number" name="novopreco_venda" id="novopreco_venda" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Preço Venda: <input name="novopreco_compra" type="number" id="novopreco_compra" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        <input type="hidden" name="artigo" id="artigo">
+                        <input type="hidden" name="preco_venda" id="preco_venda">
+                        <input type="hidden" name="preco_compra" id="preco_compra">
+                    </div>
+                    <div class="buttons">
+                        <button type="submit" class="confirmar">Confirmar</button>
+                        <button type="submit" class="cancelar">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="popup-delete">
+                <h3 class="popupcolors"><strong>VOCÊ REALMENTE DESEJA DELETAR?</strong></h3>
+                <form class="delete" id="tecidodelete" action="/tecidodelete">
+                    <div id="inputs">
+                        <input type="hidden" name="artigodelete" id="artigodelete">
+                        <input type="hidden" name="preco_vendadelete" id="preco_vendadelete">
+                        <input type="hidden" name="preco_compradelete" id="preco_compradelete">
+                    </div>
+                    <div class="buttons">
+                        <button type="submit" class="deletar">SIM</button>
+                        <button type="submit" class="cancelar" id="cancelar">NÃO</button>
+                    </div>
+                </form>
+            </div>
+            <div class="popup-adicionar">
+                <h3 class="popupcolors"><strong>ADICIONAR</strong></h3>
+                <form class="form" id="tecidoadicionar" action="/tecidoadicionar">
+                    <div class="inputs">
+                        Artigo: <input type="text" name="artigoadicionar" id="artigoadicionar" class="poppupforminputtext">
+                        Preço Venda: <input type="number" name="preco_vendaadicionar" id="preco_vendaadicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Preço Compra: <input name="preco_compraadicionar" type="number" id="preco_compraadicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                    </div>
+                    <div class="buttons">
+                        <button type="submit" class="adicionar">Confirmar</button>
+                        <button type="submit" class="cancelar" id="cancelaradd">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <button type="button" onclick="Mudarestado('menu')" class="button-icon-menu"><input type="image"
+            src="{{url_for('static', filename='menu-icon.png')}}" width="100%" height="100%" /></button>
+    <div class="main">
+        <div class="menu" id="menu">
+            <div class="menu_div_button">
+                <a href='/'><button type="submit" class="menu_button"> Calculadora </button></a>
+                <a href='/custovariavelgeral'><button type="submit" class="menu_button">Custo Variável Geral</button></a>
+                <a href='/frete'><button type="submit" class="menu_button"> Frete </button></a>
+                <a href='/itemsadicionais'><button type="submit" class="menu_button"> Itens Adicionais </button></a>
+                <a href='/parâmetros'><button type="submit" class="menu_button"> Parâmetros </button></a>
+                <a href='/tecido'><button type="submit" class="menu_button_selecionado"> Tecidos </button></a>
+            </div>
+        </div>
+
+        <div class="tela" id="tela">
+            <div class="barra-menu">
+                <h4 id="titulo"> Estofaria Xingú </h4>
+            </div>
+            <div class="teladados">
+                <div class="tela-nome">
+                    <h3 id="tela-nome">Tecidos</h3>
+                    <button type="button" class="adicionarbutton">adicionar</button>
+                </div>
+                <form class="form">
+                    <input type="text" class="buscador" id="filtro" placeholder="Buscar..." />
+                    <div class="tabela">
+                        <div class="scroll">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Artigo</th>
+                                        <th>Preço Venda</th>
+                                        <th>Preço Compra</th>
+                                        <th width="20px"></th>
+                                        <th width="20px"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="filtrando">
+                                    {% for quantidade in tecidoartigo %}
+                                    <tr>
+                                        <td id="A{{loop.index-1}}">{{tecidoartigo[loop.index-1]}}</td>
+                                        <td id="B{{loop.index-1}}">{{tecidopreco_venda[loop.index-1]}}</td>
+                                        <td id="C{{loop.index-1}}">{{tecidopreco_compra[loop.index-1]}}</td>
+                                        <td id="{{loop.index-1}}" onclick="updatebutton(this.id)"><input type="button"
+                                                class="updatebutton" value="update"></td>
+                                        <td id="{{loop.index-1}}" onclick="deletebutton(this.id)"><input type="button"
+                                                class="deletebutton" value="delete"></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Esconder ou aparecer o menu
+        function Mudarestado(el) {
+            var display = document.getElementById(el).style.display;
+            if (display == "block")
+                document.getElementById(el).style.display = 'none';
+            else
+                document.getElementById(el).style.display = 'block';
+        }
+
+        // Filtro da tabela
+        $(document).ready(function () {
+            $("#filtro").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#filtrando tr").filter(function () {
+                    $(this).toggle($(this).text()
+                        .toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+        function updatebutton(id) {
+            artigo = $('#A' + id).text();
+            preco_venda = $('#B' + id).text();
+            preco_compra = $('#C' + id).text();
+            $('#artigo').val(artigo);
+            $('#preco_venda').val(preco_venda);
+            $('#preco_compra').val(preco_compra);
+            $('#novoartigo').val(artigo);
+            $('#novopreco_venda').val(preco_venda);
+            $('#novopreco_compra').val(preco_compra);
+            const popup = document.querySelector('.popup-wrapper');
+            popup.style.display = 'block';
+            const popupdelete = document.querySelector('.popup-delete');
+            popupdelete.style.display = 'none';
+            const popupupdate = document.querySelector('.popup-content');
+            popupupdate.style.display = 'block';
+            const popupadicionar = document.querySelector('.popup-adicionar');
+            popupadicionar.style.display = 'none';
+            const popupprincipal = document.querySelector('.popup');
+            popupprincipal.style.height = '55%';
+        };
+
+        function deletebutton(id) {
+            artigodelete = $('#A' + id).text();
+            preco_vendadelete = $('#B' + id).text();
+            preco_compradelete = $('#C' + id).text();
+            $('#artigodelete').val(artigodelete);
+            $('#preco_vendadelete').val(preco_vendadelete);
+            $('#preco_compradelete').val(preco_compradelete);
+            const popup = document.querySelector('.popup-wrapper');
+            popup.style.display = 'block';
+            const popupupdate = document.querySelector('.popup-content');
+            popupupdate.style.display = 'none';
+            const popupdelete = document.querySelector('.popup-delete');
+            popupdelete.style.display = 'block';
+            const popupadicionar = document.querySelector('.popup-adicionar');
+            popupadicionar.style.display = 'none';
+            const popupprincipal = document.querySelector('.popup');
+            popupprincipal.style.height = '28%';
+        };
+
+        const adicionarbutton = document.querySelector('.adicionarbutton')
+        adicionarbutton.addEventListener('click', () => {
+            const popup = document.querySelector('.popup-wrapper');
+            popup.style.display = 'block';
+            const popupdelete = document.querySelector('.popup-delete');
+            popupdelete.style.display = 'none';
+            const popupupdate = document.querySelector('.popup-content');
+            popupupdate.style.display = 'none';
+            const popupadicionar = document.querySelector('.popup-adicionar');
+            popupadicionar.style.display = 'block';
+            const popupprincipal = document.querySelector('.popup');
+            popupprincipal.style.height = '55%';
+        });
+
+        //botão cancelar do popup update
+        const cancelarbutton = document.querySelector('.cancelar')
+        cancelarbutton.addEventListener('click', () => {
+            const popup = document.querySelector('.popup-wrapper');
+            popup.style.display = 'none';
+            document.getElementById('tecidoupdate').onsubmit = function () {
+                return false;
+            }
+        });
+
+        //botão cancelar do popup delete
+        const deletecancelarbutton = document.querySelector('#cancelar')
+        deletecancelarbutton.addEventListener('click', () => {
+            const popup = document.querySelector('.popup-wrapper');
+            popup.style.display = 'none';
+            document.getElementById('tecidodelete').onsubmit = function () {
+                return false;
+            }
+        });
+
+        //botão cancelar do popup update
+        const adicionarcancelarbutton = document.querySelector('#cancelaradd')
+        adicionarcancelarbutton.addEventListener('click', () => {
+            const popup = document.querySelector('.popup-wrapper');
+            popup.style.display = 'none';
+            document.getElementById('tecidoadicionar').onsubmit = function () {
+                return false;
+            }
+        });
+
+        //botão confirmar do popup
+        const confirmarbutton = document.querySelector('.confirmar')
+        confirmarbutton.addEventListener('click', () => {
+            const popup = document.querySelector('.popup-content');
+            popup.style.display = 'none';
+            $('#textocarregamento').empty().append("Atualizando dados, aguarde...");
+            const carregamento = document.querySelector('.carregamento');
+            carregamento.style.display = 'block';
+            document.getElementById('tecidoupdate').onsubmit = function () {
+                return true;
+            }
+        });
+
+        const deletarbutton = document.querySelector('.deletar')
+        deletarbutton.addEventListener('click', () => {
+            const popup = document.querySelector('.popup-delete');
+            popup.style.display = 'none';
+            $('#textocarregamento').empty().append("Deletando dados, aguarde...");
+            const carregamento = document.querySelector('.carregamento');
+            carregamento.style.display = 'block';
+            document.getElementById('tecidodelete').onsubmit = function () {
+                return true;
+            }
+        });
+    </script>
+</body>
+
+</html>

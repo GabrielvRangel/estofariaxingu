@@ -2,585 +2,533 @@
 <html>
 
 <head>
-    <title>Workstation BEEP!</title>
+    <title>Estofaria Xingú</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{url_for('static', filename='favicon.png')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-        .colorirstatusverde{
-            color: #00AFAA ;
-        }
-        td {
-            cursor: pointer;
-        }
-        .tamanhotd{
-            width: 7%;
-        }
-        .carregamento{
-            display: none;
-        }
-        h3{
-            text-align: center;
-        }
-        .organizarbuttons{
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-        }
-        .popup-wrapper {
-            display: none;
-            background: rgba(0, 0, 0, .5);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        #popuptexto{
-            text-align: left;
-        }
-        .popup{
-            font-family: arial;
-            text-align: center;
-            width: 25%;
-            height: 30%;
-            margin: 10% auto;
-            padding: 20px;
-            position: relative;
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-        .popup .popupcolors{
-            text-align: center;
-            position: relative;
-            color: #4F5E69;
-        }
-        .popup form{
-            width: 50%;
-        }
-        .popup .confirmar{
-            margin-top: 10px;
-            width: 80%;
-            height: 50px;
-            font-weight: 600;
-            border-color: var(--bd-violet);
-            color: #ffffff;
-            cursor: pointer;
-            padding: 6px 10px;
-            text-decoration: none;
-            background: #00AFAA;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            position: relative;
-            right: 28px;
-            top: 20px;
-        }
-        .popup .cancelar{
-            margin-top: 10px;
-            width: 45%;
-            height: 50px;
-            font-weight: 600;
-            border-color: var(--bd-violet);
-            color: white;
-            cursor: pointer;
-            padding: 6px 10px;
-            text-decoration: none;
-            background: #4F5E69;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            position: relative;
-            left: 18px;
-            top: 20px;
-        }
-        .formslots{
-            margin-top: 10px;
-        }
-        .marcada {
-            background-color: #E5E5E5;
-        }
-
-        .table {
-            border-collapse: collapse;
-            padding: 5px 2px;
-            font-size: 0.9em;
-            border-radius: 5px 5px 0 0;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0, 15);
-        }
-
-        .table thead tr {
-            background-color: #00AFAA;
-            color: #ffffff;
-            text-align: left;
-            font-weight: bold;
-        }
-
-        .table th,
-        table td {
-            padding: 12px 15px;
-        }
-
-        .table tbody tr {
-            border-bottom: 1px solid #dddddd;
-            color: rgba(0, 0, 0, 0.3);
-        }
-
-        .table tbody tr:hover {
-            background-color: #4F5E69;
-            color: white;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            margin: 0px;
-            padding: 0px;
-            height: 100vh;
-            width: 100%;
-        }
-
-        .scroll {
-            margin: 3px;
-            color: white;
-            height: 100%;
-            overflow-y: scroll;
-        }
-
-        .filtros {
-            background-color: #00AFAA;
-            width: 20%;
-            height: 102%;
-            padding: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .dashboard {
-            background-color: white;
-            width: 80%;
-            height: 100%;
-            margin: 5px;
-            padding: 5px;
-        }
-
-        .dashboard2 {
-            display: flex;
-            flex-direction: column;
-            margin: 0px;
-            padding: 0px;
-            height: 100%;
-            width: 100%;
-            justify-content: space-around;
-        }
-
-        .dashboardcards {
-            display: flex;
-            flex-direction: row;
-            margin: 0px;
-            padding: 0px;
-            height: 0%;
-            width: 100%;
-            justify-content: space-around;
-            align-items: flex-start;
-        }
-
-        .cards {
-            background-color: #00AFAA;
-            width: 15%;
-            height: 100%;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            margin: 5px;
-            padding: 5px;
-            border-radius: 5px 5px;
-        }
-
-        .tabelaprioridade {
-            position: relative;
-            width: 90%;
-            height: 45%;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            margin: 5px;
-            padding: 5px;
-            left: 5%;
-            border-bottom: 2px solid #00AFAA;
-            border-top: 2px solid #00AFAA;
-            border-radius: 5px 5px 0 0;
-        }
-
-        .tabelacapacidade {
-            position: relative;
-            width: 90%;
-            height: 15%;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            margin: 5px;
-            padding: 5px;
-            left: 5%;
-            border-bottom: 2px solid #00AFAA;
-            border-top: 2px solid #00AFAA;
-            border-radius: 5px 5px 0 0;
-        }
-
-        .tabelaescala {
-            position: relative;
-            width: 90%;
-            height: 35%;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            margin: 5px;
-            padding: 5px;
-            left: 5%;
-            border-bottom: 2px solid #00AFAA;
-            border-top: 2px solid #00AFAA;
-            border-radius: 5px 5px 0 0;
-        }
-
-        h2 {
-            color: white;
-        }
-
-        label {
-            color: white;
-        }
-
-        .botão {
-            margin-top: 10px;
-            width: 100%;
-            height: 50px;
-            font-weight: 600;
-            color: var(--bs-white);
-            border-color: var(--bd-violet);
-            background-color: white;
-            border-radius: .5rem;
-        }
-
-        .botão:hover {
-            margin-top: 10px;
-            width: 100%;
-            height: 50px;
-            font-weight: 600;
-            background-color: rgb(243, 239, 239);
-            color: #00AFAA;
-            border-color: var(--bd-violet);
-            border-radius: .5rem;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/mainpage.css') }}">
 </head>
 
 <body>
-    <div class="popup-wrapper">
-        <div class="popup">
-            <div class="carregamento">
-                <h3 id="textocarregamento"></h3>
+    <button type="button" onclick="Mudarestado('menu')" class="button-icon-menu"><input type="image"
+            src="{{url_for('static', filename='menu-icon.png')}}" width="100%" height="100%" /></button>
+    <div class="main">
+        <div class="menu" id="menu">
+            <div class="menu_div_button">
+                <a href='/'><button type="submit" class="menu_button_selecionado"> Calculadora </button></a>
+                <a href='/custovariavelgeral'><button type="submit" class="menu_button">Custo Variável Geral</button></a>
+                <a href='/frete'><button type="submit" class="menu_button"> Frete </button></a>
+                <a href='/itemsadicionais'><button type="submit" class="menu_button"> Itens Adicionais </button></a>
+                <a href='/parâmetros'><button type="submit" class="menu_button"> Parâmetros </button></a>
+                <a href='/tecido'><button type="submit" class="menu_button"> Tecidos </button></a>
             </div>
-            <div class="popup-content">
-                <h1 class="popupcolors">Tem certeza?</h1>
-                <p class="popupcolors" id="popuptexto"></p>
-                <div class="organizarbuttons">
-                    <form id="abrirslots" action="/abrirslots">
-                        <input type="hidden" name="col" id="col">
-                        <input type="hidden" name="lin" id="lin">
-                        <input type="hidden" name="produto" id="produto">
-                        <input type="hidden" name="regime" id="regime">
-                        <input type="hidden" name="inicioregime" id="inicioregime">
-                        <input type="hidden" name="fimregime" id="fimregime">
-                        <input type="hidden" name="hub" id="hub">
-                        <input type="hidden" name="id_técnica" id="id_técnica">
-                        <input type="hidden" name="técnica" id="técnica">
-                        <button type="submit" class="confirmar">Confirmar</button>    
-                    </form>
-                    <button type="submit" class="cancelar">Cancelar</button>  
+        </div>
+
+        <div class="tela" id="tela">
+            <div class="barra-menu">
+                <h4 id="titulo"> Estofaria Xingú </h4>
+            </div>
+            <div class="teladados">
+                <div class="tela-nome">
+                    <h3 id="tela-nome">Calculadora</h3>
+                </div>
+                <div class="tela-calculadora">
+                    <div class="tela-1">
+                        <p class="tela-titulo">Mão de Obra</p>
+                        <form class="formulario1">
+                            <div class="inline">
+                                <c>Escolha a quantidade de horas para preparação:</c> 
+                                <input type="time" class="tela1-hr" id="hrpreparação" name="appt" min="00:00" max="24:00" onchange="resultadovalorpreparação()" required>
+                            </div>
+                            <p>Valor preparação: <b id="valorpreparação"></b></p>
+                            <div class="inline">
+                                <c>Escolha a quantidade de horas para costura:</c> 
+                                <input type="time" class="tela1-hr" id="hrcostura" name="appt" min="00:00" max="24:00" onchange="resultadovalorcostura()" required>
+                            </div>
+                            <p>Valor costura: <b id="valorcostura"></b></p>
+                            <div class="inline">
+                                <c>Escolha a quantidade de horas para estofamento:</c> 
+                                <input type="time" class="tela1-hr" id="hrestofamento" name="appt" min="00:00" max="24:00" onchange="resultadovalorestofamento()" required>
+                            </div>
+                            <p>Valor estofamento: <b id="valorestofamento"></b></p>
+                            <div class="inline">
+                                <p>Valor geral: <b id="valorgeralmãodeobra"></b></p>
+                                <p>% horas: <b id="percentualhorasmãodeobra"></b></p>
+                                <p>Total: <b id="valortotalmãodeobra"></b></p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tela-2">
+                        <form class="formulario2">
+                            <p class="tela-titulo">Tecido</p>
+                            <div class="inline">
+                                <c>Escolha o tipo de tecido:</c>                                
+                                <select class="form-control" id="tipotecido" onchange="resultadopreçocustotecido()"> 
+                                    {% for tecido in listatecidos %}
+                                        <option value="{{loop.index-1}}">{{tecido}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="inline">
+                                <c>Quantidade: </c>
+                                <input type="number" id="quantidadetecido" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustotecido()">
+                            </div>
+                            <div class="inline">
+                                <!-- <p>Preço estofaria: <b id="preçoestofaria"></b></p>
+                                <p>Preço cliente: <b id="preçoestofariacliente"></b></p> -->
+                                <p>Valor estofaria: <b id="valorestofaria"></b></p>
+                            </div>
+                            <div class="inline">
+                                <p>Valor cliente: <b id="valorestofariacliente"></b></p>
+                            </div>
+                            <p class="tela-titulo">Espumas</p>
+                            <div class="inline">
+                                <c>Quantidade espuma: </c>
+                                <input type="number" id="quantidadeespuma1" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(1)">
+                            </div>
+                            <div class="inline">
+                                <c>Altura: </c>
+                                <input type="number" id="altura1" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(1)">
+                            </div>
+                            <div class="inline">
+                                <c>Largura: </c>
+                                <input type="number" id="largura1" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(1)">
+                            </div>
+                            <div class="inline">
+                                <c>Comprimento: </c>
+                                <input type="number" id="comprimento1" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(1)">
+                            </div>
+                            <div class="inline">
+                                <c>Preço estofaria: </c>
+                                <input type="number" id="preçoestofariaespuma1" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(1)">
+                            </div>
+                            <div class="inline">
+                                <c>Preço cliente: </c>
+                                <input type="number" id="preçoclienteespuma1" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(1)">
+                            </div>
+                            <div class="inline">
+                                <p>Valor estofaria: <b id="valorestofariaespuma1"></b></p>
+                            </div>
+                            <div class="inline">
+                                <p>Valor cliente: <b id="valorclienteespuma1"></b></p>
+                            </div>
+                            <p class="tela-titulo">---</p>
+                            <div class="inline">
+                                <c>Quantidade espuma: </c>
+                                <input type="number" id="quantidadeespuma2" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(2)">
+                            </div>
+                            <div class="inline">
+                                <c>Altura: </c>
+                                <input type="number" id="altura2" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(2)">
+                            </div>
+                            <div class="inline">
+                                <c>Largura: </c>
+                                <input type="number" id="largura2" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(2)">
+                            </div>
+                            <div class="inline">
+                                <c>Comprimento: </c>
+                                <input type="number" id="comprimento2" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(2)">
+                            </div>
+                            <div class="inline">
+                                <c>Preço estofaria: </c>
+                                <input type="number" id="preçoestofariaespuma2" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(2)">
+                            </div>
+                            <div class="inline">
+                                <c>Preço cliente: </c>
+                                <input type="number" id="preçoclienteespuma2" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(2)">
+                            </div>
+                            <div class="inline">
+                                <p>Valor estofaria: <b id="valorestofariaespuma2"></b></p>
+                            </div>
+                            <div class="inline">
+                                <p>Valor cliente: <b id="valorclienteespuma2"></b></p>
+                            </div>
+                            <p class="tela-titulo">---</p>
+                            <div class="inline">
+                                <c>Quantidade espuma: </c>
+                                <input type="number" id="quantidadeespuma3" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(3)">
+                            </div>
+                            <div class="inline">
+                                <c>Altura: </c>
+                                <input type="number" id="altura3" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(3)">
+                            </div>
+                            <div class="inline">
+                                <c>Largura: </c>
+                                <input type="number" id="largura3" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(3)">
+                            </div>
+                            <div class="inline">
+                                <c>Comprimento: </c>
+                                <input type="number" id="comprimento3" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(3)">
+                            </div>
+                            <div class="inline">
+                                <c>Preço estofaria: </c>
+                                <input type="number" id="preçoestofariaespuma3" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(3)">
+                            </div>
+                            <div class="inline">
+                                <c>Preço cliente: </c>
+                                <input type="number" id="preçoclienteespuma3" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(3)">
+                            </div>
+                            <div class="inline">
+                                <p>Valor estofaria: <b id="valorestofariaespuma3"></b></p>
+                            </div>
+                            <div class="inline">
+                                <p>Valor cliente: <b id="valorclienteespuma3"></b></p>
+                            </div>
+                            <p class="tela-titulo">---</p>
+                            <div class="inline">
+                                <p>Valor total estofaria: <b id="valortotalestofariaespuma"></b></p>
+                            </div>
+                            <div class="inline">
+                                <p>Valor total cliente: <b id="valortotalclienteespuma"></b></p>
+                            </div>
+                            <p class="tela-titulo">Impermeabilização</p>
+                            <div class="inline">
+                                <c>Preço: </c>
+                                <input type="number" id="preçoimpermeabilização" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçoimpermeabilização()">
+                            </div>
+                            <div class="inline">
+                                <p>Valor: <b id="valorimpermeabilização"></b></p>
+                            </div>
+                            <p class="tela-titulo">Frete</p>
+                            <div class="inline">
+                                <c>Escolha o bairro:</c>                                
+                                <select class="form-control" id="bairro" onchange="resultadovalorfrete()"> 
+                                    {% for bairro in listabairro %}
+                                        <option value="{{loop.index-1}}">{{bairro}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="inline">
+                                <p>Valor frete: <b id="valorfrete"></b></p>
+                            </div>
+                            <p class="tela-titulo">Socializado</p>
+                            <div class="inline">
+                                <p>Valor: <b id="socializado"></b></p>
+                            </div>
+                            <p class="tela-titulo">Adicionais</p>
+                            <div class="inline">
+                                <c>Escolha o item adicional:</c>                                
+                                <select class="form-control" id="itemadicional1" onchange="resultadovaloritemadicional(1)"> 
+                                    {% for item in listaitensadicionais %}
+                                        <option value="{{loop.index-1}}">{{item}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="inline">
+                                <c>Quantidade: </c>
+                                <input type="number" id="quantidadeitemadicional1" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(1)">
+                            </div>
+                            <div class="inline">
+                                <p>Valor: <b id="valoritemadicional1"></b></p>
+                            </div>
+                            <p class="tela-titulo">---</p>
+                            <div class="inline">
+                                <c>Escolha o item adicional:</c>                                
+                                <select class="form-control" id="itemadicional2" onchange="resultadovaloritemadicional(2)"> 
+                                    {% for item in listaitensadicionais %}
+                                        <option value="{{loop.index-1}}">{{item}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="inline">
+                                <c>Quantidade: </c>
+                                <input type="number" id="quantidadeitemadicional2" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(2)">
+                            </div>
+                            <div class="inline">
+                                <p>Valor: <b id="valoritemadicional2"></b></p>
+                            </div>
+                            <p class="tela-titulo">---</p>
+                            <div class="inline">
+                                <c>Escolha o item adicional:</c>                                
+                                <select class="form-control" id="itemadicional3" onchange="resultadovaloritemadicional(3)"> 
+                                    {% for item in listaitensadicionais %}
+                                        <option value="{{loop.index-1}}">{{item}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="inline">
+                                <c>Quantidade: </c>
+                                <input type="number" id="quantidadeitemadicional3" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(3)">
+                            </div>
+                            <div class="inline">
+                                <p>Valor: <b id="valoritemadicional3"></b></p>
+                            </div>
+                            <p class="tela-titulo">---</p>
+                            <div class="inline">
+                                <c>Escolha o item adicional:</c>                                
+                                <select class="form-control" id="itemadicional4" onchange="resultadovaloritemadicional(4)"> 
+                                    {% for item in listaitensadicionais %}
+                                        <option value="{{loop.index-1}}">{{item}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="inline">
+                                <c>Quantidade: </c>
+                                <input type="number" id="quantidadeitemadicional4" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(4)">
+                            </div>
+                            <div class="inline">
+                                <p>Valor: <b id="valoritemadicional4"></b></p>
+                            </div>
+                            <p class="tela-titulo">---</p>
+                            <div class="inline">
+                                <c>Escolha o item adicional:</c>                                
+                                <select class="form-control" id="itemadicional5" onchange="resultadovaloritemadicional(5)"> 
+                                    {% for item in listaitensadicionais %}
+                                        <option value="{{loop.index-1}}">{{item}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="inline">
+                                <c>Quantidade: </c>
+                                <input type="number" id="quantidadeitemadicional5" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(5)">
+                            </div>
+                            <div class="inline">
+                                <p>Valor: <b id="valoritemadicional5"></b></p>
+                            </div>
+                            <p class="tela-titulo">---</p>
+                            <div class="inline">
+                                <c>Escolha o item adicional:</c>                                
+                                <select class="form-control" id="itemadicional6" onchange="resultadovaloritemadicional(6)"> 
+                                    {% for item in listaitensadicionais %}
+                                        <option value="{{loop.index-1}}">{{item}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="inline">
+                                <c>Quantidade: </c>
+                                <input type="number" id="quantidadeitemadicional6" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(6)">
+                            </div>
+                            <div class="inline">
+                                <p>Valor: <b id="valoritemadicional6"></b></p>
+                            </div>
+                            <p class="tela-titulo">---</p>
+                            <div class="inline">
+                                <p>Valor total: <b id="valortotalitemadicional"></b></p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tela-3">
+                        <form class="formulario3">
+                            <p class="tela-titulo">Custo fixo</p>
+                            <div class="inline">
+                                <p>Fixo: <b id="valortotalmãodeobra"></b></p>
+                            </div>
+                            <p class="tela-titulo">Custo variável</p>
+                            <div class="inline">
+                                <p>Variável estofaria: <b id="valorvariavelestofaria"></b></p>
+                            </div>
+                            <div class="inline">
+                                <p>Variável cliente: <b id="valorvariavelcliente"></b></p>
+                            </div>
+                            <p class="tela-titulo">Total</p>
+                            <div class="inline">
+                                <p>Total estofaria: <b id="valortotalvariavelestofaria"></b></p>
+                            </div>
+                            <div class="inline">
+                                <p>Total cliente: <b id="valortotalvariavelcliente"></b></p>
+                            </div>
+                            <p class="tela-titulo">Preço</p>
+                            <div class="inline">
+                                <p>Calculado %: <b id="resultadopercentualcalculado"></b></p>
+                            </div>
+                            <div class="inline">
+                                <c>Margem alvo: </c>
+                                <input type="number" id="margemalvo" class="form-control" required="" maxlength="10" size="4" onchange="resultadoscusto()">
+                            </div>
+                            <div class="inline">
+                                <p>Preço alvo: <b id="preçoalvo"></b></p>
+                            </div>
+                            <div class="inline">
+                                <p>% Alvo: <b id="resultadopercentualpreçoalvo"></b></p>
+                            </div>
+                        </form> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="filtros">
-            <form class="espaço" action="/filtrar">
-                <h2>Workstation Planejamento</h2>
-                <div class="form-group">
-                    <label for="data">Data:</label>
-                    <input type="date" class="form-control" id="date" onkeypress="return false" name="date" min="">
-                </div>
-                <div>
-                    <label for="região">Região:</label>
-                    <select class="form-control" name="região" id="região">
-                        <option selected>Escolha a região</option>
-                        {% for row in regiões %}
-                        <option value="{{row}}">{{row}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                </p>
-                <div>
-                    <label for="bu">Produto:</label>
-                    <select class="form-control" name="bu" id="bu">
-                        <option selected>Escolha o produto</option>
-                        {% for row in bus %}
-                        <option value="{{row}}">{{row}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                </p>
-                <button type="submit" class="botão">FILTRAR</button>
-            </form>
-        </div>
-
-        <div class="dashboard">
-            <form class="dashboard2">
-                <!-- <div class="dashboardcards">
-                    <div class="cards">
-                        Valor 1
-                    </div>
-                    <div class="cards">
-                        Valor 2
-                    </div>
-                    <div class="cards">
-                        Valor 3
-                    </div>
-                    <div class="cards">
-                        Valor 4
-                    </div>
-                </div> -->
-                <div class="tabelacapacidade">
-                    <div class="scroll">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    {% for capacidadeheader in capacidadeheading %}
-                                    <th>{{capacidadeheader}}</th>
-                                    {% endfor %}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for quantidade in capacidadestatus %}
-                                <tr>
-                                    <td>{{capacidadestatus[loop.index-1]}}</td>
-                                    <td>{{capacidadedate1[loop.index-1]}}</td>
-                                    <td>{{capacidadedate2[loop.index-1]}}</td>
-                                    <td>{{capacidadedate3[loop.index-1]}}</td>
-                                    <td>{{capacidadedate4[loop.index-1]}}</td>
-                                    <td>{{capacidadedate5[loop.index-1]}}</td>
-                                    <td>{{capacidadedate6[loop.index-1]}}</td>
-                                    <td>{{capacidadedate7[loop.index-1]}}</td>
-                                    <td>{{capacidadedate8[loop.index-1]}}</td>
-                                    <td>{{capacidadedate9[loop.index-1]}}</td>
-                                    <td>{{capacidadedate10[loop.index-1]}}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="tabelaprioridade" id="marcadorcelula">
-                    <div class="scroll">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    {% for prioridadeheader in prioridadeheading %}
-                                    {% if loop.index-1 == 3 %}
-                                    <th id="A">{{prioridadeheader}}</th>
-                                    {% elif loop.index-1 == 4 %}
-                                    <th id="B">{{prioridadeheader}}</th>
-                                    {% elif loop.index-1 == 5 %}
-                                    <th id="C">{{prioridadeheader}}</th>
-                                    {% elif loop.index-1 == 6 %}
-                                    <th id="D">{{prioridadeheader}}</th>
-                                    {% elif loop.index-1 == 7 %}
-                                    <th id="E">{{prioridadeheader}}</th>
-                                    {% elif loop.index-1 == 8 %}
-                                    <th id="F">{{prioridadeheader}}</th>
-                                    {% elif loop.index-1 == 9 %}
-                                    <th id="G">{{prioridadeheader}}</th>
-                                    {% elif loop.index-1 == 10 %}
-                                    <th id="H">{{prioridadeheader}}</th>
-                                    {% elif loop.index-1 == 11 %}
-                                    <th id="I">{{prioridadeheader}}</th>
-                                    {% elif loop.index-1 == 12 %}
-                                    <th id="J">{{prioridadeheader}}</th>
-                                    {% else %}
-                                    <th>{{prioridadeheader}}</th>
-                                    {% endif %}
-                                    {% endfor %}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for quantidade in prioridaderegião %}
-                                <tr>
-                                    <td>{{prioridaderegião[loop.index-1]}}</td>
-                                    <td>{{prioridadehub[loop.index-1]}}</td>
-                                    <td id="{{loop.index-1}}" onclick="selecionaCelula(this.id)">
-                                        {{prioridadeárea[loop.index-1]}}</td>
-                                    <td id="A{{loop.index-1}}" onclick="selecionaCelula(this.id)">
-                                        {{prioridadedate1[loop.index-1]}}</td>
-                                    <td id="B{{loop.index-1}}" onclick="selecionaCelula(this.id)">
-                                        {{prioridadedate2[loop.index-1]}}</td>
-                                    <td id="C{{loop.index-1}}" onclick="selecionaCelula(this.id)">
-                                        {{prioridadedate3[loop.index-1]}}</td>
-                                    <td id="D{{loop.index-1}}" onclick="selecionaCelula(this.id)">
-                                        {{prioridadedate4[loop.index-1]}}</td>
-                                    <td id="E{{loop.index-1}}" onclick="selecionaCelula(this.id)">
-                                        {{prioridadedate5[loop.index-1]}}</td>
-                                    <td id="F{{loop.index-1}}" onclick="selecionaCelula(this.id)">
-                                        {{prioridadedate6[loop.index-1]}}</td>
-                                    <td id="G{{loop.index-1}}" onclick="selecionaCelula(this.id)">
-                                        {{prioridadedate7[loop.index-1]}}</td>
-                                    <td id="H{{loop.index-1}}" onclick="selecionaCelula(this.id)">
-                                        {{prioridadedate8[loop.index-1]}}</td>
-                                    <td id="I{{loop.index-1}}" onclick="selecionaCelula(this.id)">
-                                        {{prioridadedate9[loop.index-1]}}</td>
-                                    <td id="J{{loop.index-1}}" onclick="selecionaCelula(this.id)">
-                                        {{prioridadedate10[loop.index-1]}}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="tabelaescala" id="tabelaescala">
-                    <div class="scroll">
-                        <table class="table" id="marcadorlinha">
-                            <thead>
-                                <tr>
-                                    {% for escalaheader in escalaheading %}
-                                    <th>{{escalaheader}}</th>
-                                    {% endfor %}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for quantidade in escalaregião %}
-                                <tr>
-                                    <td>{{escalaregião[loop.index-1]}}</td>
-                                    <td>{{escalahub[loop.index-1]}}</td>
-                                    <td>{{escalaescala[loop.index-1]}}</td>
-                                    <td class="tamanhotd" data-estado="{{escaladata[loop.index-1]}}">{{escaladata[loop.index-1]}}</td>
-                                    <td>{{escalaid_técnica[loop.index-1]}}</td>
-                                    <td>{{escalatécnica[loop.index-1]}}</td>
-                                    <td>{{escalahrentrada[loop.index-1]}}</td>
-                                    <td>{{escalahrsaída[loop.index-1]}}</td>
-                                    <td>{{escalaárea[loop.index-1]}}</td>
-                                    <td>{{escalabu[loop.index-1]}}</td>
-                                    <td>{{escalastatus[loop.index-1]}}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <script>
-            // script para colocar o filtro p/ selecionar apenas as datas a partir de hoje
-            var today = new Date();
-            today.setDate(today.getDate() + 1);
-            today = today.toISOString().split('T')[0];
-            document.getElementsByName("date")[0].setAttribute('min', today);
-
-            // script para marcar uma linha na tabela
-            $('#marcadorlinha').on('click', 'tr', function () {
-                $(this).siblings().removeClass('marcada');
-                $(this).toggleClass('marcada');
-                var celula = $(this).text();
-                $('#cel').val(celula);
-                escalavalores = celula.split(/\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s|\r\n|\r|\n/);
-                statuss = escalavalores[11];
-                produto = escalavalores[10];
-                $('#produto').val(produto);
-                regime = escalavalores[3];
-                $('#regime').val(regime);
-                inicioregime = escalavalores[7];
-                $('#inicioregime').val(inicioregime);
-                fimregime = escalavalores[8];
-                $('#fimregime').val(fimregime);
-                hub = escalavalores[2];
-                $('#hub').val(hub);
-                id_técnica = escalavalores[5];
-                $('#id_técnica').val(id_técnica);
-                técnica = escalavalores[6];
-                $('#técnica').val(técnica);
-                escaladata = escalavalores[4];
-                if (tdmarcado == 1){
-                $('#popuptexto').empty().append("Você vai criar slots de " + escalavalores[10] + " para agenda dá técnica " + escalavalores[6] + " das " + escalavalores[7] + " as " + escalavalores[8] + " no dia " + coluna + " no local " + linha + "." );
-                const popup = document.querySelector('.popup-wrapper');
-                popup.style.display = 'block';
-                }else{}
-            });
-
-            // script para marcar uma celula na tabela   
-            var td = $('td');
-            $('#marcadorcelula').on('click', 'td', function () {
-                td.not(this).removeClass('marcada');
-                $(this).toggleClass('marcada');
-                tdmarcado = 1;
-            });
-
-            // função para pegar os dados de uma celula
-            function selecionaCelula(id) {
-                linha = $('#' + id.substring(1, id.length)).text();
-                coluna = $('#' + id.substring(1, 0)).text();
-                linha = linha.replace(/\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s|\r\n|\r|\n/, "");
-                $('#lin').val(linha);
-                $('#col').val(coluna);
-
-                // filtrar a data atual
-                var tds = document.querySelectorAll('table td[data-estado]');
-                var estado = coluna;
-                for (var i = 0; i < tds.length; i++) {
-                    var tr = tds[i].closest('tr');
-                    tr.style.display = estado == tds[i].dataset.estado || !estado ? '' : 'none';
-                }
-            };
-
-            // Pinta a linha de verde quem está disponível
-            $('#marcadorlinha tbody tr').each(function(i){
-                    tr=$(this);
-                    tr.children('td').removeClass('colorirstatusverde');
-                    valor=tr.children('td:eq(10)').html();
-                    if(valor=='Disponível'){
-                        tr.children('td').addClass('colorirstatusverde');
-                    }
-            })
-
-            //botão cancelar do popup
-            const cancelarbutton = document.querySelector('.cancelar')
-            cancelarbutton.addEventListener('click', () => {
-                const popup = document.querySelector('.popup-wrapper');
-                popup.style.display = 'none';
-            })
-
-            //botão confirmar do popup
-            document.getElementById('abrirslots').onsubmit = function() {
-                if(escalavalores[11] == 'Ocupado'){
-                    $('#popuptexto').empty().append("ALERTA! A Técnica selecionada está com status ocupado, você não pode abrir slot para técnica que já está sendo utilizada.");
-                    return false;
-                }
-                else{
-                    const popup = document.querySelector('.popup-content');
-                    popup.style.display = 'none';
-                    $('#textocarregamento').empty().append("Abrindo slots, aguarde...");
-                    const carregamento = document.querySelector('.carregamento');
-                    carregamento.style.display = 'block';
-                }
-            }
-
-            //botão filtrar popup
-            const filtrarbutton = document.querySelector('.botão')
-            filtrarbutton.addEventListener('click', () => {
-                const popupwrapper = document.querySelector('.popup-wrapper');
-                popupwrapper.style.display = 'block';
-                const popup = document.querySelector('.popup-content');
-                popup.style.display = 'none';
-                $('#textocarregamento').empty().append("Realizando filtro, aguarde...");
-                const carregamento = document.querySelector('.carregamento');
-                carregamento.style.display = 'block';
-            })
 
 
-            
 
-        </script>
+    <script>
+        window.onload = function carregarparametros() {
+            $('#valorestofariaespuma'+1).val(0)
+            $('#valorestofariaespuma'+2).val(0)
+            $('#valorestofariaespuma'+3).val(0)
+            $('#valorclienteespuma'+1).val(0)
+            $('#valorclienteespuma'+2).val(0)
+            $('#valorclienteespuma'+3).val(0)
+            parseFloat($('#valoritemadicional'+1).val(0))
+            parseFloat($('#valoritemadicional'+2).val(0))
+            parseFloat($('#valoritemadicional'+3).val(0))
+            parseFloat($('#valoritemadicional'+4).val(0))
+            parseFloat($('#valoritemadicional'+5).val(0))
+            parseFloat($('#valoritemadicional'+6).val(0))
+            totaltempopreparação = 0
+            totaltempocostura = 0
+            totaltempoestofamento = 0
+            valorimpermeabilização = 0 
+            valorestofaria = 0
+            valorestofariacliente = 0
+            valortotalestofariaespuma = 0
+            valortotalclienteespuma = 0 
+            valortotalitemadicional = 0 
+            valorfrete = 0 
+            socializado = 0
+            idbairro = $('#bairro').val()
+            listavalorfrete = JSON.parse("{{listavalorfrete}}")
+            $('#valorfrete').empty().append(listavalorfrete[idbairro])
+        }
+        // Esconder ou aparecer o menu
+        function Mudarestado(el) {
+            var display = document.getElementById(el).style.display;
+            if (display == "block")
+                document.getElementById(el).style.display = 'none';
+            else
+                document.getElementById(el).style.display = 'block';
+        }
+
+        function resultadovalorpreparação(){
+            hrpreparação = $('#hrpreparação').val().split(':')
+            totaltempopreparação = (parseFloat(hrpreparação[0]) + parseFloat(hrpreparação[1]/60))
+            valorpreparação = (totaltempopreparação * parseFloat("{{valor_hora_preparação}}")).toFixed(2)
+            $('#valorpreparação').empty().append(valorpreparação);
+            resultadomãodeobra(valorpreparação, valorcostura, valorestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento)
+            resultadoscusto()
+        }
+
+        function resultadovalorcostura(){
+            hrcostura = $('#hrcostura').val().split(':')
+            totaltempocostura = (parseFloat(hrcostura[0]) + parseFloat(hrcostura[1]/60)) 
+            valorcostura = (totaltempocostura * parseFloat("{{valor_hora_costura}}")).toFixed(2)
+            $('#valorcostura').empty().append(valorcostura)
+            resultadomãodeobra(valorpreparação, valorcostura, valorestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento)
+            resultadoscusto()
+        }
+
+        function resultadovalorestofamento(){
+            hrestofamento = $('#hrestofamento').val().split(':')
+            totaltempoestofamento = (parseFloat(hrestofamento[0]) + parseFloat(hrestofamento[1]/60))
+            valorestofamento = (totaltempoestofamento * parseFloat("{{valor_hora_estofamento}}")).toFixed(2)
+            $('#valorestofamento').empty().append(valorestofamento);
+            resultadomãodeobra(valorpreparação, valorcostura, valorestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento)
+            resultadoscusto()
+        }
+
+        function resultadomãodeobra(valortotalpreparação, valortotalcostura, valortotalestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento){
+            percentualcustofixogeral = parseFloat("{{custo_fixo_geral}}") / parseFloat("{{custo_fixo_total}}")
+            valorgeralmãodeobra = (((parseFloat(valortotalpreparação) + parseFloat(valortotalcostura) + parseFloat(valortotalestofamento)) * percentualcustofixogeral) / (1 - percentualcustofixogeral)).toFixed(2)
+            $('#valorgeralmãodeobra').empty().append(valorgeralmãodeobra)
+            percentualhorasmãodeobra = ((parseFloat(totaltempopreparação + parseFloat(totaltempocostura) + parseFloat(totaltempoestofamento))/ parseFloat("{{horas_trabalhadas}}")).toFixed(4) * 100 )
+            percentualhorasmãodeobra = percentualhorasmãodeobra.toFixed(2) + "%"
+            $('#percentualhorasmãodeobra').empty().append(percentualhorasmãodeobra)
+            valortotalmãodeobra = (parseFloat(valortotalpreparação) + parseFloat(valortotalcostura) + parseFloat(valortotalestofamento) + parseFloat(valorgeralmãodeobra)).toFixed(2)
+            $('#valortotalmãodeobra').empty().append(valortotalmãodeobra)
+            custovariavelgeralacumuladomes = "{{custovariavelgeralacumuladomes}}"
+            socializado = (parseFloat(custovariavelgeralacumuladomes) * parseFloat(percentualhorasmãodeobra)).toFixed(2)
+            $('#socializado').empty().append(socializado)
+            resultadoscusto()
+        }
+
+        function resultadopreçocustotecido(){
+            tipotecido = $('#tipotecido').val()
+            listapreçocustotecido = JSON.parse("{{listapreçocustotecido}}")
+            listapreçoclientetecido = JSON.parse("{{listapreçoclientetecido}}")
+            $('#preçoestofaria').empty().append(listapreçocustotecido[tipotecido])
+            $('#preçoestofariacliente').empty().append(listapreçoclientetecido[tipotecido])
+            resultadovalorestofaria(listapreçocustotecido[tipotecido])
+            resultadovalorcliente(listapreçoclientetecido[tipotecido])
+            resultadoscusto()
+        }
+
+        function resultadovalorestofaria(preçocustotecido){
+            valorestofaria = (parseFloat(preçocustotecido) * parseFloat($('#quantidadetecido').val())).toFixed(2)
+            $('#valorestofaria').empty().append(valorestofaria)
+            resultadoscusto()
+        }
+
+        function resultadovalorcliente(preçoclientetecido){
+            valorestofariacliente = (parseFloat(preçoclientetecido) * parseFloat($('#quantidadetecido').val())).toFixed(2)
+            $('#valorestofariacliente').empty().append(valorestofariacliente)
+            resultadoscusto()
+        }
+
+        function resultadopreçocustoespuma(ordemespuma){
+            largura = parseFloat($('#largura'+ordemespuma).val()) 
+            altura = parseFloat($('#altura'+ordemespuma).val())
+            comprimento = parseFloat($('#comprimento'+ordemespuma).val())
+            quantidadeespuma = parseFloat($('#quantidadeespuma'+ordemespuma).val())
+            largurapadrãoespuma = parseFloat("{{largura_padrão_espuma}}")
+            preçoestofariaespuma = parseFloat($('#preçoestofariaespuma'+ordemespuma).val())
+            preçoclienteespuma = parseFloat($('#preçoclienteespuma'+ordemespuma).val())
+            valorestofariaespuma = (quantidadeespuma * ((altura * preçoestofariaespuma * comprimento) / (largurapadrãoespuma * largura))).toFixed(2)
+            valorclienteespuma = (quantidadeespuma * ((altura * preçoclienteespuma * comprimento) / (largurapadrãoespuma * largura))).toFixed(2)
+            $('#valorestofariaespuma'+ordemespuma).empty().append(valorestofariaespuma)
+            $('#valorestofariaespuma'+ordemespuma).val(valorestofariaespuma)
+            $('#valorclienteespuma'+ordemespuma).empty().append(valorclienteespuma)
+            $('#valorclienteespuma'+ordemespuma).val(valorclienteespuma)
+            valortotalestofariaespuma =  (parseFloat($('#valorestofariaespuma'+1).val()) + parseFloat($('#valorestofariaespuma'+2).val()) + parseFloat($('#valorestofariaespuma'+3).val())).toFixed(2)
+            valortotalclienteespuma = (parseFloat($('#valorclienteespuma'+1).val()) + parseFloat($('#valorclienteespuma'+2).val()) + parseFloat($('#valorclienteespuma'+3).val())).toFixed(2)
+            $('#valortotalestofariaespuma').empty().append(valortotalestofariaespuma)
+            $('#valortotalclienteespuma').empty().append(valortotalclienteespuma)
+            resultadoscusto()
+        }
+        
+        function resultadopreçoimpermeabilização(){
+            preçoimpermeabilização = parseFloat($('#preçoimpermeabilização').val())
+            quantidadetecido = parseFloat($('#quantidadetecido').val())
+            valorimpermeabilização = (preçoimpermeabilização * quantidadetecido).toFixed(2)
+            $('#valorimpermeabilização').empty().append(valorimpermeabilização)
+            resultadoscusto()
+        }
+
+        function resultadovalorfrete(){
+            idbairro = $('#bairro').val()
+            listavalorfrete = JSON.parse("{{listavalorfrete}}")
+            valorfrete = listavalorfrete[idbairro]
+            $('#valorfrete').empty().append(valorfrete)
+            resultadoscusto()
+        }
+
+        function resultadovaloritemadicional(ordemitem){
+            quantidadeitemadicional = parseFloat($('#quantidadeitemadicional'+ordemitem).val())  
+            iditem = $('#itemadicional'+ordemitem).val()
+            valorunitarioitensadicionais = JSON.parse("{{valorunitarioitensadicionais}}")
+            valoritemadicional = (parseFloat(valorunitarioitensadicionais[iditem]) * quantidadeitemadicional).toFixed(2)
+            $('#valoritemadicional'+ordemitem).empty().append(valoritemadicional)
+            $('#valoritemadicional'+ordemitem).val(valoritemadicional)
+            valoritemadicional1 = parseFloat($('#valoritemadicional'+1).val())
+            valoritemadicional2 = parseFloat($('#valoritemadicional'+2).val())
+            valoritemadicional3 = parseFloat($('#valoritemadicional'+3).val())
+            valoritemadicional4 = parseFloat($('#valoritemadicional'+4).val())
+            valoritemadicional5 = parseFloat($('#valoritemadicional'+5).val())
+            valoritemadicional6 = parseFloat($('#valoritemadicional'+6).val())
+            valortotalitemadicional =  (valoritemadicional1+valoritemadicional2+valoritemadicional3+valoritemadicional4+valoritemadicional5+valoritemadicional6).toFixed(2)
+            $('#valortotalitemadicional').empty().append(valortotalitemadicional)
+            resultadoscusto()
+        }
+
+        function resultadoscusto(){
+            valorvariavelestofaria = (parseFloat(valorimpermeabilização) + parseFloat(valorestofaria) + parseFloat(valortotalestofariaespuma) + parseFloat(valortotalitemadicional) + parseFloat(valorfrete) + parseFloat(socializado)).toFixed(2)
+            $('#valorvariavelestofaria').empty().append(valorvariavelestofaria)
+            valorvariavelcliente = (parseFloat(valorimpermeabilização) + parseFloat(valorestofariacliente) + parseFloat(valortotalclienteespuma) + parseFloat(valortotalitemadicional) + parseFloat(valorfrete) + parseFloat(socializado)).toFixed(2)
+            $('#valorvariavelcliente').empty().append(valorvariavelcliente)
+            valortotalvariavelestofaria = ( parseFloat(valorvariavelestofaria) + parseFloat(valortotalmãodeobra) ).toFixed(2)
+            $('#valortotalvariavelestofaria').empty().append(valortotalvariavelestofaria)
+            valortotalvariavelcliente =  ( parseFloat(valorvariavelcliente) + parseFloat(valortotalmãodeobra) ).toFixed(2)
+            $('#valortotalvariavelcliente').empty().append(valortotalvariavelcliente)
+            resultadopercentualcalculado = ( parseFloat(valortotalvariavelcliente) / parseFloat(valortotalvariavelestofaria) ).toFixed(2)
+            $('#resultadopercentualcalculado').empty().append(resultadopercentualcalculado)
+            margemalvo = $('#margemalvo').val()
+            preçoalvo = (parseFloat(valortotalvariavelestofaria) + (parseFloat(valortotalvariavelestofaria)*parseFloat(margemalvo))).toFixed(2)
+            $('#preçoalvo').empty().append(preçoalvo)
+            resultadopercentualpreçoalvo = ((parseFloat(preçoalvo) / parseFloat(valortotalvariavelestofaria))- 1).toFixed(2)
+            $('#resultadopercentualpreçoalvo').empty().append(resultadopercentualpreçoalvo)
+        }
+
+    </script>
 </body>
 
 </html>
