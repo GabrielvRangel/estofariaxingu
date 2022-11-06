@@ -9,8 +9,8 @@ import sqlalchemy
 
 class conexão():
      def servidor(self):
-        database =  os.environ['DATABASE_URL']
-        conectar = sqlalchemy.create_engine(f"""{database}""", pool_pre_ping=True)
+        banco =  os.environ['banco']
+        conectar = sqlalchemy.create_engine(f"""{banco}""", pool_pre_ping=True)
         return conectar
 
 

@@ -7,7 +7,7 @@ import model
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-localhost = 'http://127.0.0.1:5000/'
+localhost = 'http://estofaria-xingu.herokuapp.com/'
 con = model.conexão()
 custo_variavel_geral = model.custo_variavel_geral()
 frete = model.frete()
