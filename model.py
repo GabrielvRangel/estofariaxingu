@@ -10,7 +10,7 @@ import sqlalchemy
 class conexão():
      def servidor(self):
         banco =  os.environ['banco']
-        conectar = sqlalchemy.create_engine(f"""{banco}""", pool_pre_ping=True)
+        conectar = sqlalchemy.create_engine(f"""postgres://ytjcgwqngurkxk:8da2fe33fe24c7033300a799ed22f43c1b347b15a7e50c30b3a42d9dbe97056f@ec2-54-160-200-167.compute-1.amazonaws.com:5432/dcffdefadepml0""", pool_pre_ping=True)
         return conectar
 
 
