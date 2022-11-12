@@ -100,7 +100,7 @@
                                     {% for quantidade in parâmetrositem %}
                                     <tr>
                                         <td id="A{{loop.index-1}}">{{parâmetrositem[loop.index-1]}}</td>
-                                        <td id="B{{loop.index-1}}">R$ {{parâmetrosvalor[loop.index-1]}}</td>
+                                        <td id="B{{loop.index-1}}">{{parâmetrosvalor[loop.index-1]}}</td>
                                         <td id="{{loop.index-1}}" onclick="updatebutton(this.id)"><input type="button"
                                                 class="updatebutton" value="update"></td>
                                         <td id="{{loop.index-1}}" onclick="deletebutton(this.id)"><input type="button"
