@@ -394,8 +394,7 @@
             hrpreparação = $('#hrpreparação').val().split(':')
             totaltempopreparação = (parseFloat(hrpreparação[0]) + parseFloat(hrpreparação[1]/60))
             valorpreparação = (totaltempopreparação * parseFloat("{{valor_hora_preparação}}")).toFixed(2)
-            valorpreparação = valorpreparação.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-            $('#valorpreparação').empty().append(valorpreparação);
+            $('#valorpreparação').empty().append(valorpreparação.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
             resultadomãodeobra(valorpreparação, valorcostura, valorestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento)
             resultadoscusto()
         }
@@ -404,7 +403,7 @@
             hrcostura = $('#hrcostura').val().split(':')
             totaltempocostura = (parseFloat(hrcostura[0]) + parseFloat(hrcostura[1]/60)) 
             valorcostura = (totaltempocostura * parseFloat("{{valor_hora_costura}}")).toFixed(2)
-            $('#valorcostura').empty().append(valorcostura)
+            $('#valorcostura').empty().append(valorcostura.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
             resultadomãodeobra(valorpreparação, valorcostura, valorestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento)
             resultadoscusto()
         }
@@ -413,7 +412,7 @@
             hrestofamento = $('#hrestofamento').val().split(':')
             totaltempoestofamento = (parseFloat(hrestofamento[0]) + parseFloat(hrestofamento[1]/60))
             valorestofamento = (totaltempoestofamento * parseFloat("{{valor_hora_estofamento}}")).toFixed(2)
-            $('#valorestofamento').empty().append(valorestofamento);
+            $('#valorestofamento').empty().append(valorestofamento.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
             resultadomãodeobra(valorpreparação, valorcostura, valorestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento)
             resultadoscusto()
         }
@@ -421,12 +420,12 @@
         function resultadomãodeobra(valortotalpreparação, valortotalcostura, valortotalestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento){
             percentualcustofixogeral = parseFloat("{{custo_fixo_geral}}") / parseFloat("{{custo_fixo_total}}")
             valorgeralmãodeobra = (((parseFloat(valortotalpreparação) + parseFloat(valortotalcostura) + parseFloat(valortotalestofamento)) * percentualcustofixogeral) / (1 - percentualcustofixogeral)).toFixed(2)
-            $('#valorgeralmãodeobra').empty().append(valorgeralmãodeobra)
+            $('#valorgeralmãodeobra').empty().append(valorgeralmãodeobra.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
             percentualhorasmãodeobra = ((parseFloat(totaltempopreparação + parseFloat(totaltempocostura) + parseFloat(totaltempoestofamento))/ parseFloat("{{horas_trabalhadas}}")).toFixed(4) * 100 )
             percentualhorasmãodeobra = percentualhorasmãodeobra.toFixed(2) + "%"
             $('#percentualhorasmãodeobra').empty().append(percentualhorasmãodeobra)
             valortotalmãodeobra = (parseFloat(valortotalpreparação) + parseFloat(valortotalcostura) + parseFloat(valortotalestofamento) + parseFloat(valorgeralmãodeobra)).toFixed(2)
-            $('#valortotalmãodeobra').empty().append(valortotalmãodeobra)
+            $('#valortotalmãodeobra').empty().append(valortotalmãodeobra.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
             custovariavelgeralacumuladomes = "{{custovariavelgeralacumuladomes}}"
             socializado = (parseFloat(custovariavelgeralacumuladomes) * parseFloat(percentualhorasmãodeobra)).toFixed(2)
             $('#socializado').empty().append(socializado)
@@ -446,13 +445,13 @@
 
         function resultadovalorestofaria(preçocustotecido){
             valorestofaria = (parseFloat(preçocustotecido) * parseFloat($('#quantidadetecido').val())).toFixed(2)
-            $('#valorestofaria').empty().append(valorestofaria)
+            $('#valorestofaria').empty().append(valorestofaria.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
             resultadoscusto()
         }
 
         function resultadovalorcliente(preçoclientetecido){
             valorestofariacliente = (parseFloat(preçoclientetecido) * parseFloat($('#quantidadetecido').val())).toFixed(2)
-            $('#valorestofariacliente').empty().append(valorestofariacliente)
+            $('#valorestofariacliente').empty().append(valorestofariacliente.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
             resultadoscusto()
         }
 
@@ -466,14 +465,14 @@
             preçoclienteespuma = parseFloat($('#preçoclienteespuma'+ordemespuma).val())
             valorestofariaespuma = (quantidadeespuma * ((altura * preçoestofariaespuma * comprimento) / (largurapadrãoespuma * largura))).toFixed(2)
             valorclienteespuma = (quantidadeespuma * ((altura * preçoclienteespuma * comprimento) / (largurapadrãoespuma * largura))).toFixed(2)
-            $('#valorestofariaespuma'+ordemespuma).empty().append(valorestofariaespuma)
-            $('#valorestofariaespuma'+ordemespuma).val(valorestofariaespuma)
-            $('#valorclienteespuma'+ordemespuma).empty().append(valorclienteespuma)
-            $('#valorclienteespuma'+ordemespuma).val(valorclienteespuma)
+            $('#valorestofariaespuma'+ordemespuma).empty().append(valorestofariaespuma.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
+            $('#valorestofariaespuma'+ordemespuma).val(valorestofariaespuma.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
+            $('#valorclienteespuma'+ordemespuma).empty().append(valorclienteespuma.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
+            $('#valorclienteespuma'+ordemespuma).val(valorclienteespuma.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
             valortotalestofariaespuma =  (parseFloat($('#valorestofariaespuma'+1).val()) + parseFloat($('#valorestofariaespuma'+2).val()) + parseFloat($('#valorestofariaespuma'+3).val())).toFixed(2)
             valortotalclienteespuma = (parseFloat($('#valorclienteespuma'+1).val()) + parseFloat($('#valorclienteespuma'+2).val()) + parseFloat($('#valorclienteespuma'+3).val())).toFixed(2)
-            $('#valortotalestofariaespuma').empty().append(valortotalestofariaespuma)
-            $('#valortotalclienteespuma').empty().append(valortotalclienteespuma)
+            $('#valortotalestofariaespuma').empty().append(valortotalestofariaespuma.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
+            $('#valortotalclienteespuma').empty().append(valortotalclienteespuma.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
             resultadoscusto()
         }
         
