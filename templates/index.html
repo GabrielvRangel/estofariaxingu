@@ -394,6 +394,7 @@
             hrpreparação = $('#hrpreparação').val().split(':')
             totaltempopreparação = (parseFloat(hrpreparação[0]) + parseFloat(hrpreparação[1]/60))
             valorpreparação = (totaltempopreparação * parseFloat("{{valor_hora_preparação}}")).toFixed(2)
+            valorpreparação = valorpreparação.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
             $('#valorpreparação').empty().append(valorpreparação);
             resultadomãodeobra(valorpreparação, valorcostura, valorestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento)
             resultadoscusto()
