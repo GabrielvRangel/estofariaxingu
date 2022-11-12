@@ -100,7 +100,7 @@
                                     {% for quantidade in itemsadicionaisitem %}
                                     <tr>
                                         <td id="A{{loop.index-1}}">{{itemsadicionaisitem[loop.index-1]}}</td>
-                                        <td id="B{{loop.index-1}}">{{itemsadicionaisvalor_unitario[loop.index-1]}}</td>
+                                        <td id="B{{loop.index-1}}">R$ {{itemsadicionaisvalor_unitario[loop.index-1]}}</td>
                                         <td id="{{loop.index-1}}" onclick="updatebutton(this.id)"><input type="button"
                                                 class="updatebutton" value="update"></td>
                                         <td id="{{loop.index-1}}" onclick="deletebutton(this.id)"><input type="button"
