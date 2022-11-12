@@ -399,7 +399,7 @@
             valortotalmãodeobra = (parseFloat(valortotalpreparação) + parseFloat(valortotalcostura) + parseFloat(valortotalestofamento) + parseFloat(valorgeralmãodeobra)).toFixed(2)
             $('#valortotalmãodeobra').empty().append('R$ ' + valortotalmãodeobra)
             custovariavelgeralacumuladomes = "{{custovariavelgeralacumuladomes}}"
-            socializado = (parseFloat(custovariavelgeralacumuladomes) * parseFloat(percentualhorasmãodeobra)).toFixed(2) / 100
+            socializado = ((parseFloat(custovariavelgeralacumuladomes) * parseFloat(percentualhorasmãodeobra)) / 100).toFixed(2) 
             $('#socializado').empty().append(socializado)
             resultadoscusto()
         }
@@ -413,6 +413,7 @@
             resultadovalorestofaria(listapreçocustotecido[tipotecido])
             resultadovalorcliente(listapreçoclientetecido[tipotecido])
             resultadoscusto()
+            resultadopreçoimpermeabilização()
         }
 
         function resultadovalorestofaria(preçocustotecido){
