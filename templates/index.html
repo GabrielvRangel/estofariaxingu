@@ -87,10 +87,16 @@
                             <div class="inline">
                                 <c>Quantidade espuma: </c>
                                 <input type="number" id="quantidadeespuma1" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(1)">
+                            </div>
+                            <div class="inline">
                                 <c>Altura: </c>
                                 <input type="number" id="altura1" class="form-control" required="" step=".01" maxlength="10" size="4" onchange="resultadopreçocustoespuma(1)">
+                            </div>
+                            <div class="inline">
                                 <c>Largura: </c>
                                 <input type="number" id="largura1" class="form-control" required="" step=".01" maxlength="10" size="4" onchange="resultadopreçocustoespuma(1)">
+                            </div>
+                            <div class="inline">
                                 <c>Comprimento: </c>
                                 <input type="number" id="comprimento1" class="form-control" required="" step=".01" maxlength="10" size="4" onchange="resultadopreçocustoespuma(1)">
                             </div>
@@ -433,8 +439,8 @@
             largurapadrãoespuma = parseFloat("{{largura_padrão_espuma}}")
             preçoestofariaespuma = parseFloat("{{preço_estofaria_espumas}}")
             preçoclienteespuma = parseFloat("{{preço_cliente_espumas}}")
-            valorestofariaespuma = (quantidadeespuma * ((altura * preçoestofariaespuma * comprimento) / (largurapadrãoespuma * largura))).toFixed(2)
-            valorclienteespuma = (quantidadeespuma * ((altura * preçoclienteespuma * comprimento) / (largurapadrãoespuma * largura))).toFixed(2)
+            valorestofariaespuma = (quantidadeespuma * (altura * preçoestofariaespuma * comprimento / largurapadrãoespuma * largura)).toFixed(2)
+            valorclienteespuma = (quantidadeespuma * ( altura * preçoclienteespuma * comprimento / largurapadrãoespuma * largura)).toFixed(2)
             $('#valorestofariaespuma'+ordemespuma).empty().append('R$ ' + valorestofariaespuma)
             $('#valorestofariaespuma'+ordemespuma).val(valorestofariaespuma)
             $('#valorclienteespuma'+ordemespuma).empty().append('R$ ' + valorclienteespuma)
