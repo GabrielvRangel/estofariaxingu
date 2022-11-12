@@ -671,9 +671,6 @@ table td {
         height: 37px;
         z-index: 2;
     }
-    .scroll{
-        overflow-y: scroll;
-    }
     .tabela {
         flex-direction: column;
         position: relative;
@@ -683,6 +680,7 @@ table td {
         border-bottom: 2px solid #D6A41D;
         border-top: 2px solid #D6A41D;
         border-radius: 5px 5px 0 0;
+        overflow-y: scroll;
     }
     .menu_button_selecionado {
         width: 100%;
