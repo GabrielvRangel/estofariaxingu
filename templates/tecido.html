@@ -22,8 +22,8 @@
                 <form class="form" id="tecidoupdate" action="/tecidoupdate">
                     <div class="inputs">
                         Artigo: <input type="text" name="novoartigo" id="novoartigo" class="poppupforminputtext">
-                        Preço Compra: <input type="number" name="novopreco_venda" id="novopreco_venda" class="poppupforminputnumber" required="" maxlength="10" size="4">
-                        Preço Venda: <input name="novopreco_compra" type="number" id="novopreco_compra" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Preço Compra: <input type="number" name="novopreco_venda" id="novopreco_venda" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Preço Venda: <input name="novopreco_compra" type="number" id="novopreco_compra" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
                         <input type="hidden" name="artigo" id="artigo">
                         <input type="hidden" name="preco_venda" id="preco_venda">
                         <input type="hidden" name="preco_compra" id="preco_compra">
@@ -53,8 +53,8 @@
                 <form class="form" id="tecidoadicionar" action="/tecidoadicionar">
                     <div class="inputs">
                         Artigo: <input type="text" name="artigoadicionar" id="artigoadicionar" class="poppupforminputtext">
-                        Preço Venda: <input type="number" name="preco_vendaadicionar" id="preco_vendaadicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
-                        Preço Compra: <input name="preco_compraadicionar" type="number" id="preco_compraadicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Preço Venda: <input type="number" name="preco_vendaadicionar" step=".01"  id="preco_vendaadicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Preço Compra: <input name="preco_compraadicionar" type="number" step=".01"  id="preco_compraadicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="adicionar">Confirmar</button>

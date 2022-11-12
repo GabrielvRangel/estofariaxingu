@@ -23,7 +23,7 @@
                     <div class="inputs">
                         Município: <input type="text" name="novomunicípio" id="novomunicípio" class="poppupforminputtext">
                         Bairro: <input type="text" name="novobairro" id="novobairro" class="poppupforminputtext">
-                        Valor: <input name="novovalor" type="number" id="novovalor" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Valor: <input name="novovalor" type="number" id="novovalor" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
                         <input type="hidden" name="município" id="município">
                         <input type="hidden" name="bairro" id="bairro">
                         <input type="hidden" name="valor" id="valor">
@@ -55,7 +55,7 @@
                         Município: <input type="text" name="municípioadicionar" id="municípioadicionar"
                             class="poppupforminputtext">
                         Bairro: <input type="text" name="bairroadicionar" id="bairroadicionar" class="poppupforminputtext">
-                        Valor: <input name="valoradicionar" type="number" id="valoradicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Valor: <input name="valoradicionar" type="number" step=".01"  id="valoradicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="adicionar">Confirmar</button>

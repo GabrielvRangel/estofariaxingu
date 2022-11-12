@@ -22,7 +22,7 @@
                 <form class="form" id="itemsadicionaisupdate" action="/itemsadicionaisupdate">
                     <div class="inputs">
                         Item: <input type="text" name="novoitem" id="novoitem" class="poppupforminputtext">
-                        Valor Unitário: <input type="number" name="novovalor_unitario" id="novovalor_unitario" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Valor Unitário: <input type="number" name="novovalor_unitario" id="novovalor_unitario" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
                         <input type="hidden" name="item" id="item">
                         <input type="hidden" name="valor_unitario" id="valor_unitario">
                     </div>
@@ -50,7 +50,7 @@
                 <form class="form" id="itemsadicionaisadicionar" action="/itemsadicionaisadicionar">
                     <div class="inputs">
                         Item: <input type="text" name="itemadicionar" id="itemadicionar" class="poppupforminputtext">
-                        Valor Unitário: <input type="number" name="valor_unitarioadicionar" id="valor_unitarioadicionar" class="poppupforminputtext">
+                        Valor Unitário: <input type="number" step=".01"  name="valor_unitarioadicionar" id="valor_unitarioadicionar" class="poppupforminputtext">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="adicionar">Confirmar</button>

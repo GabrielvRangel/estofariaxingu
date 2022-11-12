@@ -22,7 +22,7 @@
                 <form class="form" id="parâmetrosupdate" action="/parâmetrosupdate">
                     <div class="inputs">
                         Item: <input type="text" name="novoitem" id="novoitem" class="poppupforminputtext">
-                        Valor: <input name="novovalor" type="number" id="novovalor" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Valor: <input name="novovalor" type="number" id="novovalor" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
                         <input type="hidden" name="item" id="item">
                         <input type="hidden" name="valor" id="valor">
                     </div>
@@ -50,7 +50,7 @@
                 <form class="form" id="parâmetrosadicionar" action="/parâmetrosadicionar">
                     <div class="inputs">
                         Item: <input type="text" name="itemadicionar" id="itemadicionar" class="poppupforminputtext">
-                        Valor: <input name="valoradicionar" type="number" id="valoradicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Valor: <input name="valoradicionar" type="number" id="valoradicionar" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="adicionar">Confirmar</button>

@@ -671,7 +671,9 @@ table td {
         height: 37px;
         z-index: 2;
     }
-
+    .scroll{
+        overflow-y: scroll;
+    }
     .tabela {
         flex-direction: column;
         position: relative;
