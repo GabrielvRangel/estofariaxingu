@@ -463,6 +463,7 @@
     border-bottom: 2px solid #D6A41D;
     border-top: 2px solid #D6A41D;
     border-radius: 5px 5px 0 0;
+    overflow-y: scroll;
 }
 
 .table {
