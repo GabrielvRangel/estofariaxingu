@@ -445,13 +445,13 @@
 
         function resultadovalorestofaria(preçocustotecido){
             valorestofaria = (parseFloat(preçocustotecido) * parseFloat($('#quantidadetecido').val())).toFixed(2)
-            $('#valorestofaria').empty().append(valorestofaria)
+            $('#valorestofaria').empty().append('R$ ' + valorestofaria)
             resultadoscusto()
         }
 
         function resultadovalorcliente(preçoclientetecido){
             valorestofariacliente = (parseFloat(preçoclientetecido) * parseFloat($('#quantidadetecido').val())).toFixed(2)
-            $('#valorestofariacliente').empty().append(valorestofariacliente)
+            $('#valorestofariacliente').empty().append('R$ ' + valorestofariacliente)
             resultadoscusto()
         }
 
@@ -465,14 +465,14 @@
             preçoclienteespuma = parseFloat($('#preçoclienteespuma'+ordemespuma).val())
             valorestofariaespuma = (quantidadeespuma * ((altura * preçoestofariaespuma * comprimento) / (largurapadrãoespuma * largura))).toFixed(2)
             valorclienteespuma = (quantidadeespuma * ((altura * preçoclienteespuma * comprimento) / (largurapadrãoespuma * largura))).toFixed(2)
-            $('#valorestofariaespuma'+ordemespuma).empty().append(valorestofariaespuma)
+            $('#valorestofariaespuma'+ordemespuma).empty().append('R$ ' + valorestofariaespuma)
             $('#valorestofariaespuma'+ordemespuma).val(valorestofariaespuma)
-            $('#valorclienteespuma'+ordemespuma).empty().append(valorclienteespuma)
+            $('#valorclienteespuma'+ordemespuma).empty().append('R$ ' + valorclienteespuma)
             $('#valorclienteespuma'+ordemespuma).val(valorclienteespuma)
             valortotalestofariaespuma =  (parseFloat($('#valorestofariaespuma'+1).val()) + parseFloat($('#valorestofariaespuma'+2).val()) + parseFloat($('#valorestofariaespuma'+3).val())).toFixed(2)
             valortotalclienteespuma = (parseFloat($('#valorclienteespuma'+1).val()) + parseFloat($('#valorclienteespuma'+2).val()) + parseFloat($('#valorclienteespuma'+3).val())).toFixed(2)
-            $('#valortotalestofariaespuma').empty().append(valortotalestofariaespuma)
-            $('#valortotalclienteespuma').empty().append(valortotalclienteespuma)
+            $('#valortotalestofariaespuma').empty().append('R$ ' + valortotalestofariaespuma)
+            $('#valortotalclienteespuma').empty().append('R$ ' + valortotalclienteespuma)
             resultadoscusto()
         }
         
@@ -480,7 +480,7 @@
             preçoimpermeabilização = parseFloat($('#preçoimpermeabilização').val())
             quantidadetecido = parseFloat($('#quantidadetecido').val())
             valorimpermeabilização = (preçoimpermeabilização * quantidadetecido).toFixed(2)
-            $('#valorimpermeabilização').empty().append(valorimpermeabilização)
+            $('#valorimpermeabilização').empty().append('R$ ' + valorimpermeabilização)
             resultadoscusto()
         }
 
@@ -488,7 +488,7 @@
             idbairro = $('#bairro').val()
             listavalorfrete = JSON.parse("{{listavalorfrete}}")
             valorfrete = listavalorfrete[idbairro]
-            $('#valorfrete').empty().append(valorfrete)
+            $('#valorfrete').empty().append('R$ ' + valorfrete)
             resultadoscusto()
         }
 
@@ -497,7 +497,7 @@
             iditem = $('#itemadicional'+ordemitem).val()
             valorunitarioitensadicionais = JSON.parse("{{valorunitarioitensadicionais}}")
             valoritemadicional = (parseFloat(valorunitarioitensadicionais[iditem]) * quantidadeitemadicional).toFixed(2)
-            $('#valoritemadicional'+ordemitem).empty().append(valoritemadicional)
+            $('#valoritemadicional'+ordemitem).empty().append('R$ ' + valoritemadicional)
             $('#valoritemadicional'+ordemitem).val(valoritemadicional)
             valoritemadicional1 = parseFloat($('#valoritemadicional'+1).val())
             valoritemadicional2 = parseFloat($('#valoritemadicional'+2).val())
@@ -506,26 +506,26 @@
             valoritemadicional5 = parseFloat($('#valoritemadicional'+5).val())
             valoritemadicional6 = parseFloat($('#valoritemadicional'+6).val())
             valortotalitemadicional =  (valoritemadicional1+valoritemadicional2+valoritemadicional3+valoritemadicional4+valoritemadicional5+valoritemadicional6).toFixed(2)
-            $('#valortotalitemadicional').empty().append(valortotalitemadicional)
+            $('#valortotalitemadicional').empty().append('R$ ' + valortotalitemadicional)
             resultadoscusto()
         }
 
         function resultadoscusto(){
             valorvariavelestofaria = (parseFloat(valorimpermeabilização) + parseFloat(valorestofaria) + parseFloat(valortotalestofariaespuma) + parseFloat(valortotalitemadicional) + parseFloat(valorfrete) + parseFloat(socializado)).toFixed(2)
-            $('#valorvariavelestofaria').empty().append(valorvariavelestofaria)
+            $('#valorvariavelestofaria').empty().append('R$ ' + valorvariavelestofaria)
             valorvariavelcliente = (parseFloat(valorimpermeabilização) + parseFloat(valorestofariacliente) + parseFloat(valortotalclienteespuma) + parseFloat(valortotalitemadicional) + parseFloat(valorfrete) + parseFloat(socializado)).toFixed(2)
-            $('#valorvariavelcliente').empty().append(valorvariavelcliente)
+            $('#valorvariavelcliente').empty().append('R$ ' + valorvariavelcliente)
             valortotalvariavelestofaria = ( parseFloat(valorvariavelestofaria) + parseFloat(valortotalmãodeobra) ).toFixed(2)
-            $('#valortotalvariavelestofaria').empty().append(valortotalvariavelestofaria)
+            $('#valortotalvariavelestofaria').empty().append('R$ ' + valortotalvariavelestofaria)
             valortotalvariavelcliente =  ( parseFloat(valorvariavelcliente) + parseFloat(valortotalmãodeobra) ).toFixed(2)
-            $('#valortotalvariavelcliente').empty().append(valortotalvariavelcliente)
+            $('#valortotalvariavelcliente').empty().append('R$ ' + valortotalvariavelcliente)
             resultadopercentualcalculado = ( parseFloat(valortotalvariavelcliente) / parseFloat(valortotalvariavelestofaria) ).toFixed(2)
-            $('#resultadopercentualcalculado').empty().append(resultadopercentualcalculado)
+            $('#resultadopercentualcalculado').empty().append('R$ ' + resultadopercentualcalculado)
             margemalvo = $('#margemalvo').val()
             preçoalvo = (parseFloat(valortotalvariavelestofaria) + (parseFloat(valortotalvariavelestofaria)*parseFloat(margemalvo))).toFixed(2)
-            $('#preçoalvo').empty().append(preçoalvo)
+            $('#preçoalvo').empty().append('R$ ' + preçoalvo)
             resultadopercentualpreçoalvo = ((parseFloat(preçoalvo) / parseFloat(valortotalvariavelestofaria))- 1).toFixed(2)
-            $('#resultadopercentualpreçoalvo').empty().append(resultadopercentualpreçoalvo)
+            $('#resultadopercentualpreçoalvo').empty().append('R$ ' + resultadopercentualpreçoalvo)
         }
 
     </script>
