@@ -461,8 +461,8 @@
             comprimento = parseFloat($('#comprimento'+ordemespuma).val())
             quantidadeespuma = parseFloat($('#quantidadeespuma'+ordemespuma).val())
             largurapadrãoespuma = parseFloat("{{largura_padrão_espuma}}")
-            preçoestofariaespuma = parseFloat($('#preçoestofariaespuma'+ordemespuma).val())
-            preçoclienteespuma = parseFloat($('#preçoclienteespuma'+ordemespuma).val())
+            preçoestofariaespuma = parseFloat("{{preço_estofaria_espumas}}")
+            preçoclienteespuma = parseFloat("{{preço_cliente_espumas}}")
             valorestofariaespuma = (quantidadeespuma * ((altura * preçoestofariaespuma * comprimento) / (largurapadrãoespuma * largura))).toFixed(2)
             valorclienteespuma = (quantidadeespuma * ((altura * preçoclienteespuma * comprimento) / (largurapadrãoespuma * largura))).toFixed(2)
             $('#valorestofariaespuma'+ordemespuma).empty().append('R$ ' + valorestofariaespuma)
@@ -520,12 +520,12 @@
             valortotalvariavelcliente =  ( parseFloat(valorvariavelcliente) + parseFloat(valortotalmãodeobra) ).toFixed(2)
             $('#valortotalvariavelcliente').empty().append('R$ ' + valortotalvariavelcliente)
             resultadopercentualcalculado = ( parseFloat(valortotalvariavelcliente) / parseFloat(valortotalvariavelestofaria) ).toFixed(2)
-            $('#resultadopercentualcalculado').empty().append('R$ ' + resultadopercentualcalculado)
+            $('#resultadopercentualcalculado').empty().append(resultadopercentualcalculado + '%')
             margemalvo = $('#margemalvo').val()
             preçoalvo = (parseFloat(valortotalvariavelestofaria) + (parseFloat(valortotalvariavelestofaria)*parseFloat(margemalvo))).toFixed(2)
             $('#preçoalvo').empty().append('R$ ' + preçoalvo)
-            resultadopercentualpreçoalvo = ((parseFloat(preçoalvo) / parseFloat(valortotalvariavelestofaria))- 1).toFixed(2)
-            $('#resultadopercentualpreçoalvo').empty().append('R$ ' + resultadopercentualpreçoalvo)
+            resultadopercentualpreçoalvo = (((parseFloat(preçoalvo) / parseFloat(valortotalvariavelestofaria))- 1)*100).toFixed(2)
+            $('#resultadopercentualpreçoalvo').empty().append(resultadopercentualpreçoalvo +'%')
         }
 
     </script>
