@@ -161,10 +161,6 @@
                             </div>
                             <p class="tela-titulo">Impermeabilização</p>
                             <div class="inline">
-                                <c>Preço: </c>
-                                <input type="number" id="preçoimpermeabilização" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçoimpermeabilização()">
-                            </div>
-                            <div class="inline">
                                 <p>Valor: <b id="valorimpermeabilização"></b></p>
                             </div>
                             <p class="tela-titulo">Frete</p>
@@ -403,7 +399,7 @@
             valortotalmãodeobra = (parseFloat(valortotalpreparação) + parseFloat(valortotalcostura) + parseFloat(valortotalestofamento) + parseFloat(valorgeralmãodeobra)).toFixed(2)
             $('#valortotalmãodeobra').empty().append('R$ ' + valortotalmãodeobra)
             custovariavelgeralacumuladomes = "{{custovariavelgeralacumuladomes}}"
-            socializado = (parseFloat(custovariavelgeralacumuladomes) * parseFloat(percentualhorasmãodeobra)).toFixed(2)
+            socializado = (parseFloat(custovariavelgeralacumuladomes) * parseFloat(percentualhorasmãodeobra)).toFixed(2) / 100
             $('#socializado').empty().append(socializado)
             resultadoscusto()
         }
@@ -453,7 +449,7 @@
         }
         
         function resultadopreçoimpermeabilização(){
-            preçoimpermeabilização = parseFloat($('#preçoimpermeabilização').val())
+            preçoimpermeabilização = parseFloat("{{preço_impermeabilização}}")
             quantidadetecido = parseFloat($('#quantidadetecido').val())
             valorimpermeabilização = (preçoimpermeabilização * quantidadetecido).toFixed(2)
             $('#valorimpermeabilização').empty().append('R$ ' + valorimpermeabilização)

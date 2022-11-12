@@ -35,6 +35,7 @@ def index():
     largura_padrão_espuma = parâmetros[parâmetros['item'] == 'largura_padrão_espuma'].iloc[0,1]
     preço_cliente_espumas = parâmetros[parâmetros['item'] == 'preço_cliente_espumas'].iloc[0,1]
     preço_estofaria_espumas = parâmetros[parâmetros['item'] == 'preço_estofaria_espumas'].iloc[0,1]
+    preço_impermeabilização = parâmetros[parâmetros['item'] == 'preço_impermeabilização'].iloc[0,1]
     listabairro = list(fretes['bairro'])
     listavalorfrete = list(fretes['valor'])
     custovariavelgeral = custovariavelgeral.eval('valor_mes = valor_unitario * quantidade')
@@ -45,7 +46,7 @@ def index():
     custo_fixo_total=custo_fixo_total, custo_fixo_geral=custo_fixo_geral, horas_trabalhadas=horas_trabalhadas, listatecidos=listatecidos, listapreçocustotecido=listapreçocustotecido,
     listapreçoclientetecido=listapreçoclientetecido, largura_padrão_espuma=largura_padrão_espuma, listabairro=listabairro, listavalorfrete=listavalorfrete,
     custovariavelgeralacumuladomes=custovariavelgeralacumuladomes, listaitensadicionais=listaitensadicionais, valorunitarioitensadicionais=valorunitarioitensadicionais,
-    preço_cliente_espumas=preço_cliente_espumas, preço_estofaria_espumas=preço_estofaria_espumas)
+    preço_cliente_espumas=preço_cliente_espumas, preço_estofaria_espumas=preço_estofaria_espumas, preço_impermeabilização=preço_impermeabilização)
 
 @app.route("/custovariavelgeral", methods=["GET","POST"])
 def custovariavelgeralconsulta():
