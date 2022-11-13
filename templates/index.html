@@ -270,8 +270,10 @@
                                 <p>Valor cliente: <b id="valorestofariacliente"></b></p>
                             </div>
                             <p class="tela-titulo">Espumas</p>
-                            <input type="image" src="{{url_for('static', filename='icon +.png')}}" width="20%" height="20%" />
-                            <input type="image" src="{{url_for('static', filename='icon -.png')}}" width="20%" height="20%" />
+                            <div>
+                                <input type="image" src="{{url_for('static', filename='icon +.png')}}" width="10%" height="10%">
+                                <input type="image" src="{{url_for('static', filename='icon -.png')}}" width="10%" height="10%">
+                            </div>
                             <div class="inline">
                                 <c>Quantidade espuma: </c>
                                 <input type="number" id="quantidadeespuma1" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(1)">
