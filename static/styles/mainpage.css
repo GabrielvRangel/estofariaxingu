@@ -313,6 +313,10 @@
     flex-direction: row;
     justify-content: space-between;
 }
+.buttonespumas{
+    width: 7%;
+    height: 90%;
+}
 .tela-1{
     width: 32%;
     height: 100%;
