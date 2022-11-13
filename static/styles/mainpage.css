@@ -562,7 +562,7 @@ table td {
     }
     .tela-1{
         width: 100%;
-        height: 32%;
+        height: 24%;
         border-radius: 4px;
         background: #030302;
         background: -webkit-linear-gradient(224deg, #030302 0%, #50606c 100%);
@@ -757,5 +757,13 @@ table td {
         width: 95%;
         border-color: #D6A41D;
         border-radius: 8px;
+    }
+
+    .formulario1{
+        color:white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 90%;
     }
 }
