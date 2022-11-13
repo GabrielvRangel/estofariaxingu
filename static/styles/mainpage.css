@@ -314,15 +314,18 @@
     justify-content: space-between;
 }
 .buttonespumas{
-    width: 7%;
-    height: 90%;
+    height: 30%;
 }
 .buttonsespumas{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 .buttonespumascolor{
-    color: transparent;
+    background-color: transparent;
+    border-color: transparent;
+    width: 20%;
+    height: 100px;
 }
 .tela-1{
     width: 32%;
