@@ -271,7 +271,9 @@
                             </div>
                             <p class="tela-titulo">Espumas</p>
                             <div>
-                                <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon +.png')}}" onchange="adicionarespumas()">
+                                <input type="button" onchange="adicionarespumas()"> 
+                                    <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon +.png')}}"/>
+                                </input>
                                 <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon -.png')}}" onchange="removerespumas()">
                             </div>
                             <div class="inline">
@@ -341,6 +343,29 @@
                             </div>
                             <div class="inline">
                                 <p>Valor cliente: <b id="valorclienteespuma3"></b></p>
+                            </div>
+                            <p class="tela-titulo">---</p>
+                            <div class="inline">
+                                <c>Quantidade espuma: </c>
+                                <input type="number" id="quantidadeespuma4" class="form-control" required="" maxlength="10" size="4" onchange="resultadopreçocustoespuma(4)">
+                            </div>
+                            <div class="inline">
+                                <c>Altura: </c>
+                                <input type="number" id="altura4" class="form-control" required="" step=".01" maxlength="10" size="4" onchange="resultadopreçocustoespuma(4)">
+                            </div>
+                            <div class="inline">
+                                <c>Largura: </c>
+                                <input type="number" id="largura4" class="form-control" required="" step=".01" maxlength="10" size="4" onchange="resultadopreçocustoespuma(4)">
+                            </div>
+                            <div class="inline">
+                                <c>Comprimento: </c>
+                                <input type="number" id="comprimento4" class="form-control" required="" step=".01" maxlength="10" size="4" onchange="resultadopreçocustoespuma(4)">
+                            </div>
+                            <div class="inline">
+                                <p>Valor estofaria: <b id="valorestofariaespuma4"></b></p>
+                            </div>
+                            <div class="inline">
+                                <p>Valor cliente: <b id="valorclienteespuma4"></b></p>
                             </div>
                             <p class="tela-titulo">---</p>
                             <div class="inline">
@@ -519,9 +544,11 @@
             $('#valorestofariaespuma'+1).val(0)
             $('#valorestofariaespuma'+2).val(0)
             $('#valorestofariaespuma'+3).val(0)
+            $('#valorestofariaespuma'+4).val(0)
             $('#valorclienteespuma'+1).val(0)
             $('#valorclienteespuma'+2).val(0)
             $('#valorclienteespuma'+3).val(0)
+            $('#valorclienteespuma'+4).val(0)
             parseFloat($('#valoritemadicional'+1).val(0))
             parseFloat($('#valoritemadicional'+2).val(0))
             parseFloat($('#valoritemadicional'+3).val(0))
@@ -639,8 +666,8 @@
             $('#valorestofariaespuma'+ordemespuma).val(valorestofariaespuma)
             $('#valorclienteespuma'+ordemespuma).empty().append('R$ ' + valorclienteespuma)
             $('#valorclienteespuma'+ordemespuma).val(valorclienteespuma)
-            valortotalestofariaespuma =  (parseFloat($('#valorestofariaespuma'+1).val()) + parseFloat($('#valorestofariaespuma'+2).val()) + parseFloat($('#valorestofariaespuma'+3).val())).toFixed(2)
-            valortotalclienteespuma = (parseFloat($('#valorclienteespuma'+1).val()) + parseFloat($('#valorclienteespuma'+2).val()) + parseFloat($('#valorclienteespuma'+3).val())).toFixed(2)
+            valortotalestofariaespuma =  (parseFloat($('#valorestofariaespuma'+1).val()) + parseFloat($('#valorestofariaespuma'+2).val()) + parseFloat($('#valorestofariaespuma'+3).val()) + parseFloat($('#valorestofariaespuma'+4).val())).toFixed(2)
+            valortotalclienteespuma = (parseFloat($('#valorclienteespuma'+1).val()) + parseFloat($('#valorclienteespuma'+2).val()) + parseFloat($('#valorclienteespuma'+3).val() + parseFloat($('#valorclienteespuma'+4).val()))).toFixed(2)
             $('#valortotalestofariaespuma').empty().append('R$ ' + valortotalestofariaespuma)
             $('#valortotalclienteespuma').empty().append('R$ ' + valortotalclienteespuma)
             resultadoscusto()
