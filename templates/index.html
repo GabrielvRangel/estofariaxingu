@@ -271,8 +271,8 @@
                             </div>
                             <p class="tela-titulo">Espumas</p>
                             <div>
-                                <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon +.png')}}">
-                                <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon -.png')}}">
+                                <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon +.png')}}" onchange="adicionarespumas()">
+                                <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon -.png')}}" onchange="removerespumas()">
                             </div>
                             <div class="inline">
                                 <c>Quantidade espuma: </c>
@@ -543,6 +543,12 @@
             idbairro = $('#bairro').val()
             listavalorfrete = JSON.parse("{{listavalorfrete}}")
             $('#valorfrete').empty().append(listavalorfrete[idbairro])
+        }
+        function adicionarespumas(){
+            console.log('funcionou! 2222')
+        }
+        function removerespumas(){
+            console.log('funcionou!')
         }
         // Esconder ou aparecer o menu
         function Mudarestado(el) {
