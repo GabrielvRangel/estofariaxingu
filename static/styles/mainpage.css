@@ -303,7 +303,18 @@
     height: 92%;
     padding-left: 5%;
 }
-
+.divespuma1{
+    display: none;
+}
+.divespuma2{
+    display: none;
+}
+.divespuma3{
+    display: none;
+}
+.divespuma4{
+    display: none;
+}
 .tela-calculadora{
     position: relative;
     top: 10px;
