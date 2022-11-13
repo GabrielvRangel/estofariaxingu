@@ -270,12 +270,12 @@
                                 <p>Valor cliente: <b id="valorestofariacliente"></b></p>
                             </div>
                             <p class="tela-titulo">Espumas</p>
-                            <div>
-                                <button onchange="adicionarespumas()"> 
+                            <div class="buttonsespumas">
+                                <button class="buttonespumascolor" onclick="adicionarespumas()"> 
                                     <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon +.png')}}">
                                 </button>
-                                <button>
-                                    <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon -.png')}}" onchange="removerespumas()">
+                                <button class="buttonespumascolor" onclick="removerespumas()">
+                                    <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon -.png')}}">
                                 </button>
                             </div>
                             <div class="inline">

@@ -317,6 +317,13 @@
     width: 7%;
     height: 90%;
 }
+.buttonsespumas{
+    display: flex;
+    flex-direction: row;
+}
+.buttonespumascolor{
+    color: transparent;
+}
 .tela-1{
     width: 32%;
     height: 100%;
