@@ -605,7 +605,23 @@
             }
         }
         function removerespumas(){
-            console.log('funcionou!')
+            if (visualizaçãoespuma == 1) {
+                const quantidadeespuma1 = document.querySelector('.divespuma1');
+                quantidadeespuma1.style.display = 'none';
+                visualizaçãoespuma = 0;
+            }else if (visualizaçãoespuma == 2) {
+                const quantidadeespuma2 = document.querySelector('.divespuma2');
+                quantidadeespuma2.style.display = 'none';
+                visualizaçãoespuma = 1;
+            }else if (visualizaçãoespuma == 3) {
+                const quantidadeespuma3 = document.querySelector('.divespuma3');
+                quantidadeespuma3.style.display = 'none';
+                visualizaçãoespuma = 2;
+            }else if (visualizaçãoespuma == 4) {
+                const quantidadeespuma4 = document.querySelector('.divespuma4');
+                quantidadeespuma4.style.display = 'none';
+                visualizaçãoespuma = 3;
+            }
         }
         // Esconder ou aparecer o menu
         function Mudarestado(el) {
