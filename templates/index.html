@@ -271,10 +271,12 @@
                             </div>
                             <p class="tela-titulo">Espumas</p>
                             <div>
-                                <input type="button" onchange="adicionarespumas()"> 
-                                    <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon +.png')}}"/>
-                                </input>
-                                <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon -.png')}}" onchange="removerespumas()">
+                                <button onchange="adicionarespumas()"> 
+                                    <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon +.png')}}">
+                                </button>
+                                <button>
+                                    <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon -.png')}}" onchange="removerespumas()">
+                                </button>
                             </div>
                             <div class="inline">
                                 <c>Quantidade espuma: </c>
