@@ -408,102 +408,122 @@
                                 <p>Valor: <b id="socializado"></b></p>
                             </div>
                             <p class="tela-titulo">Adicionais</p>
-                            <div class="inline">
-                                <c>Escolha o item adicional:</c>                                
-                                <select class="form-control" id="itemadicional1" onchange="resultadovaloritemadicional(1)"> 
-                                    {% for item in listaitensadicionais %}
-                                        <option value="{{loop.index-1}}">{{item}}</option>
-                                    {% endfor %}
-                                </select>
+                            <div class="buttonsespumas">
+                                <button class="buttonespumascolor" onclick="adicionaradicionais()"> 
+                                    <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon +.png')}}">
+                                </button>
+                                <button class="buttonespumascolor" onclick="removeradicionais()">
+                                    <input type="image" class="buttonespumas" src="{{url_for('static', filename='icon -.png')}}">
+                                </button>
                             </div>
-                            <div class="inline">
-                                <c>Quantidade: </c>
-                                <input type="number" id="quantidadeitemadicional1" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(1)">
+                            <div class="divadicional1">
+                                <div class="inline">
+                                    <c>Escolha o item adicional:</c>                                
+                                    <select class="form-control" id="itemadicional1" onchange="resultadovaloritemadicional(1)"> 
+                                        {% for item in listaitensadicionais %}
+                                            <option value="{{loop.index-1}}">{{item}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="inline">
+                                    <c>Quantidade: </c>
+                                    <input type="number" id="quantidadeitemadicional1" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(1)">
+                                </div>
+                                <div class="inline">
+                                    <p>Valor: <b id="valoritemadicional1"></b></p>
+                                </div>
+                                <p class="tela-titulo">---</p>
                             </div>
-                            <div class="inline">
-                                <p>Valor: <b id="valoritemadicional1"></b></p>
+                            <div class="divadicional2">
+                                <div class="inline">
+                                    <c>Escolha o item adicional:</c>                                
+                                    <select class="form-control" id="itemadicional2" onchange="resultadovaloritemadicional(2)"> 
+                                        {% for item in listaitensadicionais %}
+                                            <option value="{{loop.index-1}}">{{item}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="inline">
+                                    <c>Quantidade: </c>
+                                    <input type="number" id="quantidadeitemadicional2" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(2)">
+                                </div>
+                                <div class="inline">
+                                    <p>Valor: <b id="valoritemadicional2"></b></p>
+                                </div>
+                                <p class="tela-titulo">---</p>
                             </div>
-                            <p class="tela-titulo">---</p>
-                            <div class="inline">
-                                <c>Escolha o item adicional:</c>                                
-                                <select class="form-control" id="itemadicional2" onchange="resultadovaloritemadicional(2)"> 
-                                    {% for item in listaitensadicionais %}
-                                        <option value="{{loop.index-1}}">{{item}}</option>
-                                    {% endfor %}
-                                </select>
+                            <div class="divadicional3">
+                                <div class="inline">
+                                    <c>Escolha o item adicional:</c>                                
+                                    <select class="form-control" id="itemadicional3" onchange="resultadovaloritemadicional(3)"> 
+                                        {% for item in listaitensadicionais %}
+                                            <option value="{{loop.index-1}}">{{item}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="inline">
+                                    <c>Quantidade: </c>
+                                    <input type="number" id="quantidadeitemadicional3" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(3)">
+                                </div>
+                                <div class="inline">
+                                    <p>Valor: <b id="valoritemadicional3"></b></p>
+                                </div>
+                                <p class="tela-titulo">---</p>
                             </div>
-                            <div class="inline">
-                                <c>Quantidade: </c>
-                                <input type="number" id="quantidadeitemadicional2" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(2)">
+                            <div class="divadicional4">
+                                <div class="inline">
+                                    <c>Escolha o item adicional:</c>                                
+                                    <select class="form-control" id="itemadicional4" onchange="resultadovaloritemadicional(4)"> 
+                                        {% for item in listaitensadicionais %}
+                                            <option value="{{loop.index-1}}">{{item}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="inline">
+                                    <c>Quantidade: </c>
+                                    <input type="number" id="quantidadeitemadicional4" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(4)">
+                                </div>
+                                <div class="inline">
+                                    <p>Valor: <b id="valoritemadicional4"></b></p>
+                                </div>
+                                <p class="tela-titulo">---</p>
                             </div>
-                            <div class="inline">
-                                <p>Valor: <b id="valoritemadicional2"></b></p>
+                            <div class="divadicional5">
+                                <div class="inline">
+                                    <c>Escolha o item adicional:</c>                                
+                                    <select class="form-control" id="itemadicional5" onchange="resultadovaloritemadicional(5)"> 
+                                        {% for item in listaitensadicionais %}
+                                            <option value="{{loop.index-1}}">{{item}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="inline">
+                                    <c>Quantidade: </c>
+                                    <input type="number" id="quantidadeitemadicional5" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(5)">
+                                </div>
+                                <div class="inline">
+                                    <p>Valor: <b id="valoritemadicional5"></b></p>
+                                </div>
+                                <p class="tela-titulo">---</p>
                             </div>
-                            <p class="tela-titulo">---</p>
-                            <div class="inline">
-                                <c>Escolha o item adicional:</c>                                
-                                <select class="form-control" id="itemadicional3" onchange="resultadovaloritemadicional(3)"> 
-                                    {% for item in listaitensadicionais %}
-                                        <option value="{{loop.index-1}}">{{item}}</option>
-                                    {% endfor %}
-                                </select>
+                            <div class="divadicional6">
+                                <div class="inline">
+                                    <c>Escolha o item adicional:</c>                                
+                                    <select class="form-control" id="itemadicional6" onchange="resultadovaloritemadicional(6)"> 
+                                        {% for item in listaitensadicionais %}
+                                            <option value="{{loop.index-1}}">{{item}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="inline">
+                                    <c>Quantidade: </c>
+                                    <input type="number" id="quantidadeitemadicional6" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(6)">
+                                </div>
+                                <div class="inline">
+                                    <p>Valor: <b id="valoritemadicional6"></b></p>
+                                </div>
+                                <p class="tela-titulo">---</p>
                             </div>
-                            <div class="inline">
-                                <c>Quantidade: </c>
-                                <input type="number" id="quantidadeitemadicional3" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(3)">
-                            </div>
-                            <div class="inline">
-                                <p>Valor: <b id="valoritemadicional3"></b></p>
-                            </div>
-                            <p class="tela-titulo">---</p>
-                            <div class="inline">
-                                <c>Escolha o item adicional:</c>                                
-                                <select class="form-control" id="itemadicional4" onchange="resultadovaloritemadicional(4)"> 
-                                    {% for item in listaitensadicionais %}
-                                        <option value="{{loop.index-1}}">{{item}}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="inline">
-                                <c>Quantidade: </c>
-                                <input type="number" id="quantidadeitemadicional4" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(4)">
-                            </div>
-                            <div class="inline">
-                                <p>Valor: <b id="valoritemadicional4"></b></p>
-                            </div>
-                            <p class="tela-titulo">---</p>
-                            <div class="inline">
-                                <c>Escolha o item adicional:</c>                                
-                                <select class="form-control" id="itemadicional5" onchange="resultadovaloritemadicional(5)"> 
-                                    {% for item in listaitensadicionais %}
-                                        <option value="{{loop.index-1}}">{{item}}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="inline">
-                                <c>Quantidade: </c>
-                                <input type="number" id="quantidadeitemadicional5" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(5)">
-                            </div>
-                            <div class="inline">
-                                <p>Valor: <b id="valoritemadicional5"></b></p>
-                            </div>
-                            <p class="tela-titulo">---</p>
-                            <div class="inline">
-                                <c>Escolha o item adicional:</c>                                
-                                <select class="form-control" id="itemadicional6" onchange="resultadovaloritemadicional(6)"> 
-                                    {% for item in listaitensadicionais %}
-                                        <option value="{{loop.index-1}}">{{item}}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="inline">
-                                <c>Quantidade: </c>
-                                <input type="number" id="quantidadeitemadicional6" class="form-control" required="" maxlength="10" size="4" onchange="resultadovaloritemadicional(6)">
-                            </div>
-                            <div class="inline">
-                                <p>Valor: <b id="valoritemadicional6"></b></p>
-                            </div>
-                            <p class="tela-titulo">---</p>
                             <div class="inline">
                                 <p>Valor total: <b id="valortotalitemadicional"></b></p>
                             </div>
@@ -581,6 +601,7 @@
             valorfrete = 0 
             socializado = 0
             visualizaçãoespuma = 0
+            visualizaçãoadicional = 0
             idbairro = $('#bairro').val()
             listavalorfrete = JSON.parse("{{listavalorfrete}}")
             $('#valorfrete').empty().append(listavalorfrete[idbairro])
@@ -621,6 +642,60 @@
                 const quantidadeespuma4 = document.querySelector('.divespuma4');
                 quantidadeespuma4.style.display = 'none';
                 visualizaçãoespuma = 3;
+            }
+        }
+        function adicionaradicionais(){
+            if (visualizaçãoadicional == 0) {
+                const divadicional1 = document.querySelector('.divadicional1');
+                divadicional1.style.display = 'block';
+                visualizaçãoadicional = 1;
+            }else if (visualizaçãoadicional == 1) {
+                const divadicional2 = document.querySelector('.divadicional2');
+                divadicional2.style.display = 'block';
+                visualizaçãoadicional = 2;
+            }else if (visualizaçãoadicional == 2) {
+                const divadicional3 = document.querySelector('.divadicional3');
+                divadicional3.style.display = 'block';
+                visualizaçãoadicional = 3;
+            }else if (visualizaçãoadicional == 3) {
+                const divadicional4 = document.querySelector('.divadicional4');
+                divadicional5.style.display = 'block';
+                visualizaçãoadicional = 4;
+            }else if (visualizaçãoadicional == 4) {
+                const divadicional5 = document.querySelector('.divadicional5');
+                divadicional5.style.display = 'block';
+                visualizaçãoadicional = 5;
+            }else if (visualizaçãoadicional == 5) {
+                const divadicional6 = document.querySelector('.divadicional6');
+                divadicional6.style.display = 'block';
+                visualizaçãoadicional = 6;
+            }
+        }
+        function removeradicionais(){
+            if (visualizaçãoadicional == 1) {
+                const divadicional1 = document.querySelector('.divadicional1');
+                divadicional1.style.display = 'none';
+                visualizaçãoadicional = 0;
+            }else if (visualizaçãoadicional == 2) {
+                const divadicional2 = document.querySelector('.divadicional2');
+                divadicional2.style.display = 'none';
+                visualizaçãoadicional = 1;
+            }else if (visualizaçãoadicional == 3) {
+                const divadicional3 = document.querySelector('.divadicional3');
+                divadicional3.style.display = 'none';
+                visualizaçãoadicional = 2;
+            }else if (visualizaçãoadicional == 4) {
+                const divadicional4 = document.querySelector('.divadicional4');
+                divadicional4.style.display = 'none';
+                visualizaçãoadicional = 3;
+            }else if (visualizaçãoadicional == 5) {
+                const divadicional5 = document.querySelector('.divadicional5');
+                divadicional5.style.display = 'none';
+                visualizaçãoadicional = 4;
+            }else if (visualizaçãoadicional == 6) {
+                const divadicional6 = document.querySelector('.divadicional6');
+                divadicional6.style.display = 'none';
+                visualizaçãoadicional = 5;
             }
         }
         // Esconder ou aparecer o menu
