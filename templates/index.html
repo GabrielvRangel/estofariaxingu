@@ -561,7 +561,7 @@
                                 <p>Calculado %: <b id="resultadopercentualcalculado"></b></p>
                             </div>
                             <div class="inline">
-                                <c>Margem alvo: </c>
+                                <c>Margem alvo %: </c>
                                 <input type="number" id="margemalvo" class="form-control" required="" maxlength="10" size="4" onchange="resultadoscusto()">
                             </div>
                             <div class="inline">
@@ -808,12 +808,10 @@
                 valorimpermeabilização = (preçoimpermeabilização * quantidadetecido).toFixed(2)
                 $('#valorimpermeabilização').empty().append('R$ ' + valorimpermeabilização)
                 resultadoscusto()
-                console.log($('#Impermeabilizaçãosimounão').val())
             }else{
                 valorimpermeabilização = 0
                 $('#valorimpermeabilização').empty().append('R$ ' + valorimpermeabilização)
                 resultadoscusto()
-                console.log($('#Impermeabilizaçãosimounão').val())
             }
         }
 
@@ -855,7 +853,7 @@
             resultadopercentualcalculado = ((( parseFloat(valortotalvariavelcliente) / parseFloat(valortotalvariavelestofaria) )-1)*100).toFixed(2)
             $('#resultadopercentualcalculado').empty().append(resultadopercentualcalculado + '%')
             margemalvo = $('#margemalvo').val()
-            preçoalvo = (parseFloat(valortotalvariavelestofaria) + (parseFloat(valortotalvariavelestofaria)*parseFloat(margemalvo))).toFixed(2)
+            preçoalvo = (parseFloat(valortotalvariavelestofaria) + (parseFloat(valortotalvariavelestofaria)* (parseFloat(margemalvo)/100))).toFixed(2)
             $('#preçoalvo').empty().append('R$ ' + preçoalvo)
             // resultadopercentualpreçoalvo = (((parseFloat(preçoalvo) / parseFloat(valortotalvariavelestofaria))- 1)*100).toFixed(2)
             // $('#resultadopercentualpreçoalvo').empty().append(resultadopercentualpreçoalvo +'%')
