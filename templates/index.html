@@ -802,17 +802,18 @@
         }
         
         function resultadopreçoimpermeabilização(){
-            console.log($('#Impermeabilizaçãosimounão').val())
-            if ($('#Impermeabilizaçãosimounão').val() == 'Sim' ){
+            if ($('#Impermeabilizaçãosimounão').val() == 'sim' ){
                 preçoimpermeabilização = parseFloat("{{preço_impermeabilização}}")
                 quantidadetecido = parseFloat($('#quantidadetecido').val())
                 valorimpermeabilização = (preçoimpermeabilização * quantidadetecido).toFixed(2)
                 $('#valorimpermeabilização').empty().append('R$ ' + valorimpermeabilização)
                 resultadoscusto()
+                console.log($('#Impermeabilizaçãosimounão').val())
             }else{
                 valorimpermeabilização = 0
                 $('#valorimpermeabilização').empty().append('R$ ' + valorimpermeabilização)
                 resultadoscusto()
+                console.log($('#Impermeabilizaçãosimounão').val())
             }
         }
 
