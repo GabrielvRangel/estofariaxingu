@@ -389,6 +389,13 @@
                             </div>
                             <p class="tela-titulo">Impermeabilização</p>
                             <div class="inline">
+                                <c>Ativar impermeabilização:</c> 
+                                <select class="form-control" id="Impermeabilizaçãosimounão" onchange="resultadopreçoimpermeabilização()"> 
+                                    <option value="sim">Sim</option>
+                                    <option value="não">Não</option>
+                                </select>
+                            </div>
+                            <div class="inline">
                                 <p>Valor: <b id="valorimpermeabilização"></b></p>
                             </div>
                             <p class="tela-titulo">Frete</p>
@@ -795,11 +802,17 @@
         }
         
         function resultadopreçoimpermeabilização(){
-            preçoimpermeabilização = parseFloat("{{preço_impermeabilização}}")
-            quantidadetecido = parseFloat($('#quantidadetecido').val())
-            valorimpermeabilização = (preçoimpermeabilização * quantidadetecido).toFixed(2)
-            $('#valorimpermeabilização').empty().append('R$ ' + valorimpermeabilização)
-            resultadoscusto()
+            if ($('#Impermeabilizaçãosimounão').val() = 'Sim' ){
+                preçoimpermeabilização = parseFloat("{{preço_impermeabilização}}")
+                quantidadetecido = parseFloat($('#quantidadetecido').val())
+                valorimpermeabilização = (preçoimpermeabilização * quantidadetecido).toFixed(2)
+                $('#valorimpermeabilização').empty().append('R$ ' + valorimpermeabilização)
+                resultadoscusto()
+            }else{
+                valorimpermeabilização = 0
+                $('#valorimpermeabilização').empty().append('R$ ' + valorimpermeabilização)
+                resultadoscusto()
+            }
         }
 
         function resultadovalorfrete(){
