@@ -20,20 +20,21 @@
     box-shadow: 0 0 20px #302e2e;
     display: flex;
     flex-direction: column;
+    height: 30%;
 }
 #button{
     width: 100%;
     font-weight: bold;
-    height: 25%;
+    height: 24%;
 }
 #usuario{
-    height: 25%;
+    height: 24%;
 }
 #senha{
-    height: 25%;
+    height: 24%;
 }
 h2{
-    height: 25%;
+    height: 24%;
     color: #e6b01c;
     font-weight: bold;
     display: flex;
