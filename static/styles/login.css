@@ -24,5 +24,7 @@
 }
 h2{
     color: #D6A41D;
-    font-weight: 200px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
 }
