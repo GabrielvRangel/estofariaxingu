@@ -2,13 +2,13 @@
 .body_tela_login {
     background-color: #D6A41D;
     width: 100%;
-    height: 100%;
+    height: 1000px;
 }
 .container_tela_login{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: 50%;
     height: 100%;
 }
 .formulario_tela_login{
