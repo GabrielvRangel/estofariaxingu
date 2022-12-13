@@ -16,14 +16,24 @@
 .formulario_tela_login{
     background-color: #FFFFFF; 
     padding: 30px; 
-    border-radius: 10px; 
-    box-shadow: 0 0 20px #2c2b2b;
+    border-radius: 5px; 
+    box-shadow: 0 0 20px #302e2e;
+    display: flex;
+    flex-direction: column;
 }
 #button{
- width: 100%;
- font-weight: bold;
+    width: 100%;
+    font-weight: bold;
+    height: 25%;
+}
+#usuario{
+    height: 25%;
+}
+#senha{
+    height: 25%;
 }
 h2{
+    height: 25%;
     color: #e6b01c;
     font-weight: bold;
     display: flex;
