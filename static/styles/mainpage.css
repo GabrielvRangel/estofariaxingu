@@ -1,4 +1,14 @@
 /* notebook padrão */
+.body_tela_login {
+    background-color: #D6A41D;
+    text-align: center;
+}
+.formulario_tela_login{
+    background-color: #FFFFFF; 
+    padding: 30px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 20px #000000;
+}
 .main {
     display: flex;
     flex-direction: row;
