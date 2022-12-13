@@ -41,3 +41,13 @@ h2{
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 600px) {
+    .container_tela_login{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 70%;
+        height: 100%;
+    }   
+}
