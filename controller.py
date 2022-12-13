@@ -49,9 +49,9 @@ def index():
     preço_cliente_espumas=preço_cliente_espumas, preço_estofaria_espumas=preço_estofaria_espumas, preço_impermeabilização=preço_impermeabilização)
 
 @app.route("/login", methods=["GET","POST"])
-def custovariavelgeralconsulta():
+def login():
     return render_template("tela_login.html")
-    
+
 @app.route("/custovariavelgeral", methods=["GET","POST"])
 def custovariavelgeralconsulta():
     custovariavelgeral = custo_variavel_geral.consultar(conexão)
