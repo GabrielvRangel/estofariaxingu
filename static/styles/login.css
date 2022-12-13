@@ -21,9 +21,10 @@
 }
 #button{
  width: 100%;
+ font-weight: bold;
 }
 h2{
-    color: #D6A41D;
+    color: #e6b01c;
     font-weight: bold;
     display: flex;
     justify-content: center;
