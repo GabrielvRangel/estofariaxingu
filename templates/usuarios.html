@@ -268,11 +268,13 @@
         //botão confirmar do popup adicionar
         const adicionarconfirmarbutton = document.querySelector('#confirmaradd')
         adicionarconfirmarbutton.addEventListener('click', () => {
-            const popup = document.querySelector('.popup-wrapper');
             const lista_usuario = { usuario }
             novo_usuario = $('#usuarioadicionar').val()
             if (lista_usuario.includes(novo_usuario)) {
-                console.log('funcionou!')
+                console.log('usuario ja existe!')
+                return false;
+            }else{
+                console.log('usuario nao existe!')
                 return false;
             }
         });
