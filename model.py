@@ -264,7 +264,7 @@ class parâmetros():
 
 class usuarios():
     def consultar(self, conexão):
-        consulta = "select * from usuarios"
+        consulta = "select * from usuarios order by usuario"
         usuarios = pd.read_sql_query(consulta, con=conexão)
         return usuarios
 
