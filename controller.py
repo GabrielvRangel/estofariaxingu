@@ -14,6 +14,7 @@ frete = model.frete()
 items_adicionais = model.items_adicionais()
 tecidos = model.tecido()
 parâmetro = model.parâmetros()
+usuarios = model.usuarios()
 conexão = con.servidor()
 
 @app.route("/", methods=["GET","POST"])
@@ -227,6 +228,42 @@ def tecidoupdate():
     novopreco_compra = float(request.args.get('novopreco_compra'))
     tecidos.atualizar(conexão, artigo, novoartigo, preco_venda, novopreco_venda, preco_compra, novopreco_compra)
     return redirect(localhost + 'tecido', code=302)
+
+@app.route("/usuarios", methods=["GET","POST"])
+def usuariosconsulta():
+    usuarios = usuarios.consultar(conexão)
+    return render_template("usuarios.html", usuarios=usuarios)
+
+@app.route("/usuariosadicionar", methods=["GET"])
+def usuariosadicionar():
+    materialadicionar = request.args.get('materialadicionar')
+    usoadicionar = request.args.get('usoadicionar')
+    valorunitarioadicionar = float(request.args.get('valorunitarioadicionar'))
+    quantidadeadicionar = float(request.args.get('quantidadeadicionar'))
+    custo_variavel_geral.adicionar(conexão, materialadicionar, usoadicionar, valorunitarioadicionar, quantidadeadicionar)
+    return redirect(localhost + 'custovariavelgeral', code=302)
+
+@app.route("/usuariosdelete", methods=["GET"])
+def usuariosdelete():
+    materialdelete = request.args.get('materialdelete')
+    usodelete = request.args.get('usodelete')
+    valorunitariodelete = float(request.args.get('valorunitariodelete'))
+    quantidadedelete = float(request.args.get('quantidadedelete'))
+    custo_variavel_geral.deletar(conexão, materialdelete, usodelete, valorunitariodelete, quantidadedelete)
+    return redirect(localhost + 'custovariavelgeral', code=302)
+
+@app.route("/usuariosupdate", methods=["GET"])
+def usuariosupdate():
+    material = request.args.get('material')
+    novomaterial = request.args.get('novomaterial')
+    uso = request.args.get('uso')
+    novouso = request.args.get('novouso')
+    novovalorunitario = float(request.args.get('novovalorunitario'))
+    valorunitario = float(request.args.get('valorunitario'))
+    novoquantidade = float(request.args.get('novoquantidade'))
+    quantidade = float(request.args.get('quantidade'))
+    custo_variavel_geral.atualizar(conexão, material, novomaterial, uso, novouso, valorunitario, novovalorunitario, quantidade, novoquantidade)
+    return redirect(localhost + 'custovariavelgeral', code=302)
 
 if __name__ == "__main__":
     app.run(debug= True) 

@@ -262,6 +262,54 @@ class parâmetros():
             trans.rollback()
         return print('Atualização realizada.')
 
+class usuarios():
+    def consultar(self, conexão):
+        consulta = "select * from usuarios"
+        usuarios = pd.read_sql_query(consulta, con=conexão)
+        return usuarios
+
+    def deletar(self, connect, usuario, senha):
+        con = connect.connect() 
+        sql = f"""
+        DELETE FROM usuarios
+        WHERE usuario = '{usuario}' and senha = '{senha}'
+        """
+        try:
+            trans = con.begin()
+            con.execute(sql)
+            trans.commit()
+        except:
+            trans.rollback()
+        return print('Deletado com sucesso.')
+
+    def adicionar(self, connect, usuario, senha, nome, admin, email):
+        con = connect.connect() 
+        sql = f"""
+        INSERT  INTO  usuarios(usuario, senha, nome, admin, email)
+        VALUES ('{usuario}', '{senha}', {nome}, {admin}, {email});
+        """
+        try:
+            trans = con.begin()
+            con.execute(sql)
+            trans.commit()
+        except:
+            trans.rollback()
+        return print('Atualização realizada.')
+
+    def atualizar(self, connect, usuario, novousuario, senha, novosenha, nome, novonome, admin, novoadmin, email, novoemail):
+        con = connect.connect() 
+        sql = f"""
+        UPDATE usuarios
+        SET usuario = '{novousuario}',  senha = '{novosenha}',  nome = {novonome}, admin = {novoadmin}, email = {novoemail}
+        WHERE usuario = '{usuario}' and senha = '{senha}' and nome = {nome} and admin = {admin} and email = {email}
+        """
+        try:
+            trans = con.begin()
+            con.execute(sql)
+            trans.commit()
+        except:
+            trans.rollback()
+        return print('Atualização realizada.')
 
 # con = conexão()
 # conexão = con.servidor()

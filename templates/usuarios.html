@@ -19,14 +19,14 @@
             </div>
             <div class="popup-content">
                 <h3 class="popupcolors"><strong>UPDATE</strong></h3>
-                <form class="form" id="freteupdate" action="/freteupdate">
+                <form class="form" id="tecidoupdate" action="/tecidoupdate">
                     <div class="inputs">
-                        Município: <input type="text" name="novomunicípio" id="novomunicípio" class="poppupforminputtext">
-                        Bairro: <input type="text" name="novobairro" id="novobairro" class="poppupforminputtext">
-                        Valor: <input name="novovalor" type="number" id="novovalor" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
-                        <input type="hidden" name="município" id="município">
-                        <input type="hidden" name="bairro" id="bairro">
-                        <input type="hidden" name="valor" id="valor">
+                        Artigo: <input type="text" name="novoartigo" id="novoartigo" class="poppupforminputtext">
+                        Preço Compra: <input type="number" name="novopreco_venda" id="novopreco_venda" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Preço Venda: <input name="novopreco_compra" type="number" id="novopreco_compra" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        <input type="hidden" name="artigo" id="artigo">
+                        <input type="hidden" name="preco_venda" id="preco_venda">
+                        <input type="hidden" name="preco_compra" id="preco_compra">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="confirmar">Confirmar</button>
@@ -36,11 +36,11 @@
             </div>
             <div class="popup-delete">
                 <h3 class="popupcolors"><strong>VOCÊ REALMENTE DESEJA DELETAR?</strong></h3>
-                <form class="delete" id="fretedelete" action="/fretedelete">
+                <form class="delete" id="tecidodelete" action="/tecidodelete">
                     <div id="inputs">
-                        <input type="hidden" name="municípiodelete" id="municípiodelete">
-                        <input type="hidden" name="bairrodelete" id="bairrodelete">
-                        <input type="hidden" name="valordelete" id="valordelete">
+                        <input type="hidden" name="artigodelete" id="artigodelete">
+                        <input type="hidden" name="preco_vendadelete" id="preco_vendadelete">
+                        <input type="hidden" name="preco_compradelete" id="preco_compradelete">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="deletar">SIM</button>
@@ -50,12 +50,11 @@
             </div>
             <div class="popup-adicionar">
                 <h3 class="popupcolors"><strong>ADICIONAR</strong></h3>
-                <form class="form" id="freteadicionar" action="/freteadicionar">
+                <form class="form" id="tecidoadicionar" action="/tecidoadicionar">
                     <div class="inputs">
-                        Município: <input type="text" name="municípioadicionar" id="municípioadicionar"
-                            class="poppupforminputtext">
-                        Bairro: <input type="text" name="bairroadicionar" id="bairroadicionar" class="poppupforminputtext">
-                        Valor: <input name="valoradicionar" type="number" step=".01"  id="valoradicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Artigo: <input type="text" name="artigoadicionar" id="artigoadicionar" class="poppupforminputtext">
+                        Preço Venda: <input type="number" name="preco_vendaadicionar" step=".01"  id="preco_vendaadicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Preço Compra: <input name="preco_compraadicionar" type="number" step=".01"  id="preco_compraadicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="adicionar">Confirmar</button>
@@ -72,11 +71,11 @@
             <div class="menu_div_button">
                 <a href='/'><button type="submit" class="menu_button"> Calculadora </button></a>
                 <a href='/custovariavelgeral'><button type="submit" class="menu_button">Custo Variável Geral</button></a>
-                <a href='/frete'><button type="submit" class="menu_button_selecionado"> Frete </button></a>
+                <a href='/frete'><button type="submit" class="menu_button"> Frete </button></a>
                 <a href='/itemsadicionais'><button type="submit" class="menu_button"> Itens Adicionais </button></a>
                 <a href='/parâmetros'><button type="submit" class="menu_button"> Parâmetros </button></a>
                 <a href='/tecido'><button type="submit" class="menu_button"> Tecidos </button></a>
-                <a href='/usuarios'><button type="submit" class="menu_button"> Usuarios </button></a>
+                <a href='/usuarios'><button type="submit" class="menu_button_selecionado"> Usuarios </button></a>
             </div>
         </div>
 
@@ -86,7 +85,7 @@
             </div>
             <div class="teladados">
                 <div class="tela-nome">
-                    <h3 id="tela-nome">Frete</h3>
+                    <h3 id="tela-nome">Usuarios</h3>
                     <button type="button" class="adicionarbutton">adicionar</button>
                 </div>
                 <form class="form">
@@ -96,19 +95,19 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Município</th>
-                                        <th>Bairro</th>
-                                        <th>Valor</th>
+                                        <th>Usuario</th>
+                                        <th>Senha</th>
+                                        <th>Nome</th>
                                         <th width="20px"></th>
                                         <th width="20px"></th>
                                     </tr>
                                 </thead>
                                 <tbody id="filtrando">
-                                    {% for quantidade in fretemunicípio %}
+                                    {% for usuario in usuarios %}
                                     <tr>
-                                        <td id="A{{loop.index-1}}">{{fretemunicípio[loop.index-1]}}</td>
-                                        <td id="B{{loop.index-1}}">{{fretebairro[loop.index-1]}}</td>
-                                        <td id="C{{loop.index-1}}">{{fretevalor[loop.index-1]}}</td>
+                                        <td id="A{{loop.index-1}}">{{usuario.usuario[loop.index-1]}}</td>
+                                        <td id="B{{loop.index-1}}">{{usuario.senha[loop.index-1]}}</td>
+                                        <td id="C{{loop.index-1}}">{{usuario.nome[loop.index-1]}}</td>
                                         <td id="{{loop.index-1}}" onclick="updatebutton(this.id)"><input type="button"
                                                 class="updatebutton" value="update"></td>
                                         <td id="{{loop.index-1}}" onclick="deletebutton(this.id)"><input type="button"
@@ -148,15 +147,15 @@
         });
 
         function updatebutton(id) {
-            município = $('#A' + id).text();
-            bairro = $('#B' + id).text();
-            valor = $('#C' + id).text();
-            $('#município').val(município);
-            $('#bairro').val(bairro);
-            $('#valor').val(valor);
-            $('#novomunicípio').val(município);
-            $('#novobairro').val(bairro);
-            $('#novovalor').val(valor);
+            artigo = $('#A' + id).text();
+            preco_venda = $('#B' + id).text();
+            preco_compra = $('#C' + id).text();
+            $('#artigo').val(artigo);
+            $('#preco_venda').val(preco_venda);
+            $('#preco_compra').val(preco_compra);
+            $('#novoartigo').val(artigo);
+            $('#novopreco_venda').val(preco_venda);
+            $('#novopreco_compra').val(preco_compra);
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'block';
             const popupdelete = document.querySelector('.popup-delete');
@@ -170,12 +169,12 @@
         };
 
         function deletebutton(id) {
-            municípiodelete = $('#A' + id).text();
-            bairrodelete = $('#B' + id).text();
-            valordelete = $('#C' + id).text();
-            $('#municípiodelete').val(municípiodelete);
-            $('#bairrodelete').val(bairrodelete);
-            $('#valordelete').val(valordelete);
+            artigodelete = $('#A' + id).text();
+            preco_vendadelete = $('#B' + id).text();
+            preco_compradelete = $('#C' + id).text();
+            $('#artigodelete').val(artigodelete);
+            $('#preco_vendadelete').val(preco_vendadelete);
+            $('#preco_compradelete').val(preco_compradelete);
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'block';
             const popupupdate = document.querySelector('.popup-content');
@@ -207,7 +206,7 @@
         cancelarbutton.addEventListener('click', () => {
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'none';
-            document.getElementById('freteupdate').onsubmit = function () {
+            document.getElementById('tecidoupdate').onsubmit = function () {
                 return false;
             }
         });
@@ -217,7 +216,7 @@
         deletecancelarbutton.addEventListener('click', () => {
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'none';
-            document.getElementById('fretedelete').onsubmit = function () {
+            document.getElementById('tecidodelete').onsubmit = function () {
                 return false;
             }
         });
@@ -227,7 +226,7 @@
         adicionarcancelarbutton.addEventListener('click', () => {
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'none';
-            document.getElementById('freteadicionar').onsubmit = function () {
+            document.getElementById('tecidoadicionar').onsubmit = function () {
                 return false;
             }
         });
@@ -240,7 +239,7 @@
             $('#textocarregamento').empty().append("Atualizando dados, aguarde...");
             const carregamento = document.querySelector('.carregamento');
             carregamento.style.display = 'block';
-            document.getElementById('freteupdate').onsubmit = function () {
+            document.getElementById('tecidoupdate').onsubmit = function () {
                 return true;
             }
         });
@@ -252,7 +251,7 @@
             $('#textocarregamento').empty().append("Deletando dados, aguarde...");
             const carregamento = document.querySelector('.carregamento');
             carregamento.style.display = 'block';
-            document.getElementById('fretedelete').onsubmit = function () {
+            document.getElementById('tecidodelete').onsubmit = function () {
                 return true;
             }
         });
