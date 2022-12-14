@@ -201,16 +201,23 @@
 
         const adicionarbutton = document.querySelector('.adicionarbutton')
         adicionarbutton.addEventListener('click', () => {
-            const popup = document.querySelector('.popup-wrapper');
-            popup.style.display = 'block';
-            const popupdelete = document.querySelector('.popup-delete');
-            popupdelete.style.display = 'none';
-            const popupupdate = document.querySelector('.popup-content');
-            popupupdate.style.display = 'none';
-            const popupadicionar = document.querySelector('.popup-adicionar');
-            popupadicionar.style.display = 'block';
-            const popupprincipal = document.querySelector('.popup');
-            popupprincipal.style.height = '55%';
+            const lista_usuario = {usuario}
+            novo_usuario = $('#usuarioadicionar').val()
+            if (lista_usuario.includes(novo_usuario)){
+                console.log('funcionou!')
+                return false;
+            }else{
+                const popup = document.querySelector('.popup-wrapper');
+                popup.style.display = 'block';
+                const popupdelete = document.querySelector('.popup-delete');
+                popupdelete.style.display = 'none';
+                const popupupdate = document.querySelector('.popup-content');
+                popupupdate.style.display = 'none';
+                const popupadicionar = document.querySelector('.popup-adicionar');
+                popupadicionar.style.display = 'block';
+                const popupprincipal = document.querySelector('.popup');
+                popupprincipal.style.height = '55%';
+            }
         });
 
         //botão cancelar do popup update
@@ -246,19 +253,13 @@
         //botão confirmar do popup
         const confirmarbutton = document.querySelector('.confirmar')
         confirmarbutton.addEventListener('click', () => {
-            const lista_usuario = {usuario}
-            novo_usuario = $('#usuarioadicionar').val()
-            if (lista_usuario.includes(novo_usuario)){
-                console.log('funcionou!')
-            }else{
-                const popup = document.querySelector('.popup-content');
-                popup.style.display = 'none';
-                $('#textocarregamento').empty().append("Atualizando dados, aguarde...");
-                const carregamento = document.querySelector('.carregamento');
-                carregamento.style.display = 'block';
-                document.getElementById('usuariosupdate').onsubmit = function () {
-                    return true;
-                }
+            const popup = document.querySelector('.popup-content');
+            popup.style.display = 'none';
+            $('#textocarregamento').empty().append("Atualizando dados, aguarde...");
+            const carregamento = document.querySelector('.carregamento');
+            carregamento.style.display = 'block';
+            document.getElementById('usuariosupdate').onsubmit = function () {
+                return true;
             }
         });
 
