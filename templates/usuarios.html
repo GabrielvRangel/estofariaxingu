@@ -108,13 +108,13 @@
                                     </tr>
                                 </thead>
                                 <tbody id="filtrando">
-                                    {% for usuario in usuarios %}
+                                    {% for quantidade in usuario %}
                                     <tr>
-                                        <td id="A{{loop.index-1}}">{{usuario.usuario}}</td>
-                                        <td id="B{{loop.index-1}}">{{usuario.senha}}</td>
-                                        <td id="C{{loop.index-1}}">{{usuario.nome}}</td>
-                                        <td id="C{{loop.index-1}}">{{usuario.admin}}</td>
-                                        <td id="C{{loop.index-1}}">{{usuario.email}}</td>
+                                        <td id="A{{loop.index-1}}">{{usuario[loop.index-1]}}</td>
+                                        <td id="B{{loop.index-1}}">{{senha[loop.index-1]}}</td>
+                                        <td id="C{{loop.index-1}}">{{nome[loop.index-1]}}</td>
+                                        <td id="D{{loop.index-1}}">{{admin[loop.index-1]}}</td>
+                                        <td id="E{{loop.index-1}}">{{email[loop.index-1]}}</td>
                                         <td id="{{loop.index-1}}" onclick="updatebutton(this.id)"><input type="button"
                                                 class="updatebutton" value="update"></td>
                                         <td id="{{loop.index-1}}" onclick="deletebutton(this.id)"><input type="button"
@@ -157,8 +157,8 @@
             usuario = $('#A' + id).text();
             senha = $('#B' + id).text();
             nome = $('#C' + id).text();
-            admin = $('#C' + id).text();
-            email = $('#C' + id).text();
+            admin = $('#D' + id).text();
+            email = $('#E' + id).text();
             $('#usuario').val(usuario);
             $('#senha').val(senha);
             $('#nome').val(nome);

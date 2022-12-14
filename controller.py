@@ -231,10 +231,14 @@ def tecidoupdate():
 
 @app.route("/usuarios", methods=["GET","POST"])
 def usuariosconsulta():
-    usuario = usuarios.consultar(conexão)
-    usuario = list(usuario)
+    usuarioss = usuarios.consultar(conexão)
+    usuario = list(usuarioss['usuario'])
+    senha = list(usuarioss['senha'])
+    nome = list(usuarioss['nome'])   
+    admin = list(usuarioss['admin'])
+    email = list(usuarioss['email'])
     print(usuario)
-    return render_template("usuarios.html", usuarios=usuario)
+    return render_template("usuarios.html", usuario=usuario, senha=senha, nome=nome, admin=admin, email=email)
 
 @app.route("/usuariosadicionar", methods=["GET"])
 def usuariosadicionar():
