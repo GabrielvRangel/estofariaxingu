@@ -19,14 +19,18 @@
             </div>
             <div class="popup-content">
                 <h3 class="popupcolors"><strong>UPDATE</strong></h3>
-                <form class="form" id="tecidoupdate" action="/tecidoupdate">
+                <form class="form" id="usuariosupdate" action="/usuariosupdate">
                     <div class="inputs">
-                        Artigo: <input type="text" name="novoartigo" id="novoartigo" class="poppupforminputtext">
-                        Preço Compra: <input type="number" name="novopreco_venda" id="novopreco_venda" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
-                        Preço Venda: <input name="novopreco_compra" type="number" id="novopreco_compra" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
-                        <input type="hidden" name="artigo" id="artigo">
-                        <input type="hidden" name="preco_venda" id="preco_venda">
-                        <input type="hidden" name="preco_compra" id="preco_compra">
+                        Usuario: <input type="text" name="novousuario" id="novousuario" class="poppupforminputtext">
+                        Senha: <input type="text" name="novosenha" id="novosenha" class="poppupforminputtext">
+                        Nome: <input type="text" name="novonome" id="novonome" class="poppupforminputtext">
+                        Admin: <input type="text" name="novoadmin" id="novoadmin" class="poppupforminputtext">
+                        Email: <input type="text" name="novoemail" id="novoemail" class="poppupforminputtext">
+                        <input type="hidden" name="usuario" id="usuario">
+                        <input type="hidden" name="senha" id="senha">
+                        <input type="hidden" name="nome" id="nome">
+                        <input type="hidden" name="admin" id="admin">
+                        <input type="hidden" name="email" id="email">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="confirmar">Confirmar</button>
@@ -36,11 +40,10 @@
             </div>
             <div class="popup-delete">
                 <h3 class="popupcolors"><strong>VOCÊ REALMENTE DESEJA DELETAR?</strong></h3>
-                <form class="delete" id="tecidodelete" action="/tecidodelete">
+                <form class="delete" id="usuariosdelete" action="/usuariosdelete">
                     <div id="inputs">
-                        <input type="hidden" name="artigodelete" id="artigodelete">
-                        <input type="hidden" name="preco_vendadelete" id="preco_vendadelete">
-                        <input type="hidden" name="preco_compradelete" id="preco_compradelete">
+                        <input type="hidden" name="usuariodelete" id="usuariodelete">
+                        <input type="hidden" name="senhadelete" id="senhadelete">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="deletar">SIM</button>
@@ -50,11 +53,13 @@
             </div>
             <div class="popup-adicionar">
                 <h3 class="popupcolors"><strong>ADICIONAR</strong></h3>
-                <form class="form" id="tecidoadicionar" action="/tecidoadicionar">
+                <form class="form" id="usuariosadicionar" action="/usuariosadicionar">
                     <div class="inputs">
-                        Artigo: <input type="text" name="artigoadicionar" id="artigoadicionar" class="poppupforminputtext">
-                        Preço Venda: <input type="number" name="preco_vendaadicionar" step=".01"  id="preco_vendaadicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
-                        Preço Compra: <input name="preco_compraadicionar" type="number" step=".01"  id="preco_compraadicionar" class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        Usuario: <input type="text" name="usuarioadicionar" id="usuarioadicionar" class="poppupforminputtext">
+                        Senha: <input type="text" name="senhaadicionar" id="senhaadicionar" class="poppupforminputtext">
+                        Nome: <input type="text" name="nomeadicionar" id="nomeadicionar" class="poppupforminputtext">
+                        Admin: <input type="text" name="adminadicionar" id="adminadicionar" class="poppupforminputtext">
+                        Email: <input type="text" name="emailadicionar" id="emailadicionar" class="poppupforminputtext">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="adicionar">Confirmar</button>
@@ -75,7 +80,7 @@
                 <a href='/itemsadicionais'><button type="submit" class="menu_button"> Itens Adicionais </button></a>
                 <a href='/parâmetros'><button type="submit" class="menu_button"> Parâmetros </button></a>
                 <a href='/tecido'><button type="submit" class="menu_button"> Tecidos </button></a>
-                <a href='/usuarios'><button type="submit" class="menu_button_selecionado"> Usuarios </button></a>
+                <a href='/usuarios'><button type="submit" class="menu_button_selecionado"> Usuários </button></a>
             </div>
         </div>
 
@@ -105,9 +110,11 @@
                                 <tbody id="filtrando">
                                     {% for usuario in usuarios %}
                                     <tr>
-                                        <td id="A{{loop.index-1}}">{{usuario.usuario[loop.index-1]}}</td>
-                                        <td id="B{{loop.index-1}}">{{usuario.senha[loop.index-1]}}</td>
+                                        <td id="A{{loop.index-1}}">{{usuario.usuario}}</td>
+                                        <td id="B{{loop.index-1}}">{{usuario.senha}}</td>
                                         <td id="C{{loop.index-1}}">{{usuario.nome[loop.index-1]}}</td>
+                                        <td id="C{{loop.index-1}}">{{usuario.admin[loop.index-1]}}</td>
+                                        <td id="C{{loop.index-1}}">{{usuario.email[loop.index-1]}}</td>
                                         <td id="{{loop.index-1}}" onclick="updatebutton(this.id)"><input type="button"
                                                 class="updatebutton" value="update"></td>
                                         <td id="{{loop.index-1}}" onclick="deletebutton(this.id)"><input type="button"
@@ -147,15 +154,21 @@
         });
 
         function updatebutton(id) {
-            artigo = $('#A' + id).text();
-            preco_venda = $('#B' + id).text();
-            preco_compra = $('#C' + id).text();
-            $('#artigo').val(artigo);
-            $('#preco_venda').val(preco_venda);
-            $('#preco_compra').val(preco_compra);
-            $('#novoartigo').val(artigo);
-            $('#novopreco_venda').val(preco_venda);
-            $('#novopreco_compra').val(preco_compra);
+            usuario = $('#A' + id).text();
+            senha = $('#B' + id).text();
+            nome = $('#C' + id).text();
+            admin = $('#C' + id).text();
+            email = $('#C' + id).text();
+            $('#usuario').val(usuario);
+            $('#senha').val(senha);
+            $('#nome').val(nome);
+            $('#admin').val(admin);
+            $('#email').val(email);
+            $('#novousuario').val(novousuario);
+            $('#novosenha').val(novosenha);
+            $('#novonome').val(novonome);
+            $('#novoadmin').val(novoadmin);
+            $('#novoemail').val(novoemail);
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'block';
             const popupdelete = document.querySelector('.popup-delete');
@@ -169,12 +182,10 @@
         };
 
         function deletebutton(id) {
-            artigodelete = $('#A' + id).text();
-            preco_vendadelete = $('#B' + id).text();
-            preco_compradelete = $('#C' + id).text();
-            $('#artigodelete').val(artigodelete);
-            $('#preco_vendadelete').val(preco_vendadelete);
-            $('#preco_compradelete').val(preco_compradelete);
+            usuariodelete = $('#A' + id).text();
+            senhadelete = $('#B' + id).text();
+            $('#usuariodelete').val(usuariodelete);
+            $('#senhadelete').val(senhadelete);
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'block';
             const popupupdate = document.querySelector('.popup-content');
@@ -206,7 +217,7 @@
         cancelarbutton.addEventListener('click', () => {
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'none';
-            document.getElementById('tecidoupdate').onsubmit = function () {
+            document.getElementById('usuariosupdate').onsubmit = function () {
                 return false;
             }
         });
@@ -216,7 +227,7 @@
         deletecancelarbutton.addEventListener('click', () => {
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'none';
-            document.getElementById('tecidodelete').onsubmit = function () {
+            document.getElementById('usuariosdelete').onsubmit = function () {
                 return false;
             }
         });
@@ -226,7 +237,7 @@
         adicionarcancelarbutton.addEventListener('click', () => {
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'none';
-            document.getElementById('tecidoadicionar').onsubmit = function () {
+            document.getElementById('usuariosadicionar').onsubmit = function () {
                 return false;
             }
         });
@@ -239,7 +250,7 @@
             $('#textocarregamento').empty().append("Atualizando dados, aguarde...");
             const carregamento = document.querySelector('.carregamento');
             carregamento.style.display = 'block';
-            document.getElementById('tecidoupdate').onsubmit = function () {
+            document.getElementById('usuariosupdate').onsubmit = function () {
                 return true;
             }
         });
@@ -251,7 +262,7 @@
             $('#textocarregamento').empty().append("Deletando dados, aguarde...");
             const carregamento = document.querySelector('.carregamento');
             carregamento.style.display = 'block';
-            document.getElementById('tecidodelete').onsubmit = function () {
+            document.getElementById('usuariosdelete').onsubmit = function () {
                 return true;
             }
         });
