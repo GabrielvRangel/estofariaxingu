@@ -23,7 +23,10 @@
                     <div class="inputs">
                         Senha: <input type="text" name="novosenha" id="novosenha" class="poppupforminputtext">
                         Nome: <input type="text" name="novonome" id="novonome" class="poppupforminputtext">
-                        Admin: <select type="text" name="novoadmin" id="novoadmin" class="poppupforminputtext"><option value="Sim">Sim</option><option value="Não">Não</option></select>
+                        Admin: <select type="text" name="novoadmin" id="novoadmin" class="poppupforminputtext">
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
                         Email: <input type="text" name="novoemail" id="novoemail" class="poppupforminputtext">
                         <input type="hidden" name="usuario" id="usuario">
                         <input type="hidden" name="senha" id="senha">
@@ -54,10 +57,15 @@
                 <h3 class="popupcolors"><strong>ADICIONAR</strong></h3>
                 <form class="form" id="usuariosadicionar" action="/usuariosadicionar">
                     <div class="inputs">
-                        Usuario: <input type="text" name="usuarioadicionar" id="usuarioadicionar" class="poppupforminputtext">
+                        Usuario: <input type="text" name="usuarioadicionar" id="usuarioadicionar"
+                            class="poppupforminputtext">
                         Senha: <input type="text" name="senhaadicionar" id="senhaadicionar" class="poppupforminputtext">
                         Nome: <input type="text" name="nomeadicionar" id="nomeadicionar" class="poppupforminputtext">
-                        Admin: <select type="text" name="adminadicionar" id="adminadicionar" class="poppupforminputtext"><option value="Sim">Sim</option><option value="Não">Não</option></select>
+                        Admin: <select type="text" name="adminadicionar" id="adminadicionar"
+                            class="poppupforminputtext">
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
                         Email: <input type="text" name="emailadicionar" id="emailadicionar" class="poppupforminputtext">
                     </div>
                     <div class="buttons">
@@ -74,7 +82,8 @@
         <div class="menu" id="menu">
             <div class="menu_div_button">
                 <a href='/'><button type="submit" class="menu_button"> Calculadora </button></a>
-                <a href='/custovariavelgeral'><button type="submit" class="menu_button">Custo Variável Geral</button></a>
+                <a href='/custovariavelgeral'><button type="submit" class="menu_button">Custo Variável
+                        Geral</button></a>
                 <a href='/frete'><button type="submit" class="menu_button"> Frete </button></a>
                 <a href='/itemsadicionais'><button type="submit" class="menu_button"> Itens Adicionais </button></a>
                 <a href='/parâmetros'><button type="submit" class="menu_button"> Parâmetros </button></a>
@@ -201,23 +210,16 @@
 
         const adicionarbutton = document.querySelector('.adicionarbutton')
         adicionarbutton.addEventListener('click', () => {
-            const lista_usuario = {usuario}
-            novo_usuario = $('#usuarioadicionar').val()
-            if (lista_usuario.includes(novo_usuario)){
-                console.log('funcionou!')
-                return false;
-            }else{
-                const popup = document.querySelector('.popup-wrapper');
-                popup.style.display = 'block';
-                const popupdelete = document.querySelector('.popup-delete');
-                popupdelete.style.display = 'none';
-                const popupupdate = document.querySelector('.popup-content');
-                popupupdate.style.display = 'none';
-                const popupadicionar = document.querySelector('.popup-adicionar');
-                popupadicionar.style.display = 'block';
-                const popupprincipal = document.querySelector('.popup');
-                popupprincipal.style.height = '55%';
-            }
+            const popup = document.querySelector('.popup-wrapper');
+            popup.style.display = 'block';
+            const popupdelete = document.querySelector('.popup-delete');
+            popupdelete.style.display = 'none';
+            const popupupdate = document.querySelector('.popup-content');
+            popupupdate.style.display = 'none';
+            const popupadicionar = document.querySelector('.popup-adicionar');
+            popupadicionar.style.display = 'block';
+            const popupprincipal = document.querySelector('.popup');
+            popupprincipal.style.height = '55%';
         });
 
         //botão cancelar do popup update
