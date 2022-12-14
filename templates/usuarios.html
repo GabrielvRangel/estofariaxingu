@@ -246,13 +246,19 @@
         //botão confirmar do popup
         const confirmarbutton = document.querySelector('.confirmar')
         confirmarbutton.addEventListener('click', () => {
-            const popup = document.querySelector('.popup-content');
-            popup.style.display = 'none';
-            $('#textocarregamento').empty().append("Atualizando dados, aguarde...");
-            const carregamento = document.querySelector('.carregamento');
-            carregamento.style.display = 'block';
-            document.getElementById('usuariosupdate').onsubmit = function () {
-                return true;
+            const lista_usuario = {usuario}
+            novo_usuario = $('#usuarioadicionar').val()
+            if (lista_usuario.includes(novo_usuario)){
+                console.log('funcionou!')
+            }else{
+                const popup = document.querySelector('.popup-content');
+                popup.style.display = 'none';
+                $('#textocarregamento').empty().append("Atualizando dados, aguarde...");
+                const carregamento = document.querySelector('.carregamento');
+                carregamento.style.display = 'block';
+                document.getElementById('usuariosupdate').onsubmit = function () {
+                    return true;
+                }
             }
         });
 
