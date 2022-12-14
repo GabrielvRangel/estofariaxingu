@@ -246,11 +246,6 @@ def usuariosadicionar():
     nomeadicionar = request.args.get('nomeadicionar')
     adminadicionar = request.args.get('adminadicionar')
     emailadicionar = request.args.get('emailadicionar')
-    print(usuarioadicionar)
-    print(senhaadicionar)
-    print(nomeadicionar)
-    print(adminadicionar)
-    print(emailadicionar)
     usuarios.adicionar(conexão, usuarioadicionar, senhaadicionar, nomeadicionar, adminadicionar,emailadicionar)
     return redirect(localhost + 'usuarios', code=302)
 
