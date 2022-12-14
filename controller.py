@@ -232,13 +232,11 @@ def tecidoupdate():
 @app.route("/usuarios", methods=["GET","POST"])
 def usuariosconsulta():
     usuarioss = usuarios.consultar(conexão)
-    print(usuarioss)
     usuario = list(usuarioss['usuario'])
     senha = list(usuarioss['senha'])
     nome = list(usuarioss['nome'])   
     admin = list(usuarioss['admin'])
     email = list(usuarioss['email'])
-    print(usuario)
     return render_template("usuarios.html", usuario=usuario, senha=senha, nome=nome, admin=admin, email=email)
 
 @app.route("/usuariosadicionar", methods=["GET"])
@@ -248,6 +246,11 @@ def usuariosadicionar():
     nomeadicionar = request.args.get('nomeadicionar')
     adminadicionar = request.args.get('adminadicionar')
     emailadicionar = request.args.get('emailadicionar')
+    print(usuarioadicionar)
+    print(senhaadicionar)
+    print(nomeadicionar)
+    print(adminadicionar)
+    print(emailadicionar)
     usuarios.adicionar(conexão, usuarioadicionar, senhaadicionar, nomeadicionar, adminadicionar,emailadicionar)
     return redirect(localhost + 'usuarios', code=302)
 
