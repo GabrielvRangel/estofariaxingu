@@ -272,7 +272,7 @@ class usuarios():
         con = connect.connect() 
         sql = f"""
         DELETE FROM usuarios
-        WHERE usuario = '{usuario}' and senha = '{senha}'
+        WHERE "usuario" = '{usuario}' and "senha" = '{senha}'
         """
         try:
             trans = con.begin()
@@ -285,7 +285,7 @@ class usuarios():
     def adicionar(self, connect, usuario, senha, nome, admin, email):
         con = connect.connect() 
         sql = f"""
-        INSERT  INTO  usuarios(usuario, senha, nome, admin, email)
+        INSERT  INTO  usuarios("usuario", "senha", "nome", "admin", "email")
         VALUES ('{usuario}', '{senha}', {nome}, {admin}, {email});
         """
         try:
@@ -300,8 +300,8 @@ class usuarios():
         con = connect.connect() 
         sql = f"""
         UPDATE usuarios
-        SET usuario = '{novousuario}',  senha = '{novosenha}',  nome = {novonome}, admin = {novoadmin}, email = {novoemail}
-        WHERE usuario = '{usuario}' and senha = '{senha}' and nome = {nome} and admin = {admin} and email = {email}
+        SET "usuario" = '{novousuario}',  "senha" = '{novosenha}',  "nome" = {novonome}, "admin" = {novoadmin}, "email" = {novoemail}
+        WHERE "usuario" = '{usuario}' and "senha" = '{senha}' and "nome" = {nome} and "admin" = {admin} and "email" = {email}
         """
         try:
             trans = con.begin()
