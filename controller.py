@@ -232,6 +232,7 @@ def tecidoupdate():
 @app.route("/usuarios", methods=["GET","POST"])
 def usuariosconsulta():
     usuario = usuarios.consultar(conexão)
+    usuario = list(usuario)
     print(usuario)
     return render_template("usuarios.html", usuarios=usuario)
 
