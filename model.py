@@ -296,11 +296,11 @@ class usuarios():
             trans.rollback()
         return print('Atualização realizada.')
 
-    def atualizar(self, connect, usuario, novousuario, senha, novosenha, nome, novonome, admin, novoadmin, email, novoemail):
+    def atualizar(self, connect, usuario, senha, novosenha, nome, novonome, admin, novoadmin, email, novoemail):
         con = connect.connect() 
         sql = f"""
         UPDATE usuarios
-        SET "usuario" = '{novousuario}',  "senha" = '{novosenha}',  "nome" = '{novonome}', "admin" = '{novoadmin}', "email" = '{novoemail}'
+        SET "senha" = '{novosenha}',  "nome" = '{novonome}', "admin" = '{novoadmin}', "email" = '{novoemail}'
         WHERE "usuario" = '{usuario}' and "senha" = '{senha}' and "nome" = '{nome}' and "admin" = '{admin}' and "email" = '{email}'
         """
         try:

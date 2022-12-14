@@ -259,7 +259,6 @@ def usuariosdelete():
 @app.route("/usuariosupdate", methods=["GET"])
 def usuariosupdate():
     usuario = request.args.get('usuario')
-    novousuario = request.args.get('novousuario')
     senha = request.args.get('senha')
     novosenha = request.args.get('novosenha')
     nome = request.args.get('nome')
@@ -268,7 +267,7 @@ def usuariosupdate():
     novoadmin = request.args.get('novoadmin')
     email = request.args.get('email')
     novoemail = request.args.get('novoemail')
-    usuarios.atualizar(conexão, usuario, novousuario, senha, novosenha, nome, novonome, admin, novoadmin, email, novoemail)
+    usuarios.atualizar(conexão, usuario, senha, novosenha, nome, novonome, admin, novoadmin, email, novoemail)
     return redirect(localhost + 'usuarios', code=302)
 
 if __name__ == "__main__":
