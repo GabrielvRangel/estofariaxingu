@@ -272,10 +272,14 @@
             novo_usuario = $('#usuarioadicionar').val()
             if (lista_usuario.includes(novo_usuario)) {
                 console.log('usuario ja existe!')
+                document.getElementById('usuariosadicionar').onsubmit = function () {
                 return false;
+                }
             }else{
                 console.log('usuario nao existe!')
+                document.getElementById('usuariosadicionar').onsubmit = function () {
                 return false;
+                }
             }
         });
 
