@@ -55,6 +55,7 @@ def login():
     usuario = request.args.get('usuario')
     senha = request.args.get('senha')
     permissao_logar = len(usuarios.verificar_usuario(conexão, usuario, senha))
+    
     if session['usuario_logado'] == None and  permissao_logar >= 1:
         session['usuario_logado'] = usuario
         return render_template("index.html")
@@ -62,6 +63,7 @@ def login():
         return render_template("index.html")
     if session['usuario_logado'] == None and  permissao_logar == 0:
         return render_template("tela_login.html")
+    return render_template("tela_login.html")
 
 @app.route("/custovariavelgeral", methods=["GET","POST"])
 def custovariavelgeralconsulta():
