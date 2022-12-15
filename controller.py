@@ -62,17 +62,17 @@ def login():
     if ('usuario_logado' not in session or session['usuario_logado'] == None) and  permissao_logar >= 1:
         session['usuario_logado'] = usuario
         session['admin'] = tabela_usuario.loc[0,'admin']
-        return redirect(localhost + '/', code=302)
+        return redirect(localhost, code=302)
     if ('usuario_logado' not in session or session['usuario_logado'] == None) and  permissao_logar == 0:
-        return redirect(localhost + '/login', code=302)
+        return redirect(localhost + 'login', code=302)
     if 'usuario_logado' in session and session['usuario_logado'] != None:
-        return redirect(localhost + '/', code=302)
+        return redirect(localhost, code=302)
     
 @app.route("/logout", methods=["GET","POST"])
 def logout():
     session['usuario_logado'] = None
     session['admin'] = None
-    return redirect(localhost + '/login', code=302)
+    return redirect(localhost + 'login', code=302)
     
 
 @app.route("/custovariavelgeral", methods=["GET","POST"])
