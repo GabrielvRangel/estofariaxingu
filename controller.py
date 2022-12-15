@@ -293,7 +293,7 @@ def tecidoupdate():
 
 @app.route("/usuarios", methods=["GET","POST"])
 def usuariosconsulta():
-    if 'usuario_logado' not in session or session.get['admin'] == 'Não' or session['usuario_logado'] == None:
+    if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
         return render_template("tela_login.html")
     usuarioss = usuarios.consultar(conexão)
     usuario = list(usuarioss['usuario'])
