@@ -20,7 +20,7 @@ conexão = con.servidor()
 
 @app.route("/", methods=["GET","POST"])
 def index():
-    if 'usuario_logado' not in session:
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
         return render_template("tela_login.html") 
     parâmetros = parâmetro.consultar(conexão)
     tecido = tecidos.consultar(conexão)
@@ -305,7 +305,7 @@ def usuariosconsulta():
 
 @app.route("/usuariosadicionar", methods=["GET"])
 def usuariosadicionar():
-    if 'usuario_logado' not in session or session.get['admin'] == 'Não' or session['usuario_logado'] == None:
+    if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
         return render_template("tela_login.html")
     usuarioadicionar = request.args.get('usuarioadicionar')
     senhaadicionar = request.args.get('senhaadicionar')
@@ -317,7 +317,7 @@ def usuariosadicionar():
 
 @app.route("/usuariosdelete", methods=["GET"])
 def usuariosdelete():
-    if 'usuario_logado' not in session or session.get['admin'] == 'Não' or session['usuario_logado'] == None:
+    if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
         return render_template("tela_login.html")
     usuariodelete = request.args.get('usuariodelete')
     senhadelete = request.args.get('senhadelete')
@@ -326,7 +326,7 @@ def usuariosdelete():
 
 @app.route("/usuariosupdate", methods=["GET"])
 def usuariosupdate():
-    if 'usuario_logado' not in session or session.get['admin'] == 'Não' or session['usuario_logado'] == None:
+    if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
         return render_template("tela_login.html")
     usuario = request.args.get('usuario')
     senha = request.args.get('senha')
