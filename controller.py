@@ -62,17 +62,17 @@ def login():
     if 'usuario_logado' not in session and  permissao_logar >= 1:
         session['usuario_logado'] = usuario
         session['admin'] = tabela_usuario.loc[0,'admin']
-        return render_template("index.html")
+        return redirect(localhost + '/', code=302)
     if 'usuario_logado' not in session and  permissao_logar == 0:
-        return render_template("tela_login.html")
+        return redirect(localhost + '/login', code=302)
     if 'usuario_logado' in session:
-        return render_template("index.html")
+        return redirect(localhost + '/', code=302)
     
 @app.route("/logout", methods=["GET","POST"])
 def logout():
     session['usuario_logado'] = None
     session['admin'] = None
-    return render_template("tela_login.html")
+    return redirect(localhost + '/login', code=302)
     
 
 @app.route("/custovariavelgeral", methods=["GET","POST"])
