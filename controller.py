@@ -62,12 +62,12 @@ def login():
     if ('usuario_logado' not in session or session['usuario_logado'] == None) and  permissao_logar >= 1:
         session['usuario_logado'] = usuario
         session['admin'] = tabela_usuario.loc[0,'admin']
-        return render_template("index.html")
+        return render_template("index.html", usuario_nome = session['usuario_logado'])
     if ('usuario_logado' not in session or session['usuario_logado'] == None) and  permissao_logar == 0:
         flash('Usuario ou senha incorreto.')
         return render_template("tela_login.html")
     if 'usuario_logado' in session and session['usuario_logado'] != None:
-        return render_template("index.html")
+        return render_template("index.html", usuario_nome = session['usuario_logado'])
     
 @app.route("/logout", methods=["GET","POST"])
 def logout():
