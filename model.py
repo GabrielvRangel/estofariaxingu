@@ -264,9 +264,10 @@ class parâmetros():
 
 class usuarios():
     def verificar_usuario(self, conexão, usuario, senha):
-        consulta = "select * from usuarios where usuario = '{usuario}' and senha = '{senha}'"
+        consulta = f"select * from usuarios where usuario = '{usuario}' and senha = '{senha}'"
         usuarios = pd.read_sql_query(consulta, con=conexão)
         return usuarios
+        
 
     def consultar(self, conexão):
         consulta = "select * from usuarios order by usuario"
