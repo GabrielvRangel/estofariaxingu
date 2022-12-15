@@ -1,6 +1,6 @@
 import os
 from threading import local
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash
 from sqlalchemy import Time, create_engine
 import pandas as pd
 import model
@@ -64,6 +64,7 @@ def login():
         session['admin'] = tabela_usuario.loc[0,'admin']
         return render_template("index.html")
     if ('usuario_logado' not in session or session['usuario_logado'] == None) and  permissao_logar == 0:
+        flash('Usuario ou senha incorreto.')
         return render_template("tela_login.html")
     if 'usuario_logado' in session and session['usuario_logado'] != None:
         return render_template("index.html")
@@ -294,7 +295,8 @@ def tecidoupdate():
 @app.route("/usuarios", methods=["GET","POST"])
 def usuariosconsulta():
     if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
-        return render_template("tela_login.html")
+        flash('Você não tem acesso administrador para acessar a aba usuários.')
+        return render_template("index.html")
     usuarioss = usuarios.consultar(conexão)
     usuario = list(usuarioss['usuario'])
     senha = list(usuarioss['senha'])
@@ -306,7 +308,8 @@ def usuariosconsulta():
 @app.route("/usuariosadicionar", methods=["GET"])
 def usuariosadicionar():
     if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
-        return render_template("tela_login.html")
+        flash('Você não tem acesso administrador para acessar a aba usuários.')
+        return render_template("index.html")
     usuarioadicionar = request.args.get('usuarioadicionar')
     senhaadicionar = request.args.get('senhaadicionar')
     nomeadicionar = request.args.get('nomeadicionar')
@@ -318,7 +321,8 @@ def usuariosadicionar():
 @app.route("/usuariosdelete", methods=["GET"])
 def usuariosdelete():
     if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
-        return render_template("tela_login.html")
+        flash('Você não tem acesso administrador para acessar a aba usuários.')
+        return render_template("index.html")
     usuariodelete = request.args.get('usuariodelete')
     senhadelete = request.args.get('senhadelete')
     usuarios.deletar(conexão, usuariodelete, senhadelete)
@@ -327,7 +331,8 @@ def usuariosdelete():
 @app.route("/usuariosupdate", methods=["GET"])
 def usuariosupdate():
     if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
-        return render_template("tela_login.html")
+        flash('Você não tem acesso administrador para acessar a aba usuários.')
+        return render_template("index.html")
     usuario = request.args.get('usuario')
     senha = request.args.get('senha')
     novosenha = request.args.get('novosenha')

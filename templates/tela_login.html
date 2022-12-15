@@ -8,6 +8,15 @@
 </head>
 <body class="body_tela_login">
 	<div class="container_tela_login">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %} 
+                <ul id="messages" class="list-unstyled">
+                {% for message in messages %}
+                    <li class="alert alert-success">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         <form class="formulario_tela_login" action="/login">
             <h2>BEM VINDO!</h2>
             <input type="text" class="form-control" id="usuario" placeholder="Digite o seu usuário..." name="usuario">
