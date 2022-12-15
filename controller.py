@@ -62,12 +62,13 @@ def login():
     if ('usuario_logado' not in session or session['usuario_logado'] == None) and  permissao_logar >= 1:
         session['usuario_logado'] = usuario
         session['admin'] = tabela_usuario.loc[0,'admin']
-        return render_template("index.html", usuario_nome = session['usuario_logado'])
+        session['nome'] = tabela_usuario.loc[0,'nome']
+        return render_template("index.html", usuario_nome = session['nome'])
     if ('usuario_logado' not in session or session['usuario_logado'] == None) and  permissao_logar == 0:
         flash('Usuario ou senha incorreto.')
         return render_template("tela_login.html")
     if 'usuario_logado' in session and session['usuario_logado'] != None:
-        return render_template("index.html", usuario_nome = session['usuario_logado'])
+        return render_template("index.html", usuario_nome = session['nome'])
     
 @app.route("/logout", methods=["GET","POST"])
 def logout():
@@ -87,7 +88,7 @@ def custovariavelgeralconsulta():
     custovariavelgeralvalorunitario = list(custovariavelgeral['valor_unitario'])
     custovariavelgeralquantidade = list(custovariavelgeral['quantidade'])
     return render_template("custovariavelgeral.html", custovariavelgeraldeheading=custovariavelgeraldeheading, custovariavelgeralmaterial=custovariavelgeralmaterial,
-    custovariavelgeraluso=custovariavelgeraluso, custovariavelgeralvalorunitario=custovariavelgeralvalorunitario, custovariavelgeralquantidade=custovariavelgeralquantidade)
+    custovariavelgeraluso=custovariavelgeraluso, custovariavelgeralvalorunitario=custovariavelgeralvalorunitario, custovariavelgeralquantidade=custovariavelgeralquantidade, usuario_nome = session['nome'])
 
 @app.route("/custovariavelgeraladicionar", methods=["GET"])
 def custovariavelgeraladicionar():
@@ -135,7 +136,7 @@ def freteconsulta():
     fretemunicípio = list(fretepandas['município'])
     fretebairro = list(fretepandas['bairro'])
     fretevalor = list(fretepandas['valor'])
-    return render_template("frete.html", freteheading=freteheading, fretemunicípio=fretemunicípio, fretebairro=fretebairro, fretevalor=fretevalor)
+    return render_template("frete.html", freteheading=freteheading, fretemunicípio=fretemunicípio, fretebairro=fretebairro, fretevalor=fretevalor, usuario_nome = session['nome'])
 
 @app.route("/freteadicionar", methods=["GET"])
 def freteadicionar():
@@ -178,7 +179,7 @@ def itemsadicionais():
     itemsadicionaisheading = list(itemsadicionais)
     itemsadicionaisitem = list(itemsadicionais['item'])
     itemsadicionaisvalor_unitario = list(itemsadicionais['valor_unitario'])
-    return render_template("items_adicionais.html", itemsadicionaisheading=itemsadicionaisheading, itemsadicionaisitem=itemsadicionaisitem, itemsadicionaisvalor_unitario=itemsadicionaisvalor_unitario)
+    return render_template("items_adicionais.html", itemsadicionaisheading=itemsadicionaisheading, itemsadicionaisitem=itemsadicionaisitem, itemsadicionaisvalor_unitario=itemsadicionaisvalor_unitario, usuario_nome = session['nome'])
 
 @app.route("/itemsadicionaisadicionar", methods=["GET"])
 def itemsadicionaisadicionar():
@@ -217,7 +218,7 @@ def parâmetrosconsulta():
     parâmetrosheading = list(parâmetros)
     parâmetrositem = list(parâmetros['item'])
     parâmetrosvalor = list(parâmetros['valor'])
-    return render_template("parâmetros.html", parâmetrosheading=parâmetrosheading, parâmetrositem=parâmetrositem, parâmetrosvalor=parâmetrosvalor)
+    return render_template("parâmetros.html", parâmetrosheading=parâmetrosheading, parâmetrositem=parâmetrositem, parâmetrosvalor=parâmetrosvalor, usuario_nome = session['nome'])
 
 @app.route("/parâmetrosadicionar", methods=["GET"])
 def parâmetrosadicionar():
@@ -257,7 +258,7 @@ def tecidoconsulta():
     tecidoartigo = list(tecido['artigo'])
     tecidopreco_venda = list(tecido['preco_venda'])
     tecidopreco_compra = list(tecido['preco_compra'])   
-    return render_template("tecido.html", tecidoheading=tecidoheading, tecidoartigo=tecidoartigo, tecidopreco_venda=tecidopreco_venda, tecidopreco_compra=tecidopreco_compra)
+    return render_template("tecido.html", tecidoheading=tecidoheading, tecidoartigo=tecidoartigo, tecidopreco_venda=tecidopreco_venda, tecidopreco_compra=tecidopreco_compra, usuario_nome = session['nome'])
 
 @app.route("/tecidoadicionar", methods=["GET"])
 def tecidoadicionar():
@@ -303,7 +304,7 @@ def usuariosconsulta():
     nome = list(usuarioss['nome'])   
     admin = list(usuarioss['admin'])
     email = list(usuarioss['email'])
-    return render_template("usuarios.html", usuario=usuario, senha=senha, nome=nome, admin=admin, email=email)
+    return render_template("usuarios.html", usuario=usuario, senha=senha, nome=nome, admin=admin, email=email, usuario_nome = session['nome'])
 
 @app.route("/usuariosadicionar", methods=["GET"])
 def usuariosadicionar():
