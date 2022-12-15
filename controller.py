@@ -1,12 +1,13 @@
 import os
 from threading import local
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 from sqlalchemy import Time, create_engine
 import pandas as pd
 import model
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
+app.secret_key = 'xinguadmin'
 localhost = 'http://estofaria-xingu.herokuapp.com/'
 con = model.conexão()
 custo_variavel_geral = model.custo_variavel_geral()
@@ -51,6 +52,11 @@ def index():
 
 @app.route("/login", methods=["GET","POST"])
 def login():
+    usuario = request.args.get('usuario')
+    senha = request.args.get('senha')
+    print(usuario)
+    print(senha)
+    # session['usuario_logado'] = usuario
     return render_template("tela_login.html")
 
 @app.route("/custovariavelgeral", methods=["GET","POST"])
