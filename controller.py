@@ -55,6 +55,7 @@ def login():
     usuario = request.args.get('usuario')
     senha = request.args.get('senha')
     permissao_logar = len(usuarios.verificar_usuario(conexão, usuario, senha))
+    print(permissao_logar)
     if 'usuario_logado' not in session and  permissao_logar >= 1:
         session['usuario_logado'] = usuario
         return render_template("index.html")
