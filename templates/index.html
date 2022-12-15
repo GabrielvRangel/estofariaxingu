@@ -28,20 +28,19 @@
         </div>
 
         <div class="tela" id="tela">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %} 
-                    <ul id="messages" class="list-unstyled">
-                    {% for message in messages %}
-                        <li class="alert alert-success">{{ message }}</li>
-                    {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
-            
             <div class="barra-menu">
                 <h4 id="titulo"> Estofaria Xingú </h4>
             </div>
             <div class="teladados">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %} 
+                        <ul id="messages" class="list-unstyled">
+                        {% for message in messages %}
+                            <li class="alert alert-danger">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
                 <div class="tela-nome">
                     <h3 id="tela-nome">Calculadora</h3>
                 </div>
