@@ -13,16 +13,16 @@
             <input type="text" class="form-control" id="usuario" placeholder="Digite o seu usuário..." name="usuario">
             <input type="password" class="form-control" id="senha" placeholder="Digite a sua senha..." name="senha">
             <button type="submit" class="btn btn-success" id="button">Entrar</button>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %} 
-                    <ul id="messages" class="list-unstyled">
-                    {% for message in messages %}
-                        <li class="alert alert-danger">{{ message }}</li>
-                    {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
         </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %} 
+                <ul id="messages" class="list-unstyled">
+                {% for message in messages %}
+                    <li class="alert alert-danger">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
 	</div>
 </body>
 </html>
