@@ -287,6 +287,7 @@
     background-color: #D6A41D;
     display: flex;
     border: none;
+    align-items: center;
     width: 60px;
     height: 60px;
 }
@@ -592,6 +593,7 @@ table td {
         border: none;
         width: 45px;
         height: 45px;
+        align-items: center;
     }
     .tela-calculadora{
         position: relative;
@@ -712,6 +714,7 @@ table td {
         border: none;
         width: 37px;
         height: 37px;
+        align-items: center;
         z-index: 2;
     }
     .tabela {
