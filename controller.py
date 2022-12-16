@@ -295,7 +295,9 @@ def tecidoupdate():
 
 @app.route("/usuarios", methods=["GET","POST"])
 def usuariosconsulta():
-    if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return render_template("index.html")
+    if session['admin'] == 'Não':
         flash('Você não tem acesso administrador para utilizar a aba usuários.')
         return render_template("index.html")
     usuarioss = usuarios.consultar(conexão)
@@ -308,7 +310,9 @@ def usuariosconsulta():
 
 @app.route("/usuariosadicionar", methods=["GET"])
 def usuariosadicionar():
-    if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return render_template("index.html")
+    if session['admin'] == 'Não':
         flash('Você não tem acesso administrador para utilizar a aba usuários.')
         return render_template("index.html")
     usuarioadicionar = request.args.get('usuarioadicionar')
@@ -321,9 +325,11 @@ def usuariosadicionar():
 
 @app.route("/usuariosdelete", methods=["GET"])
 def usuariosdelete():
-    if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
-        flash('Você não tem acesso administrador para utilizar a aba usuários.')
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
         return render_template("index.html")
+    if session['admin'] == 'Não':
+        flash('Você não tem acesso administrador para utilizar a aba usuários.')
+        return render_template("index.html")    
     usuariodelete = request.args.get('usuariodelete')
     senhadelete = request.args.get('senhadelete')
     usuarios.deletar(conexão, usuariodelete, senhadelete)
@@ -331,7 +337,9 @@ def usuariosdelete():
 
 @app.route("/usuariosupdate", methods=["GET"])
 def usuariosupdate():
-    if 'usuario_logado' not in session or session['admin'] == 'Não' or session['usuario_logado'] == None:
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return render_template("index.html")
+    if session['admin'] == 'Não':
         flash('Você não tem acesso administrador para utilizar a aba usuários.')
         return render_template("index.html")
     usuario = request.args.get('usuario')
