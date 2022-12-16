@@ -296,7 +296,7 @@ def tecidoupdate():
 @app.route("/usuarios", methods=["GET","POST"])
 def usuariosconsulta():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return render_template("index.html")
+        return render_template("tela_login.html")
     if session['admin'] == 'Não':
         flash('Você não tem acesso administrador para utilizar a aba usuários.')
         return render_template("index.html")
@@ -311,7 +311,7 @@ def usuariosconsulta():
 @app.route("/usuariosadicionar", methods=["GET"])
 def usuariosadicionar():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return render_template("index.html")
+        return render_template("tela_login.html")
     if session['admin'] == 'Não':
         flash('Você não tem acesso administrador para utilizar a aba usuários.')
         return render_template("index.html")
@@ -326,7 +326,7 @@ def usuariosadicionar():
 @app.route("/usuariosdelete", methods=["GET"])
 def usuariosdelete():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return render_template("index.html")
+        return render_template("tela_login.html")
     if session['admin'] == 'Não':
         flash('Você não tem acesso administrador para utilizar a aba usuários.')
         return render_template("index.html")    
