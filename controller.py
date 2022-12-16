@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = 'xinguadmin'
 localhost = 'http://estofaria-xingu.herokuapp.com/'
 con = model.conexão()
-custo_variavel_geral = model.custo_variavel_geral()
+custo_variavel_geral = model.custo_variavel_geral()  
 frete = model.frete()
 items_adicionais = model.items_adicionais()
 tecidos = model.tecido()
@@ -50,7 +50,7 @@ def index():
     custo_fixo_total=custo_fixo_total, custo_fixo_geral=custo_fixo_geral, horas_trabalhadas=horas_trabalhadas, listatecidos=listatecidos, listapreçocustotecido=listapreçocustotecido,
     listapreçoclientetecido=listapreçoclientetecido, largura_padrão_espuma=largura_padrão_espuma, listabairro=listabairro, listavalorfrete=listavalorfrete,
     custovariavelgeralacumuladomes=custovariavelgeralacumuladomes, listaitensadicionais=listaitensadicionais, valorunitarioitensadicionais=valorunitarioitensadicionais,
-    preço_cliente_espumas=preço_cliente_espumas, preço_estofaria_espumas=preço_estofaria_espumas, preço_impermeabilização=preço_impermeabilização)
+    preço_cliente_espumas=preço_cliente_espumas, preço_estofaria_espumas=preço_estofaria_espumas, preço_impermeabilização=preço_impermeabilização, usuario_nome = session['nome'])
 
 @app.route("/login", methods=["GET","POST"])
 def login():
