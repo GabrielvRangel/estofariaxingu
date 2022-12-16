@@ -338,7 +338,7 @@ def usuariosdelete():
 @app.route("/usuariosupdate", methods=["GET"])
 def usuariosupdate():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return render_template("index.html")
+        return render_template("tela_login.html")
     if session['admin'] == 'Não':
         flash('Você não tem acesso administrador para utilizar a aba usuários.')
         return render_template("index.html")
