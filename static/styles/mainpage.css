@@ -292,6 +292,10 @@
     height: 60px;
 }
 
+#enviar_registro{
+    right: 10px;
+}
+
 #titulo {
     position: relative;
     width: 180px;
