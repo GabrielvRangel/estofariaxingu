@@ -596,6 +596,15 @@ table td {
 
 /* tablet */
 @media (max-width: 1440px) and (min-width: 601px) {
+    #enviar_registro{
+        position: absolute;
+        right: 60px;
+        bottom: 10px;
+        width: 12%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .button-icon-menu {
         position: absolute;
         background-color: #D6A41D;
