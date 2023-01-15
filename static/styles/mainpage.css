@@ -297,6 +297,9 @@
     right: 95px;
     bottom: 10px;
     width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #titulo {
