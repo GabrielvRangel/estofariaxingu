@@ -604,6 +604,8 @@ table td {
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 15px;
+        font-weight: bold;
     }
     .button-icon-menu {
         position: absolute;
@@ -676,8 +678,9 @@ table td {
         position: absolute;
         right: 18px;
         bottom: 10px;
-        width: 27%;
-        font-size: 12px;
+        width: 22%;
+        font-size: 13px;
+        font-weight: bold;
         display: flex;
         align-items: center;
         justify-content: center;
