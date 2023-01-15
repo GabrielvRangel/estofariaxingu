@@ -677,6 +677,7 @@ table td {
         right: 18px;
         bottom: 10px;
         width: 27%;
+        font-size: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
