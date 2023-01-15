@@ -294,8 +294,9 @@
 
 #enviar_registro{
     position: absolute;
-    right: 100px;
-    width: 10%;
+    right: 95px;
+    bottom: 10px;
+    width: 7%;
 }
 
 #titulo {
