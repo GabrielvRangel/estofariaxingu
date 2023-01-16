@@ -592,8 +592,6 @@ table td {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-
-
 /* tablet */
 @media (max-width: 1440px) and (min-width: 601px) {
     #enviar_registro{

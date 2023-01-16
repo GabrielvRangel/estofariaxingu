@@ -19,20 +19,12 @@
             </div>
             <div class="popup-content">
                 <h3 class="popupcolors"><strong>UPDATE</strong></h3>
-                <form class="form" id="usuariosupdate" action="/usuariosupdate">
+                <form class="form" id="parâmetrosupdate" action="/parâmetrosupdate">
                     <div class="inputs">
-                        Senha: <input type="text" name="novosenha" id="novosenha" class="poppupforminputtext">
-                        Nome: <input type="text" name="novonome" id="novonome" class="poppupforminputtext">
-                        Admin: <select type="text" name="novoadmin" id="novoadmin" class="poppupforminputtext">
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
-                        </select>
-                        Email: <input type="text" name="novoemail" id="novoemail" class="poppupforminputtext">
-                        <input type="hidden" name="usuario" id="usuario">
-                        <input type="hidden" name="senha" id="senha">
-                        <input type="hidden" name="nome" id="nome">
-                        <input type="hidden" name="admin" id="admin">
-                        <input type="hidden" name="email" id="email">
+                        Item: <input type="text" name="novoitem" id="novoitem" class="poppupforminputtext">
+                        Valor: <input name="novovalor" type="number" id="novovalor" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
+                        <input type="hidden" name="item" id="item">
+                        <input type="hidden" name="valor" id="valor">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="confirmar">Confirmar</button>
@@ -42,10 +34,10 @@
             </div>
             <div class="popup-delete">
                 <h3 class="popupcolors"><strong>VOCÊ REALMENTE DESEJA DELETAR?</strong></h3>
-                <form class="delete" id="usuariosdelete" action="/usuariosdelete">
+                <form class="delete" id="parâmetrosdelete" action="/parâmetrosdelete">
                     <div id="inputs">
-                        <input type="hidden" name="usuariodelete" id="usuariodelete">
-                        <input type="hidden" name="senhadelete" id="senhadelete">
+                        <input type="hidden" name="itemdelete" id="itemdelete">
+                        <input type="hidden" name="valordelete" id="valordelete">
                     </div>
                     <div class="buttons">
                         <button type="submit" class="deletar">SIM</button>
@@ -55,19 +47,13 @@
             </div>
             <div class="popup-adicionar">
                 <h3 class="popupcolors"><strong>ADICIONAR</strong></h3>
-                <form class="form" id="usuariosadicionar" action="/usuariosadicionar">
-                    <div class="inputs"> 
-                        Usuario: <input type="text" name="usuarioadicionar" id="usuarioadicionar" class="poppupforminputtext">
-                        Senha: <input type="text" name="senhaadicionar" id="senhaadicionar" class="poppupforminputtext">
-                        Nome: <input type="text" name="nomeadicionar" id="nomeadicionar" class="poppupforminputtext">
-                        Admin: <select type="text" name="adminadicionar" id="adminadicionar" class="poppupforminputtext">
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
-                        </select>
-                        Email: <input type="text" name="emailadicionar" id="emailadicionar" class="poppupforminputtext">
+                <form class="form" id="parâmetrosadicionar" action="/parâmetrosadicionar">
+                    <div class="inputs">
+                        Item: <input type="text" name="itemadicionar" id="itemadicionar" class="poppupforminputtext">
+                        Valor: <input name="valoradicionar" type="number" id="valoradicionar" step=".01"  class="poppupforminputnumber" required="" maxlength="10" size="4">
                     </div>
                     <div class="buttons">
-                        <button type="submit" class="adicionar" id="confirmaradd">Confirmar</button>
+                        <button type="submit" class="adicionar">Confirmar</button>
                         <button type="submit" class="cancelar" id="cancelaradd">Cancelar</button>
                     </div>
                 </form>
@@ -80,14 +66,13 @@
         <div class="menu" id="menu">
             <div class="menu_div_button">
                 <a href='/'><button type="submit" class="menu_button"> Calculadora </button></a>
-                <a href='/registro_calculadora'><button type="submit" class="menu_button"> Registro </button></a>
-                <a href='/custovariavelgeral'><button type="submit" class="menu_button">Custo Variável
-                        Geral</button></a>
+                <a href='/custovariavelgeral'><button type="submit" class="menu_button">Custo Variável Geral</button></a>
+                <a href='/registro_calculadora'><button type="submit" class="menu_button_selecionado"> Registro </button></a>
                 <a href='/frete'><button type="submit" class="menu_button"> Frete </button></a>
                 <a href='/itemsadicionais'><button type="submit" class="menu_button"> Itens Adicionais </button></a>
                 <a href='/parâmetros'><button type="submit" class="menu_button"> Parâmetros </button></a>
                 <a href='/tecido'><button type="submit" class="menu_button"> Tecidos </button></a>
-                <a href='/usuarios'><button type="submit" class="menu_button_selecionado"> Usuários </button></a>
+                <a href='/usuarios'><button type="submit" class="menu_button"> Usuários </button></a>
             </div>
         </div>
 
@@ -98,7 +83,7 @@
             </div>
             <div class="teladados">
                 <div class="tela-nome">
-                    <h3 id="tela-nome">Usuarios</h3>
+                    <h3 id="tela-nome">Parâmetros</h3>
                     <button type="button" class="adicionarbutton">adicionar</button>
                 </div>
                 <form class="form">
@@ -108,23 +93,17 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Usuario</th>
-                                        <th>Senha</th>
-                                        <th>Nome</th>
-                                        <th>Admin</th>
-                                        <th>Email</th>
+                                        <th>Item</th>
+                                        <th>Valor</th>
                                         <th width="20px"></th>
                                         <th width="20px"></th>
                                     </tr>
                                 </thead>
                                 <tbody id="filtrando">
-                                    {% for quantidade in usuario %}
+                                    {% for quantidade in parâmetrositem %}
                                     <tr>
-                                        <td id="A{{loop.index-1}}">{{usuario[loop.index-1]}}</td>
-                                        <td id="B{{loop.index-1}}">{{senha[loop.index-1]}}</td>
-                                        <td id="C{{loop.index-1}}">{{nome[loop.index-1]}}</td>
-                                        <td id="D{{loop.index-1}}">{{admin[loop.index-1]}}</td>
-                                        <td id="E{{loop.index-1}}">{{email[loop.index-1]}}</td>
+                                        <td id="A{{loop.index-1}}">{{parâmetrositem[loop.index-1]}}</td>
+                                        <td id="B{{loop.index-1}}">{{parâmetrosvalor[loop.index-1]}}</td>
                                         <td id="{{loop.index-1}}" onclick="updatebutton(this.id)"><input type="button"
                                                 class="updatebutton" value="update"></td>
                                         <td id="{{loop.index-1}}" onclick="deletebutton(this.id)"><input type="button"
@@ -164,21 +143,12 @@
         });
 
         function updatebutton(id) {
-            usuario = $('#A' + id).text();
-            senha = $('#B' + id).text();
-            nome = $('#C' + id).text();
-            admin = $('#D' + id).text();
-            email = $('#E' + id).text();
-            $('#usuario').val(usuario);
-            $('#senha').val(senha);
-            $('#nome').val(nome);
-            $('#admin').val(admin);
-            $('#email').val(email);
-            $('#novousuario').val(usuario);
-            $('#novosenha').val(senha);
-            $('#novonome').val(nome);
-            $('#novoadmin').val(admin);
-            $('#novoemail').val(email);
+            item = $('#A' + id).text();
+            valor = $('#B' + id).text();
+            $('#item').val(item);
+            $('#valor').val(valor);
+            $('#novoitem').val(item);
+            $('#novovalor').val(valor);
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'block';
             const popupdelete = document.querySelector('.popup-delete');
@@ -192,10 +162,10 @@
         };
 
         function deletebutton(id) {
-            usuariodelete = $('#A' + id).text();
-            senhadelete = $('#B' + id).text();
-            $('#usuariodelete').val(usuariodelete);
-            $('#senhadelete').val(senhadelete);
+            itemdelete = $('#A' + id).text();
+            valordelete = $('#B' + id).text();
+            $('#itemdelete').val(itemdelete);
+            $('#valordelete').val(valordelete);
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'block';
             const popupupdate = document.querySelector('.popup-content');
@@ -227,7 +197,7 @@
         cancelarbutton.addEventListener('click', () => {
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'none';
-            document.getElementById('usuariosupdate').onsubmit = function () {
+            document.getElementById('parâmetrosupdate').onsubmit = function () {
                 return false;
             }
         });
@@ -237,22 +207,22 @@
         deletecancelarbutton.addEventListener('click', () => {
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'none';
-            document.getElementById('usuariosdelete').onsubmit = function () {
+            document.getElementById('parâmetrosdelete').onsubmit = function () {
                 return false;
             }
         });
 
-        //botão cancelar do popup add
+        //botão cancelar do popup update
         const adicionarcancelarbutton = document.querySelector('#cancelaradd')
         adicionarcancelarbutton.addEventListener('click', () => {
             const popup = document.querySelector('.popup-wrapper');
             popup.style.display = 'none';
-            document.getElementById('usuariosadicionar').onsubmit = function () {
+            document.getElementById('parâmetrosadicionar').onsubmit = function () {
                 return false;
             }
         });
 
-        //botão confirmar do popup update
+        //botão confirmar do popup
         const confirmarbutton = document.querySelector('.confirmar')
         confirmarbutton.addEventListener('click', () => {
             const popup = document.querySelector('.popup-content');
@@ -260,7 +230,7 @@
             $('#textocarregamento').empty().append("Atualizando dados, aguarde...");
             const carregamento = document.querySelector('.carregamento');
             carregamento.style.display = 'block';
-            document.getElementById('usuariosupdate').onsubmit = function () {
+            document.getElementById('parâmetrosupdate').onsubmit = function () {
                 return true;
             }
         });
@@ -272,10 +242,11 @@
             $('#textocarregamento').empty().append("Deletando dados, aguarde...");
             const carregamento = document.querySelector('.carregamento');
             carregamento.style.display = 'block';
-            document.getElementById('usuariosdelete').onsubmit = function () {
+            document.getElementById('parâmetrosdelete').onsubmit = function () {
                 return true;
             }
         });
+
     </script>
 </body>
 
