@@ -317,6 +317,40 @@ class usuarios():
             trans.rollback()
         return print('Atualização realizada.')
 
+class historico_calculadora():
+    def consultar(self, conexão):
+        consulta = "select * from historico_calculadora order by data"
+        historico_calculadora = pd.read_sql_query(consulta, con=conexão)
+        return historico_calculadora
+
+    # def deletar(self, connect, data, usuario):
+    #     con = connect.connect() 
+    #     sql = f"""
+    #     DELETE FROM historico_calculadora
+    #     WHERE data = '{data}' and usuario = '{usuario}'
+    #     """
+    #     try:
+    #         trans = con.begin()
+    #         con.execute(sql)
+    #         trans.commit()
+    #     except:
+    #         trans.rollback()
+    #     return print('Deletado com sucesso.')
+
+    def adicionar(self, connect, data, usuario, mdo_hr_preparacao, mdo_valor_preparacao, mdo_hr_costura, mdo_valor_costura, mdo_hr_estofamento, mdo_valor_estofamento, mdo_valor_geral, mdo_percentual_hr, mdo_total_valor, tipo_tecido, qtd_tecido, valor_estofaria_tecido, valor_cliente_tecido, qtd_espuma_1, altura_espuma_1, largura_espuma_1, comprimento_espuma_1, valor_estofaria_espuma_1, valor_estofaria_cliente_1, qtd_espuma_2, altura_espuma_2, largura_espuma_2, comprimento_espuma_2, valor_estofaria_espuma_2, valor_estofaria_cliente_2, qtd_espuma_3, altura_espuma_3, largura_espuma_3, comprimento_espuma_3, valor_estofaria_espuma_3, valor_estofaria_cliente_3, qtd_espuma_4, altura_espuma_4, largura_espuma_4, comprimento_espuma_4, valor_estofaria_espuma_4, valor_estofaria_cliente_4, valor_total_estofaria_espuma, valor_total_cliente_espuma, status_impermeabilizacao, valor_impermeabilizacao, frete_bairro, valor_frete, valor_socializado, item_adicional_1, qtd_adicional_1, valor_adicional_1, item_adicional_2, qtd_adicional_2, valor_adicional_2, item_adicional_3, qtd_adicional_3, valor_adicional_3, valor_total_item_adicional, custo_fixo, custo_variavel_estofaria, custo_variavel_cliente, total_estofaria, total_cliente, percentual_calculado, percentual_margem_alvo, preco_alvo):
+        con = connect.connect() 
+        sql = f"""
+        INSERT INTO historico_calculadora(data, usuario, mdo_hr_preparacao, mdo_valor_preparacao, mdo_hr_costura, mdo_valor_costura, mdo_hr_estofamento, mdo_valor_estofamento, mdo_valor_geral, mdo_percentual_hr, mdo_total_valor, tipo_tecido, qtd_tecido, valor_estofaria_tecido, valor_cliente_tecido, qtd_espuma_1, altura_espuma_1, largura_espuma_1, comprimento_espuma_1, valor_estofaria_espuma_1, valor_estofaria_cliente_1, qtd_espuma_2, altura_espuma_2, largura_espuma_2, comprimento_espuma_2, valor_estofaria_espuma_2, valor_estofaria_cliente_2, qtd_espuma_3, altura_espuma_3, largura_espuma_3, comprimento_espuma_3, valor_estofaria_espuma_3, valor_estofaria_cliente_3, qtd_espuma_4, altura_espuma_4, largura_espuma_4, comprimento_espuma_4, valor_estofaria_espuma_4, valor_estofaria_cliente_4, valor_total_estofaria_espuma, valor_total_cliente_espuma, status_impermeabilizacao, valor_impermeabilizacao, frete_bairro, valor_frete, valor_socializado, item_adicional_1, qtd_adicional_1, valor_adicional_1, item_adicional_2, qtd_adicional_2, valor_adicional_2, item_adicional_3, qtd_adicional_3, valor_adicional_3, valor_total_item_adicional, custo_fixo, custo_variavel_estofaria, custo_variavel_cliente, total_estofaria, total_cliente, percentual_calculado, percentual_margem_alvo, preco_alvo)
+        VALUES ('{data}', '{usuario}', {mdo_hr_preparacao}, {mdo_valor_preparacao}, {mdo_hr_costura}, {mdo_valor_costura}, {mdo_hr_estofamento}, {mdo_valor_estofamento}, {mdo_valor_geral}, {mdo_percentual_hr}, {mdo_total_valor}, '{tipo_tecido}', {qtd_tecido}, {valor_estofaria_tecido}, {valor_cliente_tecido}, {qtd_espuma_1}, {altura_espuma_1}, {largura_espuma_1}, {comprimento_espuma_1}, {valor_estofaria_espuma_1}, {valor_estofaria_cliente_1}, {qtd_espuma_2}, {altura_espuma_2}, {largura_espuma_2}, {comprimento_espuma_2}, {valor_estofaria_espuma_2}, {valor_estofaria_cliente_2}, {qtd_espuma_3}, {altura_espuma_3}, {largura_espuma_3}, {comprimento_espuma_3}, {valor_estofaria_espuma_3}, {valor_estofaria_cliente_3}, {qtd_espuma_4}, {altura_espuma_4}, {largura_espuma_4}, {comprimento_espuma_4}, {valor_estofaria_espuma_4}, {valor_estofaria_cliente_4}, {valor_total_estofaria_espuma}, {valor_total_cliente_espuma}, {status_impermeabilizacao}, {valor_impermeabilizacao}, '{frete_bairro}', {valor_frete}, {valor_socializado}, '{item_adicional_1}', {qtd_adicional_1}, {valor_adicional_1}, '{item_adicional_2}', {qtd_adicional_2}, {valor_adicional_2}, '{item_adicional_3}', {qtd_adicional_3}, {valor_adicional_3}, {valor_total_item_adicional}, {custo_fixo}, {custo_variavel_estofaria}, {custo_variavel_cliente}, {total_estofaria}, {total_cliente}, {percentual_calculado}, {percentual_margem_alvo}, {preco_alvo})
+        """
+        try:
+            trans = con.begin()
+            con.execute(sql)
+            trans.commit()
+        except:
+            trans.rollback()
+        return print('Atualização realizada.')
+
 # con = conexão()
 # conexão = con.servidor()
 # custo = custo_variavel_geral()

@@ -18,7 +18,7 @@
         <div class="menu" id="menu">
             <div class="menu_div_button">
                 <a href='/'><button type="submit" class="menu_button_selecionado"> Calculadora </button></a>
-                <a href='/registro_calculadora'><button type="submit" class="menu_button"> Registro </button></a>
+                <a href='/historico_calculadora'><button type="submit" class="menu_button"> Registro </button></a>
                 <a href='/custovariavelgeral'><button type="submit" class="menu_button">Custo Variável Geral</button></a>
                 <a href='/frete'><button type="submit" class="menu_button"> Frete </button></a>
                 <a href='/itemsadicionais'><button type="submit" class="menu_button"> Itens Adicionais </button></a>
@@ -46,8 +46,45 @@
                 {% endwith %}
                 <div class="tela-nome">
                     <h3 id="tela-nome">Calculadora</h3>
-                    <form>
-                        <button type="button" id="enviar_registro" class="btn btn-success btn-lg float-right">Enviar registro</button>
+                    <form action="/historico_calculadora" method="POST">
+                        <input type="hidden" name="município" id="município">
+                        <input type="hidden" name="data" id="data">
+                        <input type="hidden" name="usuario" id="usuario">
+                        <input type="hidden" name="mdo_hr_preparacao" id="mdo_hr_preparacao">
+                        <input type="hidden" name="mdo_valor_preparacao" id="mdo_valor_preparacao">
+                        <input type="hidden" name="mdo_hr_costura" id="mdo_hr_costura">
+                        <input type="hidden" name="mdo_valor_costura" id="mdo_valor_costura">
+                        <input type="hidden" name="mdo_hr_estofamento" id="mdo_hr_estofamento">
+                        <input type="hidden" name="mdo_valor_estofamento" id="mdo_valor_estofamento">
+                        <input type="hidden" name="mdo_valor_geral" id="mdo_valor_geral">
+                        <input type="hidden" name="mdo_percentual_hr" id="mdo_percentual_hr">
+                        <input type="hidden" name="mdo_total_valor" id="mdo_total_valor">
+                        <input type="hidden" name="tipo_tecido" id="tipo_tecido">
+                        <input type="hidden" name="qtd_tecido" id="qtd_tecido">
+                        <input type="hidden" name="valor_estofaria_tecido" id="valor_estofaria_tecido">
+                        <input type="hidden" name="valor_cliente_tecido" id="valor_cliente_tecido">
+                        <input type="hidden" name="qtd_espuma_1" id="qtd_espuma_1">
+                        <input type="hidden" name="altura_espuma_1" id="altura_espuma_1">
+                        <input type="hidden" name="largura_espuma_1" id="largura_espuma_1">
+                        <input type="hidden" name="comprimento_espuma_1" id="comprimento_espuma_1">
+                        <input type="hidden" name="valor_estofaria_espuma_1" id="valor_estofaria_espuma_1">
+                        <input type="hidden" name="valor_estofaria_cliente_1" id="valor_estofaria_cliente_1">
+                        <input type="hidden" name="qtd_espuma_2" id="qtd_espuma_2">
+                        <input type="hidden" name="altura_espuma_2" id="altura_espuma_2">
+                        <input type="hidden" name="largura_espuma_2" id="largura_espuma_2">
+                        <input type="hidden" name="comprimento_espuma_2" id="comprimento_espuma_2">
+                        <input type="hidden" name="valor_estofaria_espuma_2" id="valor_estofaria_espuma_2">
+                        <input type="hidden" name="valor_estofaria_cliente_2" id="valor_estofaria_cliente_2">
+                        <input type="hidden" name="qtd_espuma_3" id="qtd_espuma_3">
+                        <input type="hidden" name="altura_espuma_3" id="altura_espuma_3">
+                        <input type="hidden" name="largura_espuma_3" id="largura_espuma_3">
+                        <input type="hidden" name="comprimento_espuma_3" id="comprimento_espuma_3">
+                        <input type="hidden" name="valor_estofaria_espuma_3" id="valor_estofaria_espuma_3">
+                        <input type="hidden" name="valor_estofaria_cliente_3" id="valor_estofaria_cliente_3">
+                        <input type="hidden" name="qtd_espuma_4" id="qtd_espuma_4">
+                        <input type="hidden" name="altura_espuma_4" id="altura_espuma_4">
+
+                        <button type="submit" id="enviar_registro" class="btn btn-success btn-lg float-right">Enviar registro</button>
                     </form>
                 </div>
                 <div class="tela-calculadora">

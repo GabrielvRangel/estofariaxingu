@@ -15,6 +15,7 @@ frete = model.frete()
 items_adicionais = model.items_adicionais()
 tecidos = model.tecido()
 parâmetro = model.parâmetros()
+historico_calculadora = model.historico_calculadora()
 usuarios = model.usuarios()
 conexão = con.servidor()
 
@@ -292,6 +293,121 @@ def tecidoupdate():
     novopreco_compra = float(request.args.get('novopreco_compra'))
     tecidos.atualizar(conexão, artigo, novoartigo, preco_venda, novopreco_venda, preco_compra, novopreco_compra)
     return redirect(localhost + 'tecido', code=302)
+
+@app.route("/historico_calculadora", methods=["GET","POST"])
+def historico_calculadora():
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return render_template("tela_login.html")
+    historicos_calculadora = historico_calculadora.consultar(conexão)
+    historicos_calculadora_heading = list(historicos_calculadora)
+    historicos_calculadora_data = list(historicos_calculadora['data'])
+    historicos_calculadora_usuario = list(historicos_calculadora['usuario'])
+    historicos_calculadora_mdo_hr_preparacao = list(historicos_calculadora['mdo_hr_preparacao'])
+    historicos_calculadora_mdo_valor_preparacao = list(historicos_calculadora['mdo_valor_preparacao'])
+    historicos_calculadora_mdo_hr_costura = list(historicos_calculadora['mdo_hr_costura'])
+    historicos_calculadora_mdo_valor_costura = list(historicos_calculadora['mdo_valor_costura'])
+    historicos_calculadora_mdo_hr_estofamento = list(historicos_calculadora['mdo_hr_estofamento'])
+    historicos_calculadora_mdo_valor_estofamento = list(historicos_calculadora['mdo_valor_estofamento'])
+    historicos_calculadora_mdo_valor_geral = list(historicos_calculadora['mdo_valor_geral'])
+    historicos_calculadora_mdo_percentual_hr = list(historicos_calculadora['mdo_percentual_hr'])
+    historicos_calculadora_mdo_total_valor = list(historicos_calculadora['mdo_total_valor'])
+    historicos_calculadora_tipo_tecido = list(historicos_calculadora['tipo_tecido'])
+    historicos_calculadora_qtd_tecido = list(historicos_calculadora['qtd_tecido'])
+    historicos_calculadora_valor_estofaria_tecido = list(historicos_calculadora['valor_estofaria_tecido'])
+    historicos_calculadora_valor_cliente_tecido = list(historicos_calculadora['valor_cliente_tecido'])
+    historicos_calculadora_qtd_espuma_1 = list(historicos_calculadora['qtd_espuma_1'])
+    historicos_calculadora_altura_espuma_1 = list(historicos_calculadora['altura_espuma_1'])
+    historicos_calculadora_largura_espuma_1 = list(historicos_calculadora['largura_espuma_1'])
+    historicos_calculadora_comprimento_espuma_1 = list(historicos_calculadora['comprimento_espuma_1'])
+    historicos_calculadora_valor_estofaria_espuma_1 = list(historicos_calculadora['valor_estofaria_espuma_1'])
+    historicos_calculadora_valor_estofaria_cliente_1 = list(historicos_calculadora['valor_estofaria_cliente_1'])
+    historicos_calculadora_qtd_espuma_2 = list(historicos_calculadora['qtd_espuma_2'])
+    historicos_calculadora_altura_espuma_2 = list(historicos_calculadora['altura_espuma_2'])
+    historicos_calculadora_largura_espuma_2 = list(historicos_calculadora['largura_espuma_2'])
+    historicos_calculadora_comprimento_espuma_2 = list(historicos_calculadora['comprimento_espuma_2'])
+    historicos_calculadora_valor_estofaria_espuma_2 = list(historicos_calculadora['valor_estofaria_espuma_2'])
+    historicos_calculadora_valor_estofaria_cliente_2 = list(historicos_calculadora['valor_estofaria_cliente_2'])
+    historicos_calculadora_qtd_espuma_3 = list(historicos_calculadora['qtd_espuma_3'])
+    historicos_calculadora_altura_espuma_3 = list(historicos_calculadora['altura_espuma_3'])
+    historicos_calculadora_largura_espuma_3 = list(historicos_calculadora['largura_espuma_3'])
+    historicos_calculadora_comprimento_espuma_3 = list(historicos_calculadora['comprimento_espuma_3'])
+    historicos_calculadora_valor_estofaria_espuma_3 = list(historicos_calculadora['valor_estofaria_espuma_3'])
+    historicos_calculadora_valor_estofaria_cliente_3 = list(historicos_calculadora['valor_estofaria_cliente_3'])
+    historicos_calculadora_qtd_espuma_4 = list(historicos_calculadora['qtd_espuma_4'])
+    historicos_calculadora_altura_espuma_4 = list(historicos_calculadora['altura_espuma_4'])
+    historicos_calculadora_largura_espuma_4 = list(historicos_calculadora['largura_espuma_4'])
+    historicos_calculadora_comprimento_espuma_4 = list(historicos_calculadora['comprimento_espuma_4'])
+    historicos_calculadora_valor_estofaria_espuma_4 = list(historicos_calculadora['valor_estofaria_espuma_4'])
+    historicos_calculadora_valor_estofaria_cliente_4 = list(historicos_calculadora['valor_estofaria_cliente_4'])
+    historicos_calculadora_valor_total_estofaria_espuma = list(historicos_calculadora['valor_total_estofaria_espuma'])
+    historicos_calculadora_valor_total_cliente_espuma = list(historicos_calculadora['valor_total_cliente_espuma'])
+    historicos_calculadora_status_impermeabilizacao = list(historicos_calculadora['status_impermeabilizacao'])
+    historicos_calculadora_valor_impermeabilizacao = list(historicos_calculadora['valor_impermeabilizacao'])
+    historicos_calculadora_frete_bairro = list(historicos_calculadora['frete_bairro'])
+    historicos_calculadora_valor_frete = list(historicos_calculadora['valor_frete'])
+    historicos_calculadora_valor_socializado = list(historicos_calculadora['valor_socializado'])
+    historicos_calculadora_item_adicional_1 = list(historicos_calculadora['item_adicional_1'])
+    historicos_calculadora_qtd_adicional_1 = list(historicos_calculadora['qtd_adicional_1'])
+    historicos_calculadora_valor_adicional_1 = list(historicos_calculadora['valor_adicional_1'])
+    historicos_calculadora_item_adicional_2 = list(historicos_calculadora['item_adicional_2'])
+    historicos_calculadora_qtd_adicional_2 = list(historicos_calculadora['qtd_adicional_2'])
+    historicos_calculadora_valor_adicional_2 = list(historicos_calculadora['valor_adicional_2'])
+    historicos_calculadora_item_adicional_3 = list(historicos_calculadora['item_adicional_3'])
+    historicos_calculadora_qtd_adicional_3 = list(historicos_calculadora['qtd_adicional_3'])
+    historicos_calculadora_valor_adicional_3 = list(historicos_calculadora['valor_adicional_3'])
+    historicos_calculadora_valor_total_item_adicional = list(historicos_calculadora['valor_total_item_adicional'])
+    historicos_calculadora_custo_fixo = list(historicos_calculadora['custo_fixo'])
+    historicos_calculadora_custo_variavel_estofaria = list(historicos_calculadora['custo_variavel_estofaria'])
+    historicos_calculadora_custo_variavel_cliente = list(historicos_calculadora['custo_variavel_cliente'])
+    historicos_calculadora_total_estofaria = list(historicos_calculadora['total_estofaria'])
+    historicos_calculadora_total_cliente = list(historicos_calculadora['total_cliente'])
+    historicos_calculadora_percentual_calculado = list(historicos_calculadora['percentual_calculado'])
+    historicos_calculadora_percentual_margem_alvo = list(historicos_calculadora['percentual_margem_alvo'])
+    historicos_calculadora_preco_alvo = list(historicos_calculadora['preco_alvo'])
+    return render_template("tecido.html", usuario_nome = session['nome'], historicos_calculadora_heading=historicos_calculadora_heading,
+    historicos_calculadora_data = historicos_calculadora_data, historicos_calculadora_usuario = historicos_calculadora_usuario,
+    historicos_calculadora_mdo_hr_preparacao = historicos_calculadora_mdo_hr_preparacao, historicos_calculadora_mdo_valor_preparacao = historicos_calculadora_mdo_valor_preparacao,
+    historicos_calculadora_mdo_hr_costura = historicos_calculadora_mdo_hr_costura, historicos_calculadora_mdo_valor_costura = historicos_calculadora_mdo_valor_costura,
+    historicos_calculadora_mdo_hr_estofamento = historicos_calculadora_mdo_hr_estofamento, historicos_calculadora_mdo_valor_estofamento = historicos_calculadora_mdo_valor_estofamento,
+    historicos_calculadora_mdo_valor_geral = historicos_calculadora_mdo_valor_geral, historicos_calculadora_mdo_percentual_hr = historicos_calculadora_mdo_percentual_hr,
+    historicos_calculadora_mdo_total_valor = historicos_calculadora_mdo_total_valor, historicos_calculadora_tipo_tecido = historicos_calculadora_tipo_tecido,
+    historicos_calculadora_qtd_tecido = historicos_calculadora_qtd_tecido, historicos_calculadora_valor_estofaria_tecido = historicos_calculadora_valor_estofaria_tecido,
+    historicos_calculadora_valor_cliente_tecido = historicos_calculadora_valor_cliente_tecido, historicos_calculadora_qtd_espuma_1 = historicos_calculadora_qtd_espuma_1,
+    historicos_calculadora_altura_espuma_1 = historicos_calculadora_altura_espuma_1, historicos_calculadora_largura_espuma_1 = historicos_calculadora_largura_espuma_1,
+    historicos_calculadora_comprimento_espuma_1 = historicos_calculadora_comprimento_espuma_1, historicos_calculadora_valor_estofaria_espuma_1 = historicos_calculadora_valor_estofaria_espuma_1,
+    historicos_calculadora_valor_estofaria_cliente_1 = historicos_calculadora_valor_estofaria_cliente_1, historicos_calculadora_qtd_espuma_2 = historicos_calculadora_qtd_espuma_2,
+    historicos_calculadora_altura_espuma_2 = historicos_calculadora_altura_espuma_2, historicos_calculadora_largura_espuma_2 = historicos_calculadora_largura_espuma_2,
+    historicos_calculadora_comprimento_espuma_2 = historicos_calculadora_comprimento_espuma_2, historicos_calculadora_valor_estofaria_espuma_2 = historicos_calculadora_valor_estofaria_espuma_2,
+    historicos_calculadora_valor_estofaria_cliente_2 = historicos_calculadora_valor_estofaria_cliente_2, historicos_calculadora_qtd_espuma_3 = historicos_calculadora_qtd_espuma_3,
+    historicos_calculadora_altura_espuma_3 = historicos_calculadora_altura_espuma_3, historicos_calculadora_largura_espuma_3 = historicos_calculadora_largura_espuma_3,
+    historicos_calculadora_comprimento_espuma_3 = historicos_calculadora_comprimento_espuma_3, historicos_calculadora_valor_estofaria_espuma_3 = historicos_calculadora_valor_estofaria_espuma_3,
+    historicos_calculadora_valor_estofaria_cliente_3 = historicos_calculadora_valor_estofaria_cliente_3 ,
+    historicos_calculadora_qtd_espuma_4 = historicos_calculadora_qtd_espuma_4, historicos_calculadora_altura_espuma_4 = historicos_calculadora_altura_espuma_4 ,
+    historicos_calculadora_largura_espuma_4 = historicos_calculadora_largura_espuma_4, historicos_calculadora_comprimento_espuma_4 = historicos_calculadora_comprimento_espuma_4 ,
+    historicos_calculadora_valor_estofaria_espuma_4 = historicos_calculadora_valor_estofaria_espuma_4, historicos_calculadora_valor_estofaria_cliente_4 = historicos_calculadora_valor_estofaria_cliente_4,
+    historicos_calculadora_valor_total_estofaria_espuma = historicos_calculadora_valor_total_estofaria_espuma, historicos_calculadora_valor_total_cliente_espuma = historicos_calculadora_valor_total_cliente_espuma,
+    historicos_calculadora_status_impermeabilizacao = historicos_calculadora_status_impermeabilizacao, historicos_calculadora_valor_impermeabilizacao = historicos_calculadora_valor_impermeabilizacao ,
+    historicos_calculadora_frete_bairro = historicos_calculadora_frete_bairro, historicos_calculadora_valor_frete = historicos_calculadora_valor_frete ,
+    historicos_calculadora_valor_socializado = historicos_calculadora_valor_socializado, historicos_calculadora_item_adicional_1 = historicos_calculadora_item_adicional_1 ,
+    historicos_calculadora_qtd_adicional_1 = historicos_calculadora_qtd_adicional_1, historicos_calculadora_valor_adicional_1 = historicos_calculadora_valor_adicional_1 ,
+    historicos_calculadora_item_adicional_2 = historicos_calculadora_item_adicional_2, historicos_calculadora_qtd_adicional_2 = historicos_calculadora_qtd_adicional_2 ,
+    historicos_calculadora_valor_adicional_2 = historicos_calculadora_valor_adicional_2, historicos_calculadora_item_adicional_3 = historicos_calculadora_item_adicional_3 ,
+    historicos_calculadora_qtd_adicional_3 = historicos_calculadora_qtd_adicional_3, historicos_calculadora_valor_adicional_3 = historicos_calculadora_valor_adicional_3 ,
+    historicos_calculadora_valor_total_item_adicional = historicos_calculadora_valor_total_item_adicional, historicos_calculadora_custo_fixo = historicos_calculadora_custo_fixo ,
+    historicos_calculadora_custo_variavel_estofaria = historicos_calculadora_custo_variavel_estofaria, historicos_calculadora_custo_variavel_cliente = historicos_calculadora_custo_variavel_cliente ,
+    historicos_calculadora_total_estofaria = historicos_calculadora_total_estofaria, historicos_calculadora_total_cliente = historicos_calculadora_total_cliente ,
+    historicos_calculadora_percentual_calculado = historicos_calculadora_percentual_calculado, historicos_calculadora_percentual_margem_alvo = historicos_calculadora_percentual_margem_alvo ,
+    historicos_calculadora_preco_alvo = historicos_calculadora_preco_alvo)
+
+# @app.route("/historico_calculadora_adicionar", methods=["GET"])
+# def historico_calculadora_adicionar():
+#     if 'usuario_logado' not in session or session['usuario_logado'] == None:
+#         return render_template("tela_login.html")
+#     artigoadicionar = request.args.get('artigoadicionar')
+#     preco_vendaadicionar = float(request.args.get('preco_vendaadicionar'))
+#     preco_compraadicionar = float(request.args.get('preco_compraadicionar'))
+#     tecidos.adicionar(conexão, data, usuario, mdo_hr_preparacao, mdo_valor_preparacao, mdo_hr_costura, mdo_valor_costura, mdo_hr_estofamento, mdo_valor_estofamento, mdo_valor_geral, mdo_percentual_hr, mdo_total_valor, tipo_tecido, qtd_tecido, valor_estofaria_tecido, valor_cliente_tecido, qtd_espuma_1, altura_espuma_1, largura_espuma_1, comprimento_espuma_1, valor_estofaria_espuma_1, valor_estofaria_cliente_1, qtd_espuma_2, altura_espuma_2, largura_espuma_2, comprimento_espuma_2, valor_estofaria_espuma_2, valor_estofaria_cliente_2, qtd_espuma_3, altura_espuma_3, largura_espuma_3, comprimento_espuma_3, valor_estofaria_espuma_3, valor_estofaria_cliente_3, qtd_espuma_4, altura_espuma_4, largura_espuma_4, comprimento_espuma_4, valor_estofaria_espuma_4, valor_estofaria_cliente_4, valor_total_estofaria_espuma, valor_total_cliente_espuma, status_impermeabilizacao, valor_impermeabilizacao, frete_bairro, valor_frete, valor_socializado, item_adicional_1, qtd_adicional_1, valor_adicional_1, item_adicional_2, qtd_adicional_2, valor_adicional_2, item_adicional_3, qtd_adicional_3, valor_adicional_3, valor_total_item_adicional, custo_fixo, custo_variavel_estofaria, custo_variavel_cliente, total_estofaria, total_cliente, percentual_calculado, percentual_margem_alvo, preco_alvo)
+#     return redirect(localhost + 'tecido', code=302)
 
 @app.route("/usuarios", methods=["GET","POST"])
 def usuariosconsulta():
