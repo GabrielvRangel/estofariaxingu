@@ -364,7 +364,7 @@ def historico_calculadora():
     historicos_calculadora_percentual_calculado = list(historicos_calculadora['percentual_calculado'])
     historicos_calculadora_percentual_margem_alvo = list(historicos_calculadora['percentual_margem_alvo'])
     historicos_calculadora_preco_alvo = list(historicos_calculadora['preco_alvo'])
-    return render_template("tecido.html", usuario_nome = session['nome'], historicos_calculadora_heading=historicos_calculadora_heading,
+    return render_template("historico_calculadora.html", usuario_nome = session['nome'], historicos_calculadora_heading=historicos_calculadora_heading,
     historicos_calculadora_data = historicos_calculadora_data, historicos_calculadora_usuario = historicos_calculadora_usuario,
     historicos_calculadora_mdo_hr_preparacao = historicos_calculadora_mdo_hr_preparacao, historicos_calculadora_mdo_valor_preparacao = historicos_calculadora_mdo_valor_preparacao,
     historicos_calculadora_mdo_hr_costura = historicos_calculadora_mdo_hr_costura, historicos_calculadora_mdo_valor_costura = historicos_calculadora_mdo_valor_costura,
