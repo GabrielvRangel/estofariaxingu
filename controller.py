@@ -15,7 +15,7 @@ frete = model.frete()
 items_adicionais = model.items_adicionais()
 tecidos = model.tecido()
 parâmetro = model.parâmetros()
-historico_calculadora = model.historico_calculadora()
+tabela_historico_calculadora = model.historico_calculadora()
 usuarios = model.usuarios()
 conexão = con.servidor()
 
@@ -298,7 +298,7 @@ def tecidoupdate():
 def historico_calculadora():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
         return render_template("tela_login.html")
-    historicos_calculadora = historico_calculadora.consultar(conexão)
+    historicos_calculadora = tabela_historico_calculadora.consultar(conexão)
     historicos_calculadora_heading = list(historicos_calculadora)
     historicos_calculadora_data = list(historicos_calculadora['data'])
     historicos_calculadora_usuario = list(historicos_calculadora['usuario'])
