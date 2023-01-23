@@ -46,11 +46,8 @@
                 {% endwith %}
                 <div class="tela-nome">
                     <h3 id="tela-nome">Calculadora</h3>
-                    <form action="/historico_calculadora" method="POST">
-                        <input type="hidden" name="município" id="município">
-                        <input type="hidden" name="data" id="data">
-                        <input type="hidden" name="usuario" id="usuario">
-                        <input type="hidden" name="mdo_hr_preparacao" id="mdo_hr_preparacao">
+                    <form action="/historico_calculadora_adicionar" method="POST">
+                        <input type="hidden" name="mdo_hr_preparacao" id="mdo_hr_preparacao">  x
                         <input type="hidden" name="mdo_valor_preparacao" id="mdo_valor_preparacao">
                         <input type="hidden" name="mdo_hr_costura" id="mdo_hr_costura">
                         <input type="hidden" name="mdo_valor_costura" id="mdo_valor_costura">
@@ -107,8 +104,11 @@
                         <input type="hidden" name="custo_fixo" id="custo_fixo">
                         <input type="hidden" name="custo_variavel_estofaria" id="custo_variavel_estofaria">
                         <input type="hidden" name="custo_variavel_cliente" id="custo_variavel_cliente">
-                        
-
+                        <input type="hidden" name="total_estofaria" id="total_estofaria">
+                        <input type="hidden" name="total_cliente" id="total_cliente">
+                        <input type="hidden" name="percentual_calculado" id="percentual_calculado">
+                        <input type="hidden" name="percentual_margem_alvo" id="percentual_margem_alvo">
+                        <input type="hidden" name="preco_alvo" id="preco_alvo">
                         <button type="submit" id="enviar_registro" class="btn btn-success btn-lg float-right">Enviar registro</button>
                     </form>
                 </div>
@@ -793,6 +793,9 @@
         }
 
         function resultadovalorpreparação(){
+            hrpreparação = $('#hrpreparação').val()
+            $('#mdo_hr_preparacao').val(hrpreparação)
+            console.log($('#mdo_hr_preparacao').val(hrpreparação))
             hrpreparação = $('#hrpreparação').val().split(':')
             totaltempopreparação = (parseFloat(hrpreparação[0]) + parseFloat(hrpreparação[1]/60))
             valorpreparação = (totaltempopreparação * parseFloat("{{valor_hora_preparação}}")).toFixed(2)
