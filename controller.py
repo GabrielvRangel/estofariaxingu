@@ -406,6 +406,7 @@ def historico_calculadora_adicionar():
     data = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     usuario = str(session['nome'])
     mdo_hr_preparacao = str(request.args.get('mdo_hr_preparacao'))
+    print(mdo_hr_preparacao)
     mdo_valor_preparacao = str(request.args.get('mdo_valor_preparacao'))
     mdo_hr_costura = str(request.args.get('mdo_hr_costura'))
     mdo_valor_costura = str(request.args.get('mdo_valor_costura'))
