@@ -794,8 +794,8 @@
 
         function resultadovalorpreparação(){
             hrpreparação = $('#hrpreparação').val()
-            $('#mdo_hr_preparacao').text(hrpreparação)
-            console.log($('#mdo_hr_preparacao').val())
+            document.getElementById("mdo_hr_preparacao").value = hrpreparação
+            print(document.getElementById("mdo_hr_preparacao").value)
             hrpreparação = $('#hrpreparação').val().split(':')
             totaltempopreparação = (parseFloat(hrpreparação[0]) + parseFloat(hrpreparação[1]/60))
             valorpreparação = (totaltempopreparação * parseFloat("{{valor_hora_preparação}}")).toFixed(2)
