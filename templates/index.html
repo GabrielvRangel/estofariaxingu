@@ -795,36 +795,35 @@
         function resultadovalorpreparação(){
             hrpreparação = $('#hrpreparação').val()
             document.getElementById("mdo_hr_preparacao").value = hrpreparação
-            console.log(document.getElementById("mdo_hr_preparacao").value)
             hrpreparação = $('#hrpreparação').val().split(':')
             totaltempopreparação = (parseFloat(hrpreparação[0]) + parseFloat(hrpreparação[1]/60))
             valorpreparação = (totaltempopreparação * parseFloat("{{valor_hora_preparação}}")).toFixed(2)
             $('#valorpreparação').empty().append('R$ ' + valorpreparação);
-            $('#mdo_valor_preparacao').text(valorpreparação)
+            document.getElementById("mdo_valor_preparacao").value = valorpreparação
             resultadomãodeobra(valorpreparação, valorcostura, valorestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento)
             resultadoscusto()
         }
 
         function resultadovalorcostura(){
             hrcostura = $('#hrcostura').val()
-            $('#mdo_hr_costura').text(hrcostura)
+            document.getElementById("mdo_hr_costura").value = hrcostura
             hrcostura = $('#hrcostura').val().split(':')
             totaltempocostura = (parseFloat(hrcostura[0]) + parseFloat(hrcostura[1]/60)) 
             valorcostura = (totaltempocostura * parseFloat("{{valor_hora_costura}}")).toFixed(2)
             $('#valorcostura').empty().append('R$ ' + valorcostura)
-            $('#mdo_valor_costura').text(valorcostura)
+            document.getElementById("mdo_valor_costura").value = valorcostura
             resultadomãodeobra(valorpreparação, valorcostura, valorestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento)
             resultadoscusto()
         }
 
         function resultadovalorestofamento(){
             hrestofamento = $('#hrestofamento').val()
-            $('#mdo_hr_estofamento').text(hrestofamento)
+            document.getElementById("mdo_hr_estofamento").value = hrestofamento
             hrestofamento = $('#hrestofamento').val().split(':')
             totaltempoestofamento = (parseFloat(hrestofamento[0]) + (parseFloat(hrestofamento[1]/60)))
             valorestofamento = (totaltempoestofamento * parseFloat("{{valor_hora_estofamento}}")).toFixed(2)
-            $('#valorestofamento').empty().append('R$ ' + valorestofamento);
-            $('#mdo_valor_estofamento').text(valorestofamento)
+            $('#valorestofamento').empty().append('R$ ' + valorestofamento)
+            document.getElementById("mdo_valor_estofamento").value = valorestofamento
             resultadomãodeobra(valorpreparação, valorcostura, valorestofamento, totaltempopreparação, totaltempocostura, totaltempoestofamento)
             resultadoscusto()
         }
@@ -833,33 +832,33 @@
             percentualcustofixogeral = parseFloat("{{custo_fixo_geral}}") / parseFloat("{{custo_fixo_total}}")
             valorgeralmãodeobra = (((parseFloat(valortotalpreparação) + parseFloat(valortotalcostura) + parseFloat(valortotalestofamento)) * percentualcustofixogeral) / (1 - percentualcustofixogeral)).toFixed(2)
             $('#valorgeralmãodeobra').empty().append('R$ ' + valorgeralmãodeobra)
-            $('#mdo_valor_geral').text(valorgeralmãodeobra)
+            document.getElementById("mdo_valor_geral").value = valorgeralmãodeobra
             percentualhorasmãodeobra = ((parseFloat(totaltempopreparação + parseFloat(totaltempocostura) + parseFloat(totaltempoestofamento))/ parseFloat("{{horas_trabalhadas}}")).toFixed(4) * 100 )
             percentualhorasmãodeobra = percentualhorasmãodeobra.toFixed(2) + "%"
             $('#percentualhorasmãodeobra').empty().append(percentualhorasmãodeobra)
-            $('#mdo_percentual_hr').text(percentualhorasmãodeobra)
+            document.getElementById("mdo_percentual_hr").value = percentualhorasmãodeobra
             valortotalmãodeobra = (parseFloat(valortotalpreparação) + parseFloat(valortotalcostura) + parseFloat(valortotalestofamento) + parseFloat(valorgeralmãodeobra)).toFixed(2)
             $('#valortotalmãodeobra').empty().append('R$ ' + valortotalmãodeobra)
-            $('#mdo_total_valor').text(valortotalmãodeobra)
-            $('#custo_fixo').text(valortotalmãodeobra)
+            document.getElementById("mdo_total_valor").value = valortotalmãodeobra
+            document.getElementById("custo_fixo").value = valortotalmãodeobra
             custovariavelgeralacumuladomes = "{{custovariavelgeralacumuladomes}}"
             socializado = ((parseFloat(custovariavelgeralacumuladomes) * parseFloat(percentualhorasmãodeobra)) / 100).toFixed(2) 
             $('#socializado').empty().append(socializado)
-            $('#valor_socializado').text(socializado)
+            document.getElementById("valor_socializado").value = socializado
             resultadoscusto()
         }
 
         function resultadopreçocustotecido(){
             tipotecido = $('#tipotecido').val()
-            $('#tipo_tecido').text(tipo_tecido)
+            document.getElementById("tipo_tecido").value = tipo_tecido
             quantidadetecido = $('#quantidadetecido').val()
-            $('#qtd_tecido').text(quantidadetecido)
+            document.getElementById("qtd_tecido").value = quantidadetecido
             listapreçocustotecido = JSON.parse("{{listapreçocustotecido}}")
             listapreçoclientetecido = JSON.parse("{{listapreçoclientetecido}}")
             $('#preçoestofaria').empty().append(listapreçocustotecido[tipotecido])
-            $('#valor_estofaria_tecido').text(listapreçocustotecido[tipotecido])
+            document.getElementById("valor_estofaria_tecido").value = listapreçocustotecido[tipotecido]
             $('#preçoestofariacliente').empty().append(listapreçoclientetecido[tipotecido])
-            $('#valor_cliente_tecido').text(listapreçoclientetecido[tipotecido])
+            document.getElementById("valor_cliente_tecido").value = listapreçoclientetecido[tipotecido]
             resultadovalorestofaria(listapreçocustotecido[tipotecido])
             resultadovalorcliente(listapreçoclientetecido[tipotecido])
             resultadopreçoimpermeabilização()
@@ -880,13 +879,13 @@
 
         function resultadopreçocustoespuma(ordemespuma){
             largura = parseFloat($('#largura'+ordemespuma).val()) 
-            $('#largura_espuma_'+ordemespuma).text(largura)
+            document.getElementById("largura_espuma_"+ordemespuma).value = largura
             altura = parseFloat($('#altura'+ordemespuma).val())
-            $('#altura_espuma_'+ordemespuma).text(altura)
+            document.getElementById("altura_espuma_"+ordemespuma).value = altura
             comprimento = parseFloat($('#comprimento'+ordemespuma).val())
-            $('#comprimento_espuma_'+ordemespuma).text(comprimento)
+            document.getElementById("comprimento_espuma_"+ordemespuma).value = comprimento
             quantidadeespuma = parseFloat($('#quantidadeespuma'+ordemespuma).val())
-            $('#qtd_espuma_'+ordemespuma).text(quantidadeespuma)
+            document.getElementById("qtd_espuma_"+ordemespuma).value = quantidadeespuma
             largurapadrãoespuma = parseFloat("{{largura_padrão_espuma}}")
             preçoestofariaespuma = parseFloat("{{preço_estofaria_espumas}}")
             preçoclienteespuma = parseFloat("{{preço_cliente_espumas}}")
@@ -894,44 +893,45 @@
             valorclienteespuma = (quantidadeespuma * ( altura * preçoclienteespuma * comprimento / largurapadrãoespuma * largura)).toFixed(2)
             $('#valorestofariaespuma'+ordemespuma).empty().append('R$ ' + valorestofariaespuma)
             $('#valorestofariaespuma'+ordemespuma).val(valorestofariaespuma)
-            $('#valor_estofaria_espuma_'+ordemespuma).text(valorestofariaespuma)
+            document.getElementById("valor_estofaria_espuma_"+ordemespuma).value = valorestofariaespuma
+
             $('#valorclienteespuma'+ordemespuma).empty().append('R$ ' + valorclienteespuma)
             $('#valorclienteespuma'+ordemespuma).val(valorclienteespuma)
-            $('#valor_estofaria_cliente_'+ordemespuma).text(valorclienteespuma)
+            document.getElementById("valor_estofaria_cliente_"+ordemespuma).value = valorclienteespuma
             valortotalestofariaespuma =  (parseFloat($('#valorestofariaespuma'+1).val()) + parseFloat($('#valorestofariaespuma'+2).val()) + parseFloat($('#valorestofariaespuma'+3).val()) + parseFloat($('#valorestofariaespuma'+4).val())).toFixed(2)
             valortotalclienteespuma = (parseFloat($('#valorclienteespuma'+1).val()) + parseFloat($('#valorclienteespuma'+2).val()) + parseFloat($('#valorclienteespuma'+3).val() + parseFloat($('#valorclienteespuma'+4).val()))).toFixed(2)
             $('#valortotalestofariaespuma').empty().append('R$ ' + valortotalestofariaespuma)
-            $('#valor_total_estofaria_espuma').text(valortotalestofariaespuma)
+            document.getElementById("valor_total_estofaria_espuma"+ordemespuma).value = valortotalestofariaespuma
             $('#valortotalclienteespuma').empty().append('R$ ' + valortotalclienteespuma)
-            $('#valor_total_cliente_espuma').text(valortotalclienteespuma)
+            document.getElementById("valor_total_cliente_espuma"+ordemespuma).value = valortotalclienteespuma
             resultadoscusto()
         }
         
         function resultadopreçoimpermeabilização(){
             Impermeabilizaçãosimounão = $('#Impermeabilizaçãosimounão').val()
-            $('#status_impermeabilizacao').text(Impermeabilizaçãosimounão)
+            document.getElementById("status_impermeabilizacao").value = Impermeabilizaçãosimounão
             if ($('#Impermeabilizaçãosimounão').val() == 'sim' ){
                 preçoimpermeabilização = parseFloat("{{preço_impermeabilização}}")
                 quantidadetecido = parseFloat($('#quantidadetecido').val())
                 valorimpermeabilização = (preçoimpermeabilização * quantidadetecido).toFixed(2)
                 $('#valorimpermeabilização').empty().append('R$ ' + valorimpermeabilização)
-                $('#valor_impermeabilizacao').text(valorimpermeabilização)
+                document.getElementById("valor_impermeabilizacao").value = valorimpermeabilização
                 resultadoscusto()
             }else{
                 valorimpermeabilização = 0
                 $('#valorimpermeabilização').empty().append('R$ ' + valorimpermeabilização)
-                $('#valor_impermeabilizacao').text(valorimpermeabilização)
+                document.getElementById("valor_impermeabilizacao").value = valorimpermeabilização
                 resultadoscusto()
             }
         }
 
         function resultadovalorfrete(){
             idbairro = $('#bairro').val()
-            $('#frete_bairro').text(idbairro)
+            document.getElementById("frete_bairro").value = idbairro
             listavalorfrete = JSON.parse("{{listavalorfrete}}")
             valorfrete = listavalorfrete[idbairro]
             $('#valorfrete').empty().append('R$ ' + valorfrete)
-            $('#valor_frete').text(valorfrete)
+            document.getElementById("valor_frete").value = valorfrete
             resultadoscusto()
         }
 
@@ -942,9 +942,9 @@
             valoritemadicional = (parseFloat(valorunitarioitensadicionais[iditem]) * quantidadeitemadicional).toFixed(2)
             $('#valoritemadicional'+ordemitem).empty().append('R$ ' + valoritemadicional)
             $('#valoritemadicional'+ordemitem).val(valoritemadicional)
-            $('#item_adicional_'+ordemitem).text(iditem)
-            $('#qtd_adicional_'+ordemitem).text(quantidadeitemadicional)
-            $('#valor_adicional_'+ordemitem).text(valoritemadicional)
+            document.getElementById("item_adicional_"+ordemitem).value = iditem
+            document.getElementById("qtd_adicional_"+ordemitem).value = quantidadeitemadicional
+            document.getElementById("valor_adicional_"+ordemitem).value = valoritemadicional
             valoritemadicional1 = parseFloat($('#valoritemadicional'+1).val())
             valoritemadicional2 = parseFloat($('#valoritemadicional'+2).val())
             valoritemadicional3 = parseFloat($('#valoritemadicional'+3).val())
@@ -953,7 +953,7 @@
             valoritemadicional6 = parseFloat($('#valoritemadicional'+6).val())
             valortotalitemadicional =  (valoritemadicional1+valoritemadicional2+valoritemadicional3+valoritemadicional4+valoritemadicional5+valoritemadicional6).toFixed(2)
             $('#valortotalitemadicional').empty().append('R$ ' + valortotalitemadicional)
-            $('#valor_total_item_adicional').text(valortotalitemadicional)
+            document.getElementById("valor_total_item_adicional").value = valortotalitemadicional
             resultadoscusto()
         }
 
