@@ -960,24 +960,25 @@
         function resultadoscusto(){
             valorvariavelestofaria = (parseFloat(valorimpermeabilização) + parseFloat(valorestofaria) + parseFloat(valortotalestofariaespuma) + parseFloat(valortotalitemadicional) + parseFloat(valorfrete) + parseFloat(socializado)).toFixed(2)
             $('#valorvariavelestofaria').empty().append('R$ ' + valorvariavelestofaria)
-            $('#custo_variavel_estofaria').text(valorvariavelestofaria)
+            document.getElementById("custo_variavel_estofaria").value = valorvariavelestofaria
             valorvariavelcliente = (parseFloat(valorimpermeabilização) + parseFloat(valorestofariacliente) + parseFloat(valortotalclienteespuma) + parseFloat(valortotalitemadicional) + parseFloat(valorfrete) + parseFloat(socializado)).toFixed(2)
             $('#valorvariavelcliente').empty().append('R$ ' + valorvariavelcliente)
-            $('#custo_variavel_cliente').text(valorvariavelcliente)
+            document.getElementById("custo_variavel_cliente").value = valorvariavelcliente
             valortotalvariavelestofaria = ( parseFloat(valorvariavelestofaria) + parseFloat(valortotalmãodeobra) ).toFixed(2)
             $('#valortotalvariavelestofaria').empty().append('R$ ' + valortotalvariavelestofaria)
-            $('#total_estofaria').text(valortotalvariavelestofaria)
+            document.getElementById("total_estofaria").value = valortotalvariavelestofaria
             valortotalvariavelcliente =  ( parseFloat(valorvariavelcliente) + parseFloat(valortotalmãodeobra) ).toFixed(2)
             $('#valortotalvariavelcliente').empty().append('R$ ' + valortotalvariavelcliente)
-            $('#total_cliente').text(valortotalvariavelcliente)
+            document.getElementById("total_cliente").value = valortotalvariavelcliente
             resultadopercentualcalculado = ((( parseFloat(valortotalvariavelcliente) / parseFloat(valortotalvariavelestofaria) )-1)*100).toFixed(2)
             $('#resultadopercentualcalculado').empty().append(resultadopercentualcalculado + '%')
-            $('#percentual_calculado').text(resultadopercentualcalculado)
+            document.getElementById("percentual_calculado").value = resultadopercentualcalculado
             margemalvo = $('#margemalvo').val()
-            $('#percentual_margem_alvo').text(margemalvo)
+            document.getElementById("percentual_margem_alvo").value = margemalvo
             preçoalvo = (parseFloat(valortotalvariavelestofaria) + (parseFloat(valortotalvariavelestofaria)* (parseFloat(margemalvo)/100))).toFixed(2)
             $('#preçoalvo').empty().append('R$ ' + preçoalvo)
-            $('#preco_alvo').text(preçoalvo)
+            document.getElementById("preco_alvo").value = preçoalvo
+
             // resultadopercentualpreçoalvo = (((parseFloat(preçoalvo) / parseFloat(valortotalvariavelestofaria))- 1)*100).toFixed(2)
             // $('#resultadopercentualpreçoalvo').empty().append(resultadopercentualpreçoalvo +'%')
         }
