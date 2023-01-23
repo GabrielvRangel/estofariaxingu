@@ -399,7 +399,7 @@ def historico_calculadora():
     historicos_calculadora_percentual_calculado = historicos_calculadora_percentual_calculado, historicos_calculadora_percentual_margem_alvo = historicos_calculadora_percentual_margem_alvo ,
     historicos_calculadora_preco_alvo = historicos_calculadora_preco_alvo)
 
-@app.route("/historico_calculadora_adicionar", methods=["GET"])
+@app.route("/historico_calculadora_adicionar", methods=["GET"], methods=["POST"])
 def historico_calculadora_adicionar():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
         return render_template("tela_login.html")
