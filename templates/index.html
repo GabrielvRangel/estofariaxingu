@@ -834,9 +834,9 @@
             $('#valorgeralmãodeobra').empty().append('R$ ' + valorgeralmãodeobra)
             document.getElementById("mdo_valor_geral").value = valorgeralmãodeobra
             percentualhorasmãodeobra = ((parseFloat(totaltempopreparação + parseFloat(totaltempocostura) + parseFloat(totaltempoestofamento))/ parseFloat("{{horas_trabalhadas}}")).toFixed(4) * 100 )
+            document.getElementById("mdo_percentual_hr").value = percentualhorasmãodeobra.toFixed(2)
             percentualhorasmãodeobra = percentualhorasmãodeobra.toFixed(2) + "%"
             $('#percentualhorasmãodeobra').empty().append(percentualhorasmãodeobra)
-            document.getElementById("mdo_percentual_hr").value = percentualhorasmãodeobra
             valortotalmãodeobra = (parseFloat(valortotalpreparação) + parseFloat(valortotalcostura) + parseFloat(valortotalestofamento) + parseFloat(valorgeralmãodeobra)).toFixed(2)
             $('#valortotalmãodeobra').empty().append('R$ ' + valortotalmãodeobra)
             document.getElementById("mdo_total_valor").value = valortotalmãodeobra
