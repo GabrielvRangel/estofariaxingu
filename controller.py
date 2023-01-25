@@ -403,7 +403,14 @@ def historico_calculadora():
 def historico_calculadora_adicionar():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
         return render_template("tela_login.html")
-    data = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    
+    # Obtenha a hora atual
+    now = datetime.now()
+    # Crie um timedelta de 3 horas
+    delta = timedelta(hours=-3)
+    # Subtraia o timedelta da hora atual
+    new_time = now + delta
+    data = new_time.strftime("%d/%m/%Y %H:%M:%S")
     usuario = str(session['nome'])
     mdo_hr_preparacao = str(request.args.get('mdo_hr_preparacao'))
     mdo_valor_preparacao = str(request.args.get('mdo_valor_preparacao'))
@@ -413,7 +420,6 @@ def historico_calculadora_adicionar():
     mdo_valor_estofamento = str(request.args.get('mdo_valor_estofamento'))
     mdo_valor_geral = str(request.args.get('mdo_valor_geral'))
     mdo_percentual_hr = str(request.args.get('mdo_percentual_hr'))
-    print(mdo_percentual_hr)
     mdo_total_valor = str(request.args.get('mdo_total_valor'))
     tipo_tecido = str(request.args.get('tipo_tecido'))
     qtd_tecido = str(request.args.get('qtd_tecido'))
