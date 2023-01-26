@@ -331,7 +331,7 @@
                                 <c>Escolha o tipo de tecido:</c>                                
                                 <select class="form-control" id="tipotecido" onchange="resultadopreçocustotecido()"> 
                                     {% for tecido in listatecidos %}
-                                        <option value="{{loop.index-1}}">{{tecido}}</option>
+                                        <option id="typetecido" value="{{loop.index-1}}">{{tecido}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -850,7 +850,7 @@
 
         function resultadopreçocustotecido(){
             tipotecido = $('#tipotecido').val()
-            document.getElementById("tipo_tecido").value = tipo_tecido
+            document.getElementById("tipo_tecido").value = $('#typetecido').val()
             quantidadetecido = $('#quantidadetecido').val()
             document.getElementById("qtd_tecido").value = quantidadetecido
             listapreçocustotecido = JSON.parse("{{listapreçocustotecido}}")
