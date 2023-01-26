@@ -92,11 +92,11 @@
                         <div class="scroll">
                             <table class="table">
                                 <thead>
-                                    {% for head in historicos_calculadora_heading %}
                                     <tr>
+                                        {% for head in historicos_calculadora_heading %}
                                         <th>{{head}}</th>
+                                        {%endfor%}
                                     </tr>
-                                    {%endfor%}
                                 </thead>
                                 <tbody id="filtrando">
                                     {% for quantidade in historicos_calculadora_data %}
