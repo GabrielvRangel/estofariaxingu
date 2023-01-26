@@ -329,11 +329,10 @@
                             <p class="tela-titulo">Tecido</p>
                             <div class="inline">
                                 <c>Escolha o tipo de tecido:</c>                                
-                                <select class="form-control" id="tipotecido" onchange="resultadopreçocustotecido()"> 
+                                <select class="form-control" id="tipotecido" value="{{tecido}}" onchange="resultadopreçocustotecido()"> 
                                     {% for tecido in listatecidos %}
                                         <option id="typetecido" value="{{loop.index-1}}">{{tecido}}</option>
                                     {% endfor %}
-                                    <input type="hidden" id="typetecidohistoricocalculadora" value="{{tecido}}">
                                 </select>
                             </div>
                             <div class="inline">
@@ -851,7 +850,7 @@
 
         function resultadopreçocustotecido(){
             tipotecido = $('#tipotecido').val()
-            document.getElementById("tipo_tecido").value = $('#typetecidohistoricocalculadora').val()
+            document.getElementById("tipo_tecido").value = $('#tipotecido').val()
             quantidadetecido = $('#quantidadetecido').val()
             document.getElementById("qtd_tecido").value = quantidadetecido
             listapreçocustotecido = JSON.parse("{{listapreçocustotecido}}")
