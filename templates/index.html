@@ -332,8 +332,8 @@
                                 <select class="form-control" id="tipotecido" onchange="resultadopreçocustotecido()"> 
                                     {% for tecido in listatecidos %}
                                         <option id="typetecido" value="{{loop.index-1}}">{{tecido}}</option>
-                                        <input type="hidden" id="typetecidohistoricocalculadora" value="{{tecido}}">
                                     {% endfor %}
+                                    <input type="hidden" id="typetecidohistoricocalculadora" value="{{tecido}}">
                                 </select>
                             </div>
                             <div class="inline">
