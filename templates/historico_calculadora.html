@@ -92,22 +92,80 @@
                         <div class="scroll">
                             <table class="table">
                                 <thead>
+                                    {% for head in historicos_calculadora_heading %}
                                     <tr>
-                                        <th>Item</th>
-                                        <th>Valor</th>
-                                        <th width="20px"></th>
-                                        <th width="20px"></th>
+                                        <th>{{head}}</th>
                                     </tr>
+                                    {%endfor%}
                                 </thead>
                                 <tbody id="filtrando">
-                                    {% for quantidade in parâmetrositem %}
+                                    {% for quantidade in historicos_calculadora_data %}
                                     <tr>
-                                        <td id="A{{loop.index-1}}">{{parâmetrositem[loop.index-1]}}</td>
-                                        <td id="B{{loop.index-1}}">{{parâmetrosvalor[loop.index-1]}}</td>
-                                        <td id="{{loop.index-1}}" onclick="updatebutton(this.id)"><input type="button"
-                                                class="updatebutton" value="update"></td>
-                                        <td id="{{loop.index-1}}" onclick="deletebutton(this.id)"><input type="button"
-                                                class="deletebutton" value="delete"></td>
+                                        <td id="A{{loop.index-1}}">{{historicos_calculadora_data[loop.index-1]}}</td>
+                                        <td id="B{{loop.index-1}}">{{historicos_calculadora_usuario[loop.index-1]}}</td>
+                                        <td id="C{{loop.index-1}}">{{historicos_calculadora_mdo_hr_preparacao[loop.index-1]}}</td>
+                                        <td id="D{{loop.index-1}}">{{historicos_calculadora_mdo_valor_preparacao[loop.index-1]}}</td>
+                                        <td id="E{{loop.index-1}}">{{historicos_calculadora_mdo_hr_costura[loop.index-1]}}</td>
+                                        <td id="F{{loop.index-1}}">{{historicos_calculadora_mdo_valor_costura[loop.index-1]}}</td>
+                                        <td id="G{{loop.index-1}}">{{historicos_calculadora_mdo_hr_estofamento[loop.index-1]}}</td>
+                                        <td id="H{{loop.index-1}}">{{historicos_calculadora_mdo_valor_estofamento[loop.index-1]}}</td>
+                                        <td id="I{{loop.index-1}}">{{historicos_calculadora_mdo_valor_geral[loop.index-1]}}</td>
+                                        <td id="J{{loop.index-1}}">{{historicos_calculadora_mdo_percentual_hr[loop.index-1]}}</td>
+                                        <td id="K{{loop.index-1}}">{{historicos_calculadora_mdo_total_valor[loop.index-1]}}</td>
+                                        <td id="L{{loop.index-1}}">{{historicos_calculadora_tipo_tecido[loop.index-1]}}</td>
+                                        <td id="M{{loop.index-1}}">{{historicos_calculadora_qtd_tecido[loop.index-1]}}</td>
+                                        <td id="N{{loop.index-1}}">{{historicos_calculadora_valor_estofaria_tecido[loop.index-1]}}</td>
+                                        <td id="M{{loop.index-1}}">{{historicos_calculadora_valor_cliente_tecido[loop.index-1]}}</td>
+                                        <td id="O{{loop.index-1}}">{{historicos_calculadora_qtd_espuma_1[loop.index-1]}}</td>
+                                        <td id="P{{loop.index-1}}">{{historicos_calculadora_altura_espuma_1[loop.index-1]}}</td>
+                                        <td id="Q{{loop.index-1}}">{{historicos_calculadora_largura_espuma_1[loop.index-1]}}</td>
+                                        <td id="R{{loop.index-1}}">{{historicos_calculadora_comprimento_espuma_1[loop.index-1]}}</td>
+                                        <td id="S{{loop.index-1}}">{{historicos_calculadora_valor_estofaria_espuma_1[loop.index-1]}}</td>
+                                        <td id="T{{loop.index-1}}">{{historicos_calculadora_valor_estofaria_cliente_1[loop.index-1]}}</td>
+                                        <td id="U{{loop.index-1}}">{{historicos_calculadora_qtd_espuma_2[loop.index-1]}}</td>
+                                        <td id="V{{loop.index-1}}">{{historicos_calculadora_altura_espuma_2[loop.index-1]}}</td>
+                                        <td id="W{{loop.index-1}}">{{historicos_calculadora_largura_espuma_2[loop.index-1]}}</td>
+                                        <td id="X{{loop.index-1}}">{{historicos_calculadora_comprimento_espuma_2[loop.index-1]}}</td>
+                                        <td id="Y{{loop.index-1}}">{{historicos_calculadora_valor_estofaria_espuma_2[loop.index-1]}}</td>
+                                        <td id="Z{{loop.index-1}}">{{historicos_calculadora_valor_estofaria_cliente_2[loop.index-1]}}</td>
+                                        <td id="A{{loop.index-1}}">{{historicos_calculadora_qtd_espuma_3[loop.index-1]}}</td>
+                                        <td id="B{{loop.index-1}}">{{historicos_calculadora_altura_espuma_3[loop.index-1]}}</td>
+                                        <td id="C{{loop.index-1}}">{{historicos_calculadora_largura_espuma_3[loop.index-1]}}</td>
+                                        <td id="D{{loop.index-1}}">{{historicos_calculadora_comprimento_espuma_3[loop.index-1]}}</td>
+                                        <td id="E{{loop.index-1}}">{{historicos_calculadora_valor_estofaria_espuma_3[loop.index-1]}}</td>
+                                        <td id="F{{loop.index-1}}">{{historicos_calculadora_valor_estofaria_cliente_3[loop.index-1]}}</td>
+                                        <td id="F{{loop.index-1}}">{{historicos_calculadora_qtd_espuma_4[loop.index-1]}}</td>
+                                        <td id="G{{loop.index-1}}">{{historicos_calculadora_altura_espuma_4[loop.index-1]}}</td>
+                                        <td id="H{{loop.index-1}}">{{historicos_calculadora_largura_espuma_4[loop.index-1]}}</td>
+                                        <td id="I{{loop.index-1}}">{{historicos_calculadora_comprimento_espuma_4[loop.index-1]}}</td>
+                                        <td id="J{{loop.index-1}}">{{historicos_calculadora_valor_estofaria_espuma_4[loop.index-1]}}</td>
+                                        <td id="K{{loop.index-1}}">{{historicos_calculadora_valor_estofaria_cliente_4[loop.index-1]}}</td>
+                                        <td id="L{{loop.index-1}}">{{historicos_calculadora_valor_total_estofaria_espuma[loop.index-1]}}</td>
+                                        <td id="M{{loop.index-1}}">{{historicos_calculadora_valor_total_cliente_espuma[loop.index-1]}}</td>
+                                        <td id="N{{loop.index-1}}">{{historicos_calculadora_status_impermeabilizacao[loop.index-1]}}</td>
+                                        <td id="O{{loop.index-1}}">{{historicos_calculadora_valor_impermeabilizacao[loop.index-1]}}</td>
+                                        <td id="P{{loop.index-1}}">{{historicos_calculadora_frete_bairro[loop.index-1]}}</td>
+                                        <td id="Q{{loop.index-1}}">{{historicos_calculadora_valor_frete[loop.index-1]}}</td>
+                                        <td id="R{{loop.index-1}}">{{historicos_calculadora_valor_socializado[loop.index-1]}}</td>
+                                        <td id="S{{loop.index-1}}">{{historicos_calculadora_item_adicional_1[loop.index-1]}}</td>
+                                        <td id="T{{loop.index-1}}">{{historicos_calculadora_qtd_adicional_1[loop.index-1]}}</td>
+                                        <td id="U{{loop.index-1}}">{{historicos_calculadora_valor_adicional_1[loop.index-1]}}</td>
+                                        <td id="V{{loop.index-1}}">{{historicos_calculadora_item_adicional_2[loop.index-1]}}</td>
+                                        <td id="W{{loop.index-1}}">{{historicos_calculadora_qtd_adicional_2[loop.index-1]}}</td>
+                                        <td id="X{{loop.index-1}}">{{historicos_calculadora_valor_adicional_2[loop.index-1]}}</td>
+                                        <td id="Y{{loop.index-1}}">{{historicos_calculadora_item_adicional_3[loop.index-1]}}</td>
+                                        <td id="Z{{loop.index-1}}">{{historicos_calculadora_qtd_adicional_3[loop.index-1]}}</td>
+                                        <td id="A{{loop.index-1}}">{{historicos_calculadora_valor_adicional_3[loop.index-1]}}</td>
+                                        <td id="B{{loop.index-1}}">{{historicos_calculadora_valor_total_item_adicional[loop.index-1]}}</td>
+                                        <td id="C{{loop.index-1}}">{{historicos_calculadora_custo_fixo[loop.index-1]}}</td>
+                                        <td id="D{{loop.index-1}}">{{historicos_calculadora_custo_variavel_estofaria[loop.index-1]}}</td>
+                                        <td id="E{{loop.index-1}}">{{historicos_calculadora_custo_variavel_cliente[loop.index-1]}}</td>
+                                        <td id="F{{loop.index-1}}">{{historicos_calculadora_total_estofaria[loop.index-1]}}</td>
+                                        <td id="G{{loop.index-1}}">{{historicos_calculadora_total_cliente[loop.index-1]}}</td>
+                                        <td id="H{{loop.index-1}}">{{historicos_calculadora_percentual_calculado[loop.index-1]}}</td>
+                                        <td id="I{{loop.index-1}}">{{historicos_calculadora_percentual_margem_alvo[loop.index-1]}}</td>
+                                        <td id="J{{loop.index-1}}">{{historicos_calculadora_preco_alvo[loop.index-1]}}</td>
+                                        <td id="{{loop.index-1}}" onclick="updatebutton(this.id)"><input type="button" class="updatebutton" value="Enviar email"></td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
