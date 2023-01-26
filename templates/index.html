@@ -331,7 +331,7 @@
                                 <c>Escolha o tipo de tecido:</c>                                
                                 <select class="form-control" id="tipotecido" onchange="resultadopreçocustotecido()"> 
                                     {% for tecido in listatecidos %}
-                                        <option id="typetecido" value="{{loop.index-1}}">{{tecido}}</option>
+                                        <option id="typetecido" value="{{tecido}}">{{tecido}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
