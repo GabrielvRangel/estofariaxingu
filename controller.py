@@ -64,12 +64,12 @@ def login():
         session['usuario_logado'] = usuario
         session['admin'] = tabela_usuario.loc[0,'admin']
         session['nome'] = tabela_usuario.loc[0,'nome']
-        return redirect(localhost + '/', usuario_nome = session['nome'], code=302)
+        return redirect(localhost + '/', code=302)
     if ('usuario_logado' not in session or session['usuario_logado'] == None) and  permissao_logar == 0:
         flash('Usuario ou senha incorreto.')
         return render_template("tela_login.html")
     if 'usuario_logado' in session and session['usuario_logado'] != None:
-        return redirect(localhost + '/', usuario_nome = session['nome'], code=302)
+        return redirect(localhost + '/', code=302)
     
 @app.route("/logout", methods=["GET","POST"])
 def logout():
