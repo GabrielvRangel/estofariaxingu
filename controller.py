@@ -70,7 +70,7 @@ def login():
         return render_template("tela_login.html")
     if 'usuario_logado' in session and session['usuario_logado'] != None:
         return redirect(localhost + '', code=302)
-    
+     
 @app.route("/logout", methods=["GET","POST"])
 def logout():
     session['usuario_logado'] = None
